@@ -9,6 +9,7 @@ export default {
     openDatabase,
     getAllScores,
     insertScore,
+    updateScore,
 }
 
 function openDatabase() {
@@ -34,6 +35,7 @@ function openDatabase() {
 async function getAllScores(db: SQLiteDatabase) {
     const results = await db.getAllAsync(`select * from scores;`)
     console.log(`${results.length} records`);
+    console.log(results);
 }
 
 async function insertScore(db: SQLiteDatabase, score: Score) {
@@ -42,5 +44,13 @@ async function insertScore(db: SQLiteDatabase, score: Score) {
         [score.date, score.veg, score.fruit, score.nuts, score.wholegrains, score.dairy, score.leanproteins, score.beverages, score.refinedgrains, score.sweets, score.fattyproteins, score.friedfoods, score.other]
     );
     console.log(`Record added`);
+}
+
+async function updateScore(db: SQLiteDatabase, score: Score) {
+    await db.runAsync(
+        `update scores set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, other=? where id=?`,
+        [score.date, score.veg, score.fruit, score.nuts, score.wholegrains, score.dairy, score.leanproteins, score.beverages, score.refinedgrains, score.sweets, score.fattyproteins, score.friedfoods, score.other]
+    );
+    console.log(`Record updated`);
 }
 
