@@ -32,10 +32,11 @@ function openDatabase() {
     return db;
 }
 
-async function getAllScores(db: SQLiteDatabase) {
-    const results = await db.getAllAsync(`select * from scores;`)
+async function getAllScores(db: SQLiteDatabase): Promise<Score[]> {
+    const results: Score[] = await db.getAllAsync(`select * from scores;`)
     console.log(`${results.length} records`);
     console.log(results);
+    return results;
 }
 
 async function insertScore(db: SQLiteDatabase, score: Score) {
@@ -46,9 +47,9 @@ async function insertScore(db: SQLiteDatabase, score: Score) {
     console.log(`Record added`);
 }
 
-async function updateScore(db: SQLiteDatabase, score: Score) {
+async function updateScore(db: SQLiteDatabase, id: number, score: Score) {
     await db.runAsync(
-        `update scores set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, other=? where id=?`,
+        `update scores set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, other=? where id=${id}`,
         [score.date, score.veg, score.fruit, score.nuts, score.wholegrains, score.dairy, score.leanproteins, score.beverages, score.refinedgrains, score.sweets, score.fattyproteins, score.friedfoods, score.other]
     );
     console.log(`Record updated`);
