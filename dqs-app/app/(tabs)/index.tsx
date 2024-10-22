@@ -1,7 +1,7 @@
-import {Text, View} from "react-native";
 import database from "@/core/database";
 import type { Score } from "@/core/types";
 import {useEffect, useState} from "react";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {SQLiteDatabase} from "expo-sqlite";
 
 import { TwContainer } from "@/core/components/TwContainer"
@@ -40,28 +40,31 @@ export default function App() {
     }, [db]);
         
     return (
-        <TwContainer twc="flex-1 p-3 bg-white">
-            <TwText variant="title">Open up App.js to start working on your app!</TwText>
-            <TwText variant="heading">Open up App.js to start working on your app!</TwText>
-            <TwText variant="subheading">Open up App.js to start working on your app!</TwText>
-            <TwText>Open up App.js to start working on your app!</TwText>
+        <SafeAreaView tw="flex-1 flex-col justify-center px-6 bg-slate-900">
+            <TwText variant="title">Racing Weight - Unofficial</TwText>
+            <TwText variant="subtitle">Based on the book by Mark Fitzgerald</TwText>
+            {/*<TwText variant="heading">Open up App.js to start working on your app!</TwText>*/}
+            {/*<TwText variant="subheading">Subheading</TwText>*/}
+            {/*<TwText>Open up App.js to start working on your app!</TwText>*/}
             
-            {db && (
-                <>
-                <TwButton title="Get scores" onPress={async () => db ? await database.getAllScores(db): null} twc="mb-1.5" />
-                <TwButton title="Add score" onPress={async () => db ? await database.insertScore(db, score): null} variant="secondary" twc="mb-1.5" />
-                <TwButton title="Update score" onPress={async () => db ? await database.updateScore(db, 1, score): null} variant="soft" twc="mb-1.5" />                
-                </>
-            )}
-
-            <TwContainer twc="flex-col  bg-teal-500">
-                <TwText variant="heading">Scores ({scores.length})</TwText>
-                {scores.length > 0 ?
-                    scores.map( (s, i) => (<TwText key={i}>{format(new Date(s.date), 'L MMM yyyy')}</TwText>))
-                    : <TwText>No scores</TwText>
-                }
-            </TwContainer>  
+            {/*{db && (*/}
+            {/*    <TwContainer twc="flex-col">*/}
+            {/*        <TwButton title="Get scores" onPress={async () => db ? await database.getAllScores(db): null} twc="mb-3" />*/}
+            {/*        <TwButton title="Add score" onPress={async () => db ? await database.insertScore(db, score): null} variant="secondary" twc="mb-3" />*/}
+            {/*        <TwButton title="Update score" onPress={async () => db ? await database.updateScore(db, 1, score): null} variant="soft" twc="mb-3" />                */}
+            {/*    </TwContainer>*/}
+            {/*)}*/}
             
-        </TwContainer>
+            {/*<TwContainer twc="flex-col">*/}
+            {/*    <TwText variant="heading">Scores ({scores.length})</TwText>*/}
+            {/*    {scores.length > 0 ?*/}
+            {/*        scores.map( (s, i) => (<TwText key={i}>{format(new Date(s.date), 'L MMM yyyy')}</TwText>))*/}
+            {/*        : <TwText>No scores</TwText>*/}
+            {/*    }*/}
+            {/*</TwContainer>*/}
+            {/*<TwText variant={"small"}>* Some minor caveat</TwText>*/}
+            
+        
+        </SafeAreaView>
     );
 }

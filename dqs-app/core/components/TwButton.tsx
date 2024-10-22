@@ -27,8 +27,8 @@ export function TwButton({title, onPress, variant = 'primary', twc = ''}: TwButt
     
     return (
         <TouchableOpacity onPress={onPress}>
-            <View tw={`rounded-md px-5 py-2 text-sm shadow-sm ${bg} ${twc}`}>
-                <Text tw={`font-semibold ${txt}`}>{title}</Text>
+            <View tw={`rounded-md px-6 py-3 shadow-sm ${bg} ${twc}`}>
+                <Text tw={`font-semibold text-center text-base ${txt}`}>{title}</Text>
             </View>
         </TouchableOpacity>
     );

@@ -1,5 +1,4 @@
-import { Text} from "react-native";
-import type { ClassNames } from "nativewind";
+import { View } from "react-native";
 
 type TwContainerProps = {
     children?: React.ReactNode;
@@ -8,6 +7,6 @@ type TwContainerProps = {
 
 export function TwContainer({children, twc = ''}: TwContainerProps) {    
     return (
-        <Text tw={twc}>{children}</Text>
+        <View tw={twc}>{children}</View>
     );
 }
