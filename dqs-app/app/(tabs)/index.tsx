@@ -1,5 +1,5 @@
 import database from "@/core/database";
-import type { Score } from "@/core/types";
+import type { Servings } from "@/core/types";
 import {useEffect, useState} from "react";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {SQLiteDatabase} from "expo-sqlite";
@@ -10,7 +10,7 @@ import { TwText } from "@/core/components/TwText"
 
 import { format } from "date-fns";
 
-const score: Score = {
+const servings: Servings = {
     date: '2021-09-23',
     veg: 6,
     fruit: 2,
@@ -32,10 +32,10 @@ export default function App() {
         setDb(database.openDatabase());
     }, []);
     
-    const [scores, setScores] = useState<Score[]>([]);
+    const [scores, setScores] = useState<Servings[]>([]);
     useEffect(() => {
         if (db) {
-            database.getAllScores(db).then((results) => setScores(results));
+            database.getAllServings(db).then((results) => setScores(results));
         }
     }, [db]);
         
@@ -43,6 +43,9 @@ export default function App() {
         <SafeAreaView tw="flex-1 flex-col justify-center px-6 bg-slate-900">
             <TwText variant="title">Racing Weight - Unofficial</TwText>
             <TwText variant="subtitle">Based on the book by Mark Fitzgerald</TwText>
+            <TwButton title="Get scores" onPress={async () => db ? await database.getAllServings(db): null} twc="mb-3" />
+            <TwButton title="Add serving" onPress={async () => db ? await database.insertServings(db, servings): null} variant="secondary" twc="mb-3" />
+            <TwButton title="Update serving" onPress={async () => db ? await database.updateServings(db, 1, servings): null} variant="soft" twc="mb-3" />
             {/*<TwText variant="heading">Open up App.js to start working on your app!</TwText>*/}
             {/*<TwText variant="subheading">Subheading</TwText>*/}
             {/*<TwText>Open up App.js to start working on your app!</TwText>*/}
