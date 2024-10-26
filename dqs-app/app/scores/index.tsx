@@ -1,17 +1,16 @@
 import database from "@/core/database";
-import type { Servings } from "@/core/types";
-import { FoodCat } from "@/core/enums";
+import type {Servings} from "@/core/types";
+import {FoodCat} from "@/core/enums";
 import {useEffect, useState} from "react";
 import {SQLiteDatabase} from "expo-sqlite";
 
-import { TwContainer } from "@/core/components/TwContainer"
-import { TwButton } from "@/core/components/TwButton"
-import { TwText } from "@/core/components/TwText"
-
-import { format } from "date-fns";
+import {TwContainer} from "@/core/components/TwContainer"
+import {TwText} from "@/core/components/TwText"
 import {ScoreLabel} from "@/app/scores/components/ScoreLabel";
 import {ScoreServing} from "@/app/scores/components/ScoreServing";
 import {Pressable} from "react-native";
+import {Score} from "@/app/scores/components/Score";
+import { maxScores} from "@/app/scores/constants";
 
 const servings: Servings = {
     date: '2021-09-23',
@@ -43,130 +42,33 @@ export default function App() {
         }
     }, [db]);
     
-    function handleServingPress(cat: FoodCat) {
+    function handlePress(cat: FoodCat) {
         console.log('serving press:', cat);
+    }
+
+    function handleLongPress(cat: FoodCat) {
+        console.log('serving longpress:', cat);
     }
         
     return (
         <TwContainer twc="flex-1 flex-col justify-center px-3 bg-slate-950">
+            
             <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>Today</TwText></TwContainer>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.veg)}>
-                <ScoreLabel text={"Vegetables"} />
-                <ScoreServing serving={1} maxScore={2} />
-                <ScoreServing serving={1} maxScore={2} />
-                <ScoreServing serving={1} maxScore={2} />
-                <ScoreServing serving={1} maxScore={1} />
-                <ScoreServing serving={1} maxScore={0} />
-                <ScoreServing serving={0} maxScore={0} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.fruit)}>
-                <ScoreLabel text={"Fruit"} />
-                <ScoreServing serving={1} maxScore={2} />
-                <ScoreServing serving={1} maxScore={2} />
-                <ScoreServing serving={0} maxScore={2} />
-                <ScoreServing serving={0} maxScore={1} />
-                <ScoreServing serving={0} maxScore={0} />
-                <ScoreServing serving={0} maxScore={0} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.nuts)}>
-                <ScoreLabel text={"Nuts + seeds"} />
-                <ScoreServing serving={0} maxScore={2} />
-                <ScoreServing serving={0} maxScore={2} />
-                <ScoreServing serving={0} maxScore={+1} />
-                <ScoreServing serving={0} maxScore={0} />
-                <ScoreServing serving={0} maxScore={0} />
-                <ScoreServing serving={0} maxScore={-1} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.wholegrains)}>
-                <ScoreLabel text={"Whole grains"} />
-                <ScoreServing serving={1} maxScore={+2} />
-                <ScoreServing serving={1} maxScore={+2} />
-                <ScoreServing serving={1} maxScore={+1} />
-                <ScoreServing serving={0} maxScore={0} />
-                <ScoreServing serving={0} maxScore={0} />
-                <ScoreServing serving={0} maxScore={-1} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.dairy)}>
-                <ScoreLabel text={"Dairy"} />
-                <ScoreServing serving={1} maxScore={+2} />
-                <ScoreServing serving={1} maxScore={+1} />
-                <ScoreServing serving={0} maxScore={+1} />
-                <ScoreServing serving={0} maxScore={0} />
-                <ScoreServing serving={0} maxScore={-1} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.leanproteins)}>
-                <ScoreLabel text={"Lean meats"} />
-                <ScoreServing serving={1} maxScore={+2} />
-                <ScoreServing serving={1} maxScore={+1} />
-                <ScoreServing serving={0} maxScore={+1} />
-                <ScoreServing serving={0} maxScore={0} />
-                <ScoreServing serving={0} maxScore={-1} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.beverages)}>
-                <ScoreLabel text={"Coffee + tea"} />
-                <ScoreServing serving={1} maxScore={+1} />
-                <ScoreServing serving={1} maxScore={+1} />
-                <ScoreServing serving={1} maxScore={0} />
-                <ScoreServing serving={1} maxScore={0} />
-                <ScoreServing serving={1} maxScore={0} />
-                <ScoreServing serving={1} maxScore={-1} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.refinedgrains)}>
-                <ScoreLabel text={"Refined grains"} />
-                <ScoreServing serving={1} maxScore={-1} />
-                <ScoreServing serving={0} maxScore={-1} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.sweets)}>
-                <ScoreLabel text={"Sweets"} />
-                <ScoreServing serving={1} maxScore={-2} />
-                <ScoreServing serving={1} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.fattyproteins)}>
-                <ScoreLabel text={"Fatty meats"} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.friedfoods)}>
-                <ScoreLabel text={"Friend foods"} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.alcohol)}>
-                <ScoreLabel text={"Alcohol"} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
-            <Pressable tw={"w-full flex-row mb-3" } onPress={() => handleServingPress(FoodCat.other)}>
-                <ScoreLabel text={"Other"} />
-                <ScoreServing serving={0} maxScore={-1} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-                <ScoreServing serving={0} maxScore={-2} />
-            </Pressable>
+            
+            <Score text={"Vegetables"} cat={FoodCat.veg} maxScores={maxScores.veg} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Fruit"} cat={FoodCat.fruit} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Nuts + seeds"} cat={FoodCat.nuts} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Whole grains"} cat={FoodCat.wholegrains} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Dairy"} cat={FoodCat.dairy} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Lean meats"} cat={FoodCat.leanproteins} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Coffee + tea"} cat={FoodCat.beverages} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Refined grains"} cat={FoodCat.refinedgrains} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Sweets"} cat={FoodCat.sweets} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Fatty meats"} cat={FoodCat.fattyproteins} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Friend foods"} cat={FoodCat.friedfoods} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Alcohol"} cat={FoodCat.alcohol} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score text={"Other"} cat={FoodCat.other} onPress={handlePress} onLongPress={handleLongPress} />   
+      
             <TwContainer twc={"flex-row justify-between"}>
                 <TwContainer twc={"w-1/4"}/>
                 <TwContainer twc={"w-1/2 pt-3"}>
@@ -178,6 +80,7 @@ export default function App() {
                     <TwText variant="subheading" twc={"text-right text-red-400"}>---</TwText>
                 </TwContainer>
             </TwContainer>
+            
         </TwContainer>
     );
 }
