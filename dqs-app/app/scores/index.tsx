@@ -2,7 +2,6 @@ import database from "@/core/database";
 import type { Servings } from "@/core/types";
 import { FoodCat } from "@/core/enums";
 import {useEffect, useState} from "react";
-import { SafeAreaView } from 'react-native-safe-area-context';
 import {SQLiteDatabase} from "expo-sqlite";
 
 import { TwContainer } from "@/core/components/TwContainer"
@@ -49,7 +48,7 @@ export default function App() {
     }
         
     return (
-        <SafeAreaView tw="flex-1 flex-col justify-center px-3 bg-slate-900">
+        <TwContainer twc="flex-1 flex-col justify-center px-3 bg-slate-950">
             <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>Today</TwText></TwContainer>
             <Pressable tw={"w-full flex-row mb-1.5" } onPress={() => handleServingPress(FoodCat.veg)}>
                 <ScoreLabel text={"Vegetables"} />
@@ -179,6 +178,6 @@ export default function App() {
                     <TwText variant="subheading" twc={"text-right text-red-400"}>---</TwText>
                 </TwContainer>
             </TwContainer>
-        </SafeAreaView>
+        </TwContainer>
     );
 }

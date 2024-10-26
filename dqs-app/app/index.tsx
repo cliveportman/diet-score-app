@@ -1,23 +1,24 @@
-import {Pressable} from "react-native";
+import { TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
 
 export default function App() {
     return (
-        <SafeAreaView tw="flex-1 bg-slate-900">
-            <Pressable tw="flex-1 flex-col justify-between px-6" onPress={() => router.push('/scores')}>
-            <TwContainer></TwContainer>
-            <TwContainer>
-                <TwText variant="title" twc={"text-center"}>Racing Weight - Unofficial</TwText>
-                <TwText variant="subtitle" twc={"text-slate-500 text-center"}>Based on the book by Mark Fitzgerald</TwText>
-            </TwContainer>  
-            <TwContainer>
-                <TwText twc={"mb-12 text-center"}>Continue...</TwText>
+        <TwContainer twc="flex-1 bg-slate-950">
+            <TwContainer twc="flex-1 flex-col justify-between px-6">
+                <TwContainer twc={"flex-1 flex-col justify-end items-start"}>
+                    <TwText variant="title" twc={""}>Diet Monitor</TwText>
+                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5"}>based on the book</TwText>
+                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 italic"}>Racing Weight</TwText>
+                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5"}>by Mark Fitzgerald</TwText>
+                </TwContainer>
+                <TwContainer twc={"flex-1 flex-col items-center justify-end"}>
+                    <TouchableOpacity tw={"flex-col justify-center items-center text-center text-white border border-slate-800 bg-slate-900 w-32 h-32 rounded-full mb-16"} onPress={() => router.push('/scores')}>
+                        <TwText twc={"mb-0"}>Continue</TwText>
+                    </TouchableOpacity>
+                </TwContainer>
             </TwContainer>
-            </Pressable>
-        </SafeAreaView>
+        </TwContainer>
     );
 }

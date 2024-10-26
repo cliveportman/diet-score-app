@@ -1,8 +1,10 @@
 import { useFonts } from 'expo-font';
-import {Stack, Tabs} from 'expo-router';
+import {Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect } from 'react';
 import 'react-native-reanimated';
+import {SafeAreaView} from "react-native-safe-area-context";
+import { StatusBar } from 'react-native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -27,21 +29,24 @@ export default function RootLayout() {
   }
 
   return (
-      <Stack>
-          <Stack.Screen
-              name="index"
-              options={{
-                  title: 'Home',
-                  headerShown: false,
-              }}
-          />
-          <Stack.Screen
-              name="scores/index"
-              options={{
-                  title: 'Scores',
-                  headerShown: false,
-              }}
-          />
-      </Stack>
+      <SafeAreaView tw="flex-1 bg-slate-950">
+          <StatusBar barStyle="light-content" backgroundColor="#020617" />
+          <Stack>
+              <Stack.Screen
+                  name="index"
+                  options={{
+                      title: 'Home',
+                      headerShown: false,
+                  }}
+              />
+              <Stack.Screen
+                  name="scores/index"
+                  options={{
+                      title: 'Scores',
+                      headerShown: false,
+                  }}
+              />
+          </Stack>
+      </SafeAreaView>
   );
 }
