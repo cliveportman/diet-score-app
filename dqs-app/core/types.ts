@@ -1,4 +1,4 @@
-export type Score = {
+export type Servings = {
     date: string;
     veg: number;
     fruit: number;
@@ -11,5 +11,6 @@ export type Score = {
     sweets: number;
     fattyproteins: number;
     friedfoods: number;
+    alcohol: number;
     other: number;
 }

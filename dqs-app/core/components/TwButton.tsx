@@ -1,9 +1,10 @@
 import { Text, TouchableOpacity, View } from "react-native";
 
+
 type TwButtonProps = {
     title: string;    
     onPress: () => void;
-    variant?: 'primary' | 'secondary' | 'soft';
+    variant?: 'primary' | 'secondary' | 'soft' | 'text';
     twc?: string;
 }
 
@@ -22,12 +23,16 @@ export function TwButton({title, onPress, variant = 'primary', twc = ''}: TwButt
             bg = 'bg-slate-100';
             txt = 'text-slate-600';
             break;
+        case 'text':
+            bg = 'transparent';
+            txt = 'text-slate-100';
+            break;
     }
     
     return (
         <TouchableOpacity onPress={onPress}>
-            <View tw={`rounded-md px-5 py-2 text-sm shadow-sm ${bg} ${twc}`}>
-                <Text tw={`font-semibold ${txt}`}>{title}</Text>
+            <View tw={`rounded-md px-6 py-3 shadow-sm ${bg} ${twc}`}>
+                <Text tw={`font-semibold text-center text-base ${txt}`}>{title}</Text>
             </View>
         </TouchableOpacity>
     );

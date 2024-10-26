@@ -1,0 +1,14 @@
+import { Text, View } from "react-native";
+
+type ScoreLabelProps = {
+    text: string;
+    twc?: string;
+}
+
+export function ScoreLabel({text, twc = ''}: ScoreLabelProps) {
+    return (
+        <View tw={`grow flex flex-col justify-center items-center h-10 rounded-xs bg-slate-800 shadow-sm ${twc}`}>
+            <Text tw={`font-regular text-center text-base text-white ${twc}`}>{text}</Text>
+        </View>
+    );
+}

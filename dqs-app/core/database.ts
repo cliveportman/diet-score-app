@@ -1,15 +1,15 @@
 import * as SQLite from "expo-sqlite";
 import {SQLiteDatabase} from "expo-sqlite";
-import type { Score } from "@/core/types";
+import type { Servings } from "@/core/types";
 import databaseMigrations from "@/core/database-migrations";
 
-const DATABASE_VERSION = 2;
+const DATABASE_VERSION = 3;
 
 export default {
     openDatabase,
-    getAllScores,
-    insertScore,
-    updateScore,
+    getAllServings,
+    insertServings,
+    updateServings,
 }
 
 function openDatabase() {
@@ -26,31 +26,32 @@ function openDatabase() {
     });
     db.withTransactionSync(() => {
         db.runSync(
-            `create table if not exists scores (id integer primary key not null, date TEXT, veg int, fruit int, nuts int, wholegrains int, dairy int, leanproteins int, beverages int, refinedgrains int, sweets int, fattyproteins int, friedfoods int, other int );`
+            `create table if not exists servings (id integer primary key not null, date TEXT, veg int, fruit int, nuts int, wholegrains int, dairy int, leanproteins int, beverages int, refinedgrains int, sweets int, fattyproteins int, friedfoods int, other int );`
         );
     });
     return db;
 }
 
-async function getAllScores(db: SQLiteDatabase) {
-    const results = await db.getAllAsync(`select * from scores;`)
-    console.log(`${results.length} records`);
+async function getAllServings(db: SQLiteDatabase): Promise<Servings[]> {
+    const results: Servings[] = await db.getAllAsync(`select * from servings;`)
+    console.log(`${results.length} Servings records (days) found`);
     console.log(results);
+    return results;
 }
 
-async function insertScore(db: SQLiteDatabase, score: Score) {
+async function insertServings(db: SQLiteDatabase, servings: Servings) {
     await db.runAsync(
-        `insert into scores (date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, other) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [score.date, score.veg, score.fruit, score.nuts, score.wholegrains, score.dairy, score.leanproteins, score.beverages, score.refinedgrains, score.sweets, score.fattyproteins, score.friedfoods, score.other]
+        `insert into servings (date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, other) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.other]
     );
-    console.log(`Record added`);
+    console.log(`Servings added`);
 }
 
-async function updateScore(db: SQLiteDatabase, score: Score) {
+async function updateServings(db: SQLiteDatabase, id: number, servings: Servings) {
     await db.runAsync(
-        `update scores set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, other=? where id=?`,
-        [score.date, score.veg, score.fruit, score.nuts, score.wholegrains, score.dairy, score.leanproteins, score.beverages, score.refinedgrains, score.sweets, score.fattyproteins, score.friedfoods, score.other]
+        `update servings set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, other=? where id=${id}`,
+        [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.other]
     );
-    console.log(`Record updated`);
+    console.log(`Servings updated`);
 }
 
