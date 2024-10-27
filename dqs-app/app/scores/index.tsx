@@ -1,35 +1,49 @@
 import database from "@/core/database";
-import type {Servings} from "@/core/types";
+import {PossibleSingleServingScores, Servings} from "@/core/types";
 import {FoodCat} from "@/core/enums";
 import {useEffect, useState} from "react";
 import {SQLiteDatabase} from "expo-sqlite";
 
 import {TwContainer} from "@/core/components/TwContainer"
 import {TwText} from "@/core/components/TwText"
-import {ScoreLabel} from "@/app/scores/components/ScoreLabel";
-import {ScoreServing} from "@/app/scores/components/ScoreServing";
-import {Pressable} from "react-native";
 import {Score} from "@/app/scores/components/Score";
-import { maxScores} from "@/app/scores/constants";
 
-const servings: Servings = {
-    date: '2021-09-23',
-    veg: 6,
-    fruit: 2,
-    nuts: 3,
+// Maximum possible scores for each food category, if a user eats the max number of servings (6).
+const maxScores = {
+    veg: [2, 2, 2, 1, 0, 0] as PossibleSingleServingScores,
+    fruit: [2, 2, 2, 1, 0, 0] as PossibleSingleServingScores,
+    nuts: [2, 2, 1, 0, 0, -1] as PossibleSingleServingScores,
+    wholegrains: [2, 2, 1, 0, 0, -1] as PossibleSingleServingScores,
+    dairy: [2, 1, 1, 0, -1, -2] as PossibleSingleServingScores,
+    leanproteins: [2, 1, 1, 0, -1, -2] as PossibleSingleServingScores,
+    beverages: [1, 1, 0, 0, 0, 0] as PossibleSingleServingScores,
+    refinedgrains: [-1, -1, -2, -2, -2, -2] as PossibleSingleServingScores,
+    sweets: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
+    fattyproteins: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
+    friedfoods: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
+    alcohol: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
+    other: [-1, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
+}
+
+const defaultServings: Servings = {
+    date: '2021-10-05',
+    veg: 3,
+    fruit: 4,
+    nuts: 2,
     wholegrains: 4,
-    dairy: 5,
-    leanproteins: 6,
-    beverages: 3,
-    refinedgrains: 8,
-    sweets: 9,
-    fattyproteins: 10,
-    friedfoods: 11,
+    dairy: 2,
+    leanproteins: 1,
+    beverages: 2,
+    refinedgrains: 1,
+    sweets: 0,
+    fattyproteins: 0,
+    friedfoods: 0,
     alcohol: 1,
-    other: 12,
+    other: 0,
 };
 
 export default function App() {
+    
     const [db, setDb] = useState<SQLiteDatabase | null>(null);
     useEffect(() => {
         setDb(database.openDatabase());
@@ -42,12 +56,23 @@ export default function App() {
         }
     }, [db]);
     
+    const [servings, setServings] = useState<Servings>(defaultServings);
+    
     function handlePress(cat: FoodCat) {
         console.log('serving press:', cat);
+        if (servings[cat] < 6) setServings(prevServings => ({
+            ...prevServings,
+            [cat]: prevServings[cat] < 6 ? prevServings[cat] + 1 : prevServings[cat]
+        }));
     }
 
     function handleLongPress(cat: FoodCat) {
         console.log('serving longpress:', cat);
+        if (servings[cat] > 0) setServings(prevServings => ({
+            ...prevServings,
+            [cat]: prevServings[cat] < 6 ? prevServings[cat] - 1 : prevServings[cat]
+        }));
+        
     }
         
     return (
@@ -55,19 +80,30 @@ export default function App() {
             
             <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>Today</TwText></TwContainer>
             
-            <Score text={"Vegetables"} cat={FoodCat.veg} maxScores={maxScores.veg} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Fruit"} cat={FoodCat.fruit} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Nuts + seeds"} cat={FoodCat.nuts} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Whole grains"} cat={FoodCat.wholegrains} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Dairy"} cat={FoodCat.dairy} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Lean meats"} cat={FoodCat.leanproteins} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Coffee + tea"} cat={FoodCat.beverages} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Refined grains"} cat={FoodCat.refinedgrains} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Sweets"} cat={FoodCat.sweets} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Fatty meats"} cat={FoodCat.fattyproteins} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Friend foods"} cat={FoodCat.friedfoods} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Alcohol"} cat={FoodCat.alcohol} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score text={"Other"} cat={FoodCat.other} onPress={handlePress} onLongPress={handleLongPress} />   
+            <Score servings={servings.veg} maxScores={maxScores.veg} text={"Vegetables"} cat={FoodCat.veg} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score  servings={servings.fruit} maxScores={maxScores.fruit} text={"Fruit"} cat={FoodCat.fruit} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.nuts} maxScores={maxScores.nuts} text={"Nuts + seeds"} cat={FoodCat.nuts} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.wholegrains} maxScores={maxScores.wholegrains} text={"Whole grains"} cat={FoodCat.wholegrains} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.dairy} maxScores={maxScores.dairy} text={"Dairy"} cat={FoodCat.dairy} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.leanproteins} maxScores={maxScores.leanproteins} text={"Lean meats"} cat={FoodCat.leanproteins} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score servings={servings.beverages} maxScores={maxScores.beverages} text={"Coffee + tea"} cat={FoodCat.beverages} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.refinedgrains} maxScores={maxScores.refinedgrains} text={"Refined grains"} cat={FoodCat.refinedgrains} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score  servings={servings.sweets} maxScores={maxScores.sweets} text={"Sweets"} cat={FoodCat.sweets} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.fattyproteins} maxScores={maxScores.fattyproteins} text={"Fatty meats"} cat={FoodCat.fattyproteins} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.friedfoods} maxScores={maxScores.friedfoods} text={"Fried foods"} cat={FoodCat.friedfoods} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.alcohol} maxScores={maxScores.alcohol} text={"Alcohol"} cat={FoodCat.alcohol} onPress={handlePress} onLongPress={handleLongPress} />
+            
+            <Score servings={servings.other} maxScores={maxScores.other} text={"Other"} cat={FoodCat.other} onPress={handlePress} onLongPress={handleLongPress} />   
       
             <TwContainer twc={"flex-row justify-between"}>
                 <TwContainer twc={"w-1/4"}/>
