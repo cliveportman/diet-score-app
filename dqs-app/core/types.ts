@@ -1,4 +1,5 @@
 export type Servings = {
+    id?: number;
     date: string;
     veg: number;
     fruit: number;
@@ -14,3 +15,6 @@ export type Servings = {
     alcohol: number;
     other: number;
 }
+
+export type SingleServingScore = -2 | -1 | 0 | 1 | 2;
+export type PossibleSingleServingScores = [SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore];
