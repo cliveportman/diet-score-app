@@ -1,8 +1,11 @@
+import {useEffect, useRef, useState} from "react";
+import {AppState} from "react-native";
+import {router} from "expo-router";
+import {SQLiteDatabase} from "expo-sqlite";
+
 import database from "@/core/database";
 import {PossibleSingleServingScores, Servings} from "@/core/types";
 import {FoodCat} from "@/core/enums";
-import {useEffect, useState} from "react";
-import {SQLiteDatabase} from "expo-sqlite";
 
 import {TwContainer} from "@/core/components/TwContainer"
 import {TwText} from "@/core/components/TwText"
@@ -43,6 +46,18 @@ const defaultServings: Servings = {
 };
 
 export default function App() {
+
+    const appState = useRef(AppState.currentState);
+    const [appStateVisible, setAppStateVisible] = useState(appState.current);
+    useEffect(() => {
+        const subscription = AppState.addEventListener('change', nextAppState => {
+            appState.current = nextAppState;
+            if (appState.current.match(/inactive|background/)) router.push('/');
+        });
+        return () => {
+            subscription.remove();
+        };
+    }, []);
     
     const [db, setDb] = useState<SQLiteDatabase | null>(null);
     useEffect(() => {
