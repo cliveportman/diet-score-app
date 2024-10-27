@@ -26,21 +26,22 @@ const maxScores = {
 }
 
 const defaultServings: Servings = {
-    date: '2021-10-05',
-    veg: 3,
-    fruit: 4,
-    nuts: 2,
-    wholegrains: 4,
-    dairy: 2,
-    leanproteins: 1,
-    beverages: 2,
-    refinedgrains: 1,
+    date: '',
+    veg: 0,
+    fruit: 0,
+    nuts: 0,
+    wholegrains: 0,
+    dairy: 0,
+    leanproteins: 0,
+    beverages: 0,
+    refinedgrains: 0,
     sweets: 0,
     fattyproteins: 0,
     friedfoods: 0,
-    alcohol: 1,
+    alcohol: 0,
     other: 0,
 };
+
 
 export default function App() {
     
@@ -48,31 +49,43 @@ export default function App() {
     useEffect(() => {
         setDb(database.openDatabase());
     }, []);
-    
-    const [scores, setScores] = useState<Servings[]>([]);
+
+    const [servings, setServings] = useState<Servings>(defaultServings);
     useEffect(() => {
         if (db) {
-            database.getAllServings(db).then((results) => setScores(results));
+            // Date in format YYYY-MM-DD
+            const today = new Date().toISOString().split('T')[0];
+            database.getServingsByDate(db, today).then(async (results) => {
+                if (results) setServings(results);
+                else {
+                    const id = await database.insertServings(db, {...defaultServings, date: today});
+                    const newServings = {...defaultServings, date: today, id: id};
+                    setServings(newServings);
+                }
+            });
         }
     }, [db]);
-    
-    const [servings, setServings] = useState<Servings>(defaultServings);
-    
-    function handlePress(cat: FoodCat) {
-        console.log('serving press:', cat);
-        if (servings[cat] < 6) setServings(prevServings => ({
-            ...prevServings,
-            [cat]: prevServings[cat] < 6 ? prevServings[cat] + 1 : prevServings[cat]
-        }));
+
+    /**
+     * Press handler - increments the number of servings for a food category.
+     * @param cat
+     */
+    async function handlePress(cat: FoodCat) {
+        if (db && servings.id && servings[cat] < 6) {
+            const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] + 1);
+            setServings(result);
+        }
     }
 
-    function handleLongPress(cat: FoodCat) {
-        console.log('serving longpress:', cat);
-        if (servings[cat] > 0) setServings(prevServings => ({
-            ...prevServings,
-            [cat]: prevServings[cat] < 6 ? prevServings[cat] - 1 : prevServings[cat]
-        }));
-        
+    /**
+     * Long press handler - decrements the number of servings for a food category.
+     * @param cat
+     */
+    async function handleLongPress(cat: FoodCat) {
+        if (db && servings.id && servings[cat] > 0) {
+            const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] - 1);
+            setServings(result);
+        }        
     }
         
     return (

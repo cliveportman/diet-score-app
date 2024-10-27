@@ -1,4 +1,5 @@
 export type Servings = {
+    id?: number;
     date: string;
     veg: number;
     fruit: number;
