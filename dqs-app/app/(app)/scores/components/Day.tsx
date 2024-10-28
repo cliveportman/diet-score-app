@@ -4,14 +4,14 @@ import {DateString, Servings} from "@/core/types";
 import {SQLiteDatabase} from "expo-sqlite";
 import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
-import {Score} from "@/app/scores/components/Score";
-import {defaultServings, maxScores} from "@/app/scores/constants";
+import {Score} from "@/app/(app)/scores/components/Score";
+import {defaultServings, maxScores} from "@/app/(app)/scores/constants";
 import {useCallback, useEffect, useMemo, useState} from "react";
 import database from "@/core/database";
 import {format} from "date-fns";
 import {View} from "react-native";
 import {foodCatToText, shortToast} from "@/core/helpers";
-import { getTotalScores } from "@/app/scores/helpers";
+import { getTotalScores } from "@/app/(app)/scores/helpers";
 
 type DayProps = {
     db: SQLiteDatabase;

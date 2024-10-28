@@ -1,4 +1,4 @@
-import {maxScores} from "@/app/scores/constants";
+import {maxScores} from "@/app/(app)/scores/constants";
 import {FoodCat} from "@/core/enums";
 import {Servings} from "@/core/types";
 

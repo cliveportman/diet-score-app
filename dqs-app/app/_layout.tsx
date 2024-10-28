@@ -33,18 +33,14 @@ export default function RootLayout() {
       <SafeAreaView tw="flex-1 bg-slate-950">
           <RootSiblingParent>
               <StatusBar barStyle="light-content" backgroundColor="#020617" />              
-              <Stack>
+              <Stack
+                  screenOptions={{
+                      headerShown: false,
+                  }}>
                   <Stack.Screen
                       name="index"
                       options={{
                           title: 'Home',
-                          headerShown: false,
-                      }}
-                  />
-                  <Stack.Screen
-                      name="scores/index"
-                      options={{
-                          title: 'Scores',
                           headerShown: false,
                       }}
                   />
