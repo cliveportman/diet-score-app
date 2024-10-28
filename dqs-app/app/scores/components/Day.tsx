@@ -70,13 +70,13 @@ export function Day({db, date, width}: DayProps) {
             <Score servings={servings.wholegrains} maxScores={maxScores.wholegrains} text={"Whole grains"} cat={FoodCat.wholegrains} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.dairy} maxScores={maxScores.dairy} text={"Dairy"} cat={FoodCat.dairy} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.leanproteins} maxScores={maxScores.leanproteins} text={"Lean meats"} cat={FoodCat.leanproteins} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score servings={servings.beverages} maxScores={maxScores.beverages} text={"Coffee + tea"} cat={FoodCat.beverages} onPress={handlePress} onLongPress={handleLongPress} />
+            {/*<Score servings={servings.beverages} maxScores={maxScores.beverages} text={"Coffee + tea"} cat={FoodCat.beverages} onPress={handlePress} onLongPress={handleLongPress} />*/}
             <Score servings={servings.refinedgrains} maxScores={maxScores.refinedgrains} text={"Refined grains"} cat={FoodCat.refinedgrains} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.sweets} maxScores={maxScores.sweets} text={"Sweets"} cat={FoodCat.sweets} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.fattyproteins} maxScores={maxScores.fattyproteins} text={"Fatty meats"} cat={FoodCat.fattyproteins} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.friedfoods} maxScores={maxScores.friedfoods} text={"Fried foods"} cat={FoodCat.friedfoods} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.alcohol} maxScores={maxScores.alcohol} text={"Alcohol"} cat={FoodCat.alcohol} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score servings={servings.other} maxScores={maxScores.other} text={"Other"} cat={FoodCat.other} onPress={handlePress} onLongPress={handleLongPress} />
+            {/*<Score servings={servings.other} maxScores={maxScores.other} text={"Other"} cat={FoodCat.other} onPress={handlePress} onLongPress={handleLongPress} />*/}
 
             <TwContainer twc={"flex-row justify-between"}>
                 <TwContainer twc={"w-1/4"}/>
