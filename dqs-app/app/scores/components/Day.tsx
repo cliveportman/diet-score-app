@@ -6,13 +6,12 @@ import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/app/scores/components/Score";
 import {defaultServings, maxScores} from "@/app/scores/constants";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import database from "@/core/database";
 import {format} from "date-fns";
 import {View} from "react-native";
-import Toast from 'react-native-root-toast';
-import TailwindColors from "tailwindcss/colors";
 import {foodCatToText, shortToast} from "@/core/helpers";
+import { getTotalScores } from "@/app/scores/helpers";
 
 type DayProps = {
     db: SQLiteDatabase;
@@ -21,11 +20,14 @@ type DayProps = {
 }
 
 export function Day({db, date, width}: DayProps) {
-
-    const dateStr = date.toISOString().split('T')[0] as DateString;
     
+    /**
+     * Fetch servings for the current date from the database.
+     * And if there are no servings for the current date, insert them.
+     */
     const [servings, setServings] = useState<Servings>(defaultServings);
     useEffect(() => {
+        const dateStr = date.toISOString().split('T')[0] as DateString;
         database.getServingsByDate(db, dateStr).then(async (results) => {
             if (results) setServings(results);
             else {
@@ -34,35 +36,33 @@ export function Day({db, date, width}: DayProps) {
                 setServings(newServings);
             }
         });
-    }, []);
+    }, [db, date]);
 
     /**
      * Press handler - increments the number of servings for a food category.
      * @param cat
      */
-    async function handlePress(cat: FoodCat) {
+    const handlePress = useCallback(async (cat: FoodCat) => {
         if (db && servings.id && servings[cat] < 6) {
             const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] + 1);
             setServings(result);
             shortToast(`+1 serving of ${foodCatToText(cat).toLowerCase()}`);
-        }        
-    }
+        }
+    }, [db, servings]);
 
     /**
      * Long press handler - decrements the number of servings for a food category.
      * @param cat
      */
-    async function handleLongPress(cat: FoodCat) {
+    const handleLongPress = useCallback(async (cat: FoodCat) => {
         if (db && servings.id && servings[cat] > 0) {
             const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] - 1);
             setServings(result);
             shortToast(`-1 serving of ${foodCatToText(cat).toLowerCase()}`);
         }
-    }
+    }, [db, servings]);
 
-    useEffect(() => {
-        console.log(`Day component rendered for date: ${dateStr}`);
-    }, [servings]);
+    const totals = useMemo(() => getTotalScores(servings), [servings]);
     
     return (
         <View tw={`flex-col justify-center px-3`} style={{ width: width, minHeight: 200}}>
@@ -86,12 +86,12 @@ export function Day({db, date, width}: DayProps) {
             <TwContainer twc={"flex-row justify-between"}>
                 <TwContainer twc={"w-1/4"}/>
                 <TwContainer twc={"w-1/2 pt-3"}>
-                    <TwText variant="title" twc={"text-center text-5xl mb-0"}>---</TwText>
-                    <TwText variant="copy" twc={"text-center"}>(0 portions)</TwText>
+                    <TwText variant="title" twc={"text-center text-5xl mb-0"}>{totals.total}</TwText>
+                    <TwText variant="copy" twc={"text-center"}>{totals.portions}</TwText>
                 </TwContainer>
                 <TwContainer twc={"w-1/4"}>
-                    <TwText variant="subheading" twc={"text-right text-green-400 mb-0"}>---</TwText>
-                    <TwText variant="subheading" twc={"text-right text-red-400"}>---</TwText>
+                    <TwText variant="subheading" twc={"text-right text-green-400 mb-0"}>{totals.healthy}</TwText>
+                    <TwText variant="subheading" twc={"text-right text-red-400"}>{totals.unhealthy}</TwText>
                 </TwContainer>
             </TwContainer>
 
