@@ -3,7 +3,8 @@ import { useEffect, useState} from "react";
 import {SQLiteDatabase} from "expo-sqlite";
 
 import {TwContainer} from "@/core/components/TwContainer";
-import {Day} from "@/app/scores/components/Day";
+import { Day } from "@/app/scores/components/Day";
+import { Header } from "@/app/scores/components/Header";
 import { Dimensions, FlatList, View} from "react-native";
 
 export default function Scores() {
@@ -30,8 +31,8 @@ export default function Scores() {
     }
         
     return (
-        <View tw="flex-1 flex-col justify-center bg-slate-950">
-            <TwContainer twc={"h-16 bg-slate-800"} />
+        <TwContainer twc="flex-1 flex-col justify-center bg-slate-950">
+            <Header />
             <View tw="flex-1"
               onLayout={(event) => {
                   const { height } = event.nativeEvent.layout;
@@ -55,7 +56,7 @@ export default function Scores() {
                 />
                 )}
             </View>
-        </View>
+        </TwContainer>
     );
     
 }
