@@ -53,15 +53,19 @@ export function Day({db, date, width}: DayProps) {
             const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] - 1);
             setServings(result);
         }
-    }      
+    }
+
+    useEffect(() => {
+        console.log(`Day component rendered for date: ${dateStr}`);
+    }, [servings]);
     
     return (
-        <View tw={`flex-1 flex-col justify-center px-3`} style={{ width: width}}>
+        <View tw={`flex-col justify-center px-3`} style={{ width: width, minHeight: 200}}>
 
             <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>{format(date, 'EEE dd MMM')}</TwText></TwContainer>
 
             <Score servings={servings.veg} maxScores={maxScores.veg} text={"Vegetables"} cat={FoodCat.veg} onPress={handlePress} onLongPress={handleLongPress} />
-            <Score  servings={servings.fruit} maxScores={maxScores.fruit} text={"Fruit"} cat={FoodCat.fruit} onPress={handlePress} onLongPress={handleLongPress} />
+            <Score servings={servings.fruit} maxScores={maxScores.fruit} text={"Fruit"} cat={FoodCat.fruit} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.nuts} maxScores={maxScores.nuts} text={"Nuts + seeds"} cat={FoodCat.nuts} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.wholegrains} maxScores={maxScores.wholegrains} text={"Whole grains"} cat={FoodCat.wholegrains} onPress={handlePress} onLongPress={handleLongPress} />
             <Score servings={servings.dairy} maxScores={maxScores.dairy} text={"Dairy"} cat={FoodCat.dairy} onPress={handlePress} onLongPress={handleLongPress} />
