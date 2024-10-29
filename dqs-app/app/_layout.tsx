@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import 'react-native-reanimated';
 import {SafeAreaView} from "react-native-safe-area-context";
 import { StatusBar } from 'react-native';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -30,23 +31,21 @@ export default function RootLayout() {
 
   return (
       <SafeAreaView tw="flex-1 bg-slate-950">
-          <StatusBar barStyle="light-content" backgroundColor="#020617" />
-          <Stack>
-              <Stack.Screen
-                  name="index"
-                  options={{
-                      title: 'Home',
+          <RootSiblingParent>
+              <StatusBar barStyle="light-content" backgroundColor="#020617" />              
+              <Stack
+                  screenOptions={{
                       headerShown: false,
-                  }}
-              />
-              <Stack.Screen
-                  name="scores/index"
-                  options={{
-                      title: 'Scores',
-                      headerShown: false,
-                  }}
-              />
-          </Stack>
+                  }}>
+                  <Stack.Screen
+                      name="index"
+                      options={{
+                          title: 'Home',
+                          headerShown: false,
+                      }}
+                  />
+              </Stack>
+          </RootSiblingParent>
       </SafeAreaView>
   );
 }
