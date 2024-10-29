@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"

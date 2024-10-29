@@ -3,19 +3,22 @@ import {SQLiteDatabase} from "expo-sqlite";
 import type { Servings } from "@/core/types";
 import databaseMigrations from "@/core/database-migrations";
 
-const DATABASE_VERSION = 3;
+const DATABASE_VERSION = 5;
 
 export default {
     openDatabase,
-    getAllServings,
+    
+    getMetaField,
+    updateMetaField,
+    
     getServingsByDate,
     insertServings,
     updateServings,
     updateServingsCategory,
+    
 }
 
 function openDatabase() {
-    console.log("Opening database");
     const db = SQLite.openDatabaseSync("db.db");
     db.withTransactionSync(async () => {
         // @ts-expect-error
@@ -28,17 +31,40 @@ function openDatabase() {
     });
     db.withTransactionSync(() => {
         db.runSync(
-            `create table if not exists servings (id integer primary key not null, date TEXT, veg int, fruit int, nuts int, wholegrains int, dairy int, leanproteins int, beverages int, refinedgrains int, sweets int, fattyproteins int, friedfoods int, other int );`
+            `create table if not exists servings (id integer primary key not null, date TEXT, veg int, fruit int, nuts int, wholegrains int, dairy int, leanproteins int, beverages int, refinedgrains int, sweets int, fattyproteins int, friedfoods int, alcohol int, other int );`
         );
+        db.runSync(`create table if not exists meta (id integer primary key not null, onboardedDate TEXT);`);
     });
     return db;
 }
 
-async function getAllServings(db: SQLiteDatabase): Promise<Servings[]> {
-    const results: Servings[] = await db.getAllAsync(`select * from servings;`)
-    console.log(`${results.length} Servings records (days) found`);
+// async function getAllServings(db: SQLiteDatabase): Promise<Servings[]> {
+//     const results: Servings[] = await db.getAllAsync(`select * from servings;`)
+//     console.log(`${results.length} Servings records (days) found`);
+//     console.log(results);
+//     return results;
+// }
+
+async function getMetaField(db: SQLiteDatabase, field: string): Promise<string | null> {
+    const results: { [key: string]: string }[] = await db.getAllAsync(`select ${field} from meta;`);
+    if (results.length === 0) {
+        return null;
+    }
     console.log(results);
-    return results;
+    return results[0][field];
+}
+
+/**
+ * Helper for updating the meta table in the database.
+ */
+async function updateMetaField(db: SQLiteDatabase, field: string, value: string) {
+    await db.runAsync(
+        `update meta
+         set ${field}=?
+         where id = 1`,
+        [value]
+    );
+    console.log(`Meta field updated`);
 }
 
 /**
@@ -52,13 +78,12 @@ async function getServingsByDate(db: SQLiteDatabase, date: string): Promise<Serv
         return null;
     }
     return results[0];
-}
-    
+}    
 
 async function insertServings(db: SQLiteDatabase, servings: Servings) {
     const result = await db.runAsync(
-        `insert into servings (date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, other) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.other]
+        `insert into servings (date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, alcohol, other) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.alcohol, servings.other]
     );
     console.log(`Servings added with the row ID:`, result.lastInsertRowId);
     return result.lastInsertRowId;
@@ -82,8 +107,8 @@ async function updateServingsCategory(db: SQLiteDatabase, id: number, category: 
 
 async function updateServings(db: SQLiteDatabase, id: number, servings: Servings) {
     await db.runAsync(
-        `update servings set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, other=? where id=${id}`,
-        [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.other]
+        `update servings set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, alcohol=?, other=? where id=${id}`,
+        [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.alcohol, servings.other]
     );
     console.log(`Servings updated`);
 }
