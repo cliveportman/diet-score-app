@@ -6,6 +6,8 @@ export default function TabLayout() {
 
     return (
         <Tabs
+            initialRouteName={"scores/index"}
+            backBehavior={"history"}
             screenOptions={{
                 tabBarActiveTintColor: TailwindColors.slate[100],
                 tabBarActiveBackgroundColor: TailwindColors.slate[800],
