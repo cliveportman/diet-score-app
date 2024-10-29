@@ -57,7 +57,7 @@ async function getMetaField(db: SQLiteDatabase, field: string): Promise<string |
 /**
  * Helper for updating the meta table in the database.
  */
-async function updateMetaField(db: SQLiteDatabase, field: string, value: string) {
+async function updateMetaField(db: SQLiteDatabase, field: string, value: string | null) {
     await db.runAsync(
         `update meta
          set ${field}=?

@@ -19,8 +19,9 @@ export default function Homepage() {
     useEffect(() => {
         if (db) database.getMetaField(db, "onboardedDate").then((onboardedDate) => {
             if (onboardedDate) setOnboardedDate(onboardedDate);
-            console.log(`onboardedDate: ${onboardedDate}`);
         });
+        // Use this for restting the onboardedDate field in the database during development.
+        // if (db) database.updateMetaField(db, "onboardedDate", null);
     }, [db]);
     
     return (

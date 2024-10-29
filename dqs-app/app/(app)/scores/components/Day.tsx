@@ -65,7 +65,7 @@ export function Day({db, date, width}: DayProps) {
     const totals = useMemo(() => getTotalScores(servings), [servings]);
     
     return (
-        <View tw={`flex-col justify-center px-3`} style={{ width: width, minHeight: 200}}>
+        <View tw={`flex-col justify-center px-1.5`} style={{ width: width }}>
 
             <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>{format(date, 'EEE dd MMM')}</TwText></TwContainer>
 
@@ -83,7 +83,7 @@ export function Day({db, date, width}: DayProps) {
             <Score servings={servings.alcohol} maxScores={maxScores.alcohol} text={foodCatToText(FoodCat.alcohol)} cat={FoodCat.alcohol} onPress={handlePress} onLongPress={handleLongPress} />
             {/*<Score servings={servings.other} maxScores={maxScores.other} text={foodCatToText(FoodCat.other)} cat={FoodCat.other} onPress={handlePress} onLongPress={handleLongPress} />*/}
 
-            <TwContainer twc={"flex-row justify-between"}>
+            <TwContainer twc={"flex-row justify-between px-1.5"}>
                 <TwContainer twc={"w-1/4"}/>
                 <TwContainer twc={"w-1/2 pt-3"}>
                     <TwText variant="title" twc={"text-center text-5xl mb-0"}>{totals.total}</TwText>

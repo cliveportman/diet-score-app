@@ -33,7 +33,7 @@ export function Score({text, cat, servings, maxScores, onPress, onLongPress, twc
     }        
     
     return (
-        <Pressable tw={`w-full flex-row mb-1.5 ${twc}` } onPress={() => onPress(cat)} onLongPress={() => onLongPress(cat)}>
+        <Pressable tw={`w-full flex-row mb-1 ${twc}` } onPress={() => onPress(cat)} onLongPress={() => onLongPress(cat)}>
             <ScoreLabel text={text} />
             {maxScores.map((max, i) => <ScoreServing key={i} maxScore={max} serving={getServingSize(i)} />)}
         </Pressable>

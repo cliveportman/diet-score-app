@@ -1,12 +1,12 @@
 import { TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
-import { TwContainer } from "@/core/components/TwContainer"
-import { TwText } from "@/core/components/TwText"
+import { TwContainer } from "@/core/components/TwContainer";
+import { TwText } from "@/core/components/TwText";
 
 export default function OnboardingPage2() {
     return (
-        <TwContainer twc="flex-1 bg-slate-950 pt-12">
-            <TwContainer twc="flex-1 flex-col justify-between px-6">
+        <TwContainer twc="flex-1 bg-slate-950">
+            <TwContainer twc="flex-1 flex-col justify-between px-6 pt-12">
                 <TwContainer twc={"flex-1 flex-col justify-start"}>
                     <TwText variant="title" twc={""}>Who is it for?</TwText>
                     <TwText variant="large" twc={"text-slate-300 mb-6"}>Endurance athletes looking to optimise their performance. </TwText>
