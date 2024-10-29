@@ -1,18 +1,51 @@
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Drawer } from 'expo-router/drawer';
-import { Header } from "@/core/components/Header";
+import { Tabs } from 'expo-router';
+import TailwindColors from "tailwindcss/colors";
+import {MaterialIcons} from "@expo/vector-icons";
 
-export default function Layout() {
+export default function TabLayout() {
+
     return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
-            <Drawer screenOptions={{ headerShown: true, swipeEdgeWidth: 0, header: () => <Header /> }}>
-                <Drawer.Screen
-                    name="scores/index"
-                    options={{
-                        title: 'Scores',
-                    }}
-                />
-            </Drawer>
-        </GestureHandlerRootView>
+        <Tabs
+            screenOptions={{
+                tabBarActiveTintColor: TailwindColors.slate[100],
+                tabBarActiveBackgroundColor: TailwindColors.slate[800],
+                tabBarInactiveTintColor: TailwindColors.slate[500],
+                tabBarStyle: {
+                    height: 64,
+                    paddingTop: 0,
+                    backgroundColor: TailwindColors.slate[900],
+                    borderTopWidth: 0,
+                },
+                headerShown: false,
+            }}>
+            <Tabs.Screen
+                name="charts/index"
+                options={{
+                    title: 'Progress',
+                    tabBarIcon: ({ color }) => <MaterialIcons name={"show-chart"} size={28} color={color} />,
+                    tabBarIconStyle: { marginTop: 6, },
+                    tabBarLabelStyle: { fontSize: 14, paddingBottom: 6 },
+                }}
+            />
+            <Tabs.Screen
+                name="scores/index"
+                options={{
+                    title: 'Scores',
+                    tabBarIcon: ({ color }) => <MaterialIcons name={"apps"} size={36} color={color} />,
+                    tabBarIconStyle: { marginTop: 6, },
+                    tabBarLabelStyle: { fontSize: 15, paddingBottom: 6 },
+                }}
+            />
+            <Tabs.Screen
+                name="help/index"
+                options={{
+                    title: 'User guide',
+                    tabBarIcon: ({ color }) => <MaterialIcons name={"menu-book"} size={28} color={color} />,
+                    tabBarIconStyle: { marginTop: 6, },
+                    tabBarLabelStyle: { fontSize: 14, paddingBottom: 6 },
+                }}
+            />
+        </Tabs>
     );
 }
+

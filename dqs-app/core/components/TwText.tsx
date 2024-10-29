@@ -2,7 +2,7 @@ import { Text} from "react-native";
 
 type TwTextProps = {
     children?: React.ReactNode;
-    variant?: 'title' | 'subtitle' | 'heading' | 'subheading' | 'copy' | 'small';
+    variant?: 'title' | 'subtitle' | 'heading' | 'subheading' | 'copy' | 'small' | 'large';
     twc?: string;
 }
 
@@ -26,7 +26,10 @@ export function TwText({children, variant = 'copy', twc = ''}: TwTextProps) {
             txt = copy;
             break;
         case 'small':
-            txt = 'text-sm font-regular tracking-tight text-slate-100 leading-snug';
+            txt = 'text-sm font-light tracking-tight text-slate-100 leading-snug';
+            break;
+        case 'large':
+            txt = 'mb-3 text-lg font-light tracking-tight text-slate-100 leading-none';
             break;
         default:
             txt = copy;
