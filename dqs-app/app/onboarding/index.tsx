@@ -6,7 +6,7 @@ import { TwText } from "@/core/components/TwText";
 export default function OnboardingPage1() {
     return (
         <TwContainer twc="flex-1 bg-slate-950">
-            <TwContainer twc="flex-1 flex-col justify-between px-6 pt-12">
+            <TwContainer twc="flex-1 flex-col justify-between px-3 pt-12">
                 <TwContainer twc={"flex-1 flex-col justify-start"}>
                     <TwText variant="title" twc={""}>How does it work?</TwText>
                     <TwText variant="large" twc={"text-slate-300 mb-6"}>For context, you really need to have read the book <Text style={{ fontStyle: 'italic'}}>Racing Weight</Text> by Matt Fitzgerald.</TwText>

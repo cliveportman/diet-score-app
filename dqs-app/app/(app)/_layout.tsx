@@ -39,12 +39,18 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="help/index"
+                name="user-guide/index"
                 options={{
                     title: 'User guide',
                     tabBarIcon: ({ color }) => <MaterialIcons name={"menu-book"} size={28} color={color} />,
                     tabBarIconStyle: { marginTop: 6, },
                     tabBarLabelStyle: { fontSize: 14, paddingBottom: 6 },
+                }}
+            />
+            <Tabs.Screen
+                name="user-guide/buy-the-book/index"
+                options={{
+                    href: null,
                 }}
             />
         </Tabs>

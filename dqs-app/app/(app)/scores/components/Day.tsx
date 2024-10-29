@@ -65,7 +65,7 @@ export function Day({db, date, width}: DayProps) {
     const totals = useMemo(() => getTotalScores(servings), [servings]);
     
     return (
-        <View tw={`flex-col justify-center px-1.5`} style={{ width: width }}>
+        <View tw={`flex-col justify-center px-3`} style={{ width: width }}>
 
             <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>{format(date, 'EEE dd MMM')}</TwText></TwContainer>
 

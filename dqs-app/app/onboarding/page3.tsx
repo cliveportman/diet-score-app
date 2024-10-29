@@ -33,11 +33,11 @@ export default function OnboardingPage3() {
     
     return (
         <TwContainer twc="flex-1 bg-slate-950">
-            <TwContainer twc="flex-1 flex-col justify-between px-6 pt-12">
+            <TwContainer twc="flex-1 flex-col justify-between px-3 pt-12">
                 <TwContainer twc={"flex-1 flex-col justify-start"}>
                     <TwText variant="title" twc={""}>What do you do?</TwText>
                     <TwText variant="large" twc={"text-slate-300 mb-6"}>Each day, record your dietary intake using the food categories provided. Nutritious foods will raise your score, unhealthy foods will lower it.</TwText>
-                    <TwContainer twc={"flex-col justify-center -mx-6 mb-6"}>
+                    <TwContainer twc={"flex-col justify-center mb-6"}>
                         <Score text={"Fruit"} cat={FoodCat.fruit} servings={fruit} maxScores={maxScores.fruit} onPress={addFruit} onLongPress={removeFruit} />
                         <Score text={"Refined grains"} cat={FoodCat.refinedgrains} servings={grains} maxScores={maxScores.refinedgrains} onPress={addGrains} onLongPress={removeGrains} />
                     </TwContainer>

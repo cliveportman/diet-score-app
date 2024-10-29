@@ -21,7 +21,7 @@ export default function Homepage() {
             if (onboardedDate) setOnboardedDate(onboardedDate);
         });
         // Use this for restting the onboardedDate field in the database during development.
-        // if (db) database.updateMetaField(db, "onboardedDate", null);
+        if (db) database.updateMetaField(db, "onboardedDate", null);
     }, [db]);
     
     return (
