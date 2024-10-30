@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tabs } from 'expo-router';
 import TailwindColors from "tailwindcss/colors";
 import {MaterialIcons} from "@expo/vector-icons";

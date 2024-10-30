@@ -2,7 +2,7 @@ import { Pressable } from "react-native";
 
 import { FoodCat } from "@/core/enums";
 import type { PossibleSingleServingScores } from "@/core/types";
-
+import React from "react";
 import {ScoreServing} from "@/app/(app)/scores/components/ScoreServing";
 import {ScoreLabel} from "@/app/(app)/scores/components/ScoreLabel";
 

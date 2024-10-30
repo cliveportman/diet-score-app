@@ -1,5 +1,6 @@
 import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
+import React from "react";
 
 type ScoreServingProps = {
     serving: 0 | 0.5 | 1;

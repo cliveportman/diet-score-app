@@ -1,3 +1,4 @@
+import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { router } from 'expo-router';
 import { TwContainer } from "@/core/components/TwContainer";
