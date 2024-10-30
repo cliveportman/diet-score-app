@@ -24,7 +24,7 @@ export function DaySummary({data}: DaySummaryProps) {
     } else  colour = 'text-red-400';
     
     return (
-        <TwContainer twc={"flex-col mb-3"}>
+        <TwContainer twc={"flex-col mb-6"}>
             <TwText variant={"subheading"} twc={""}>{format(data.date, 'EEE dd MMM')}</TwText>
             <TwContainer twc={"flex-row justify-between items-start"}>
                 <TwContainer twc={"flex-row justify-start items-start"}>
