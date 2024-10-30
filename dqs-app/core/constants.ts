@@ -12,7 +12,7 @@ export const maxScores = {
     sweets: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
     fattyproteins: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
     friedfoods: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
-    alcohol: [-2, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
+    alcohol: [-1, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
     other: [-1, -2, -2, -2, -2, -2] as PossibleSingleServingScores,
 }
 
