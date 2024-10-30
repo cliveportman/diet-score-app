@@ -19,6 +19,13 @@ export type Servings = {
 export type SingleServingScore = -2 | -1 | 0 | 1 | 2;
 export type PossibleSingleServingScores = [SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore];
 
+export type DayTotals = {
+    healthy: string | "---"; // Either "---" or "+n" where n is a number (+ sign)
+    unhealthy: number | "---"; // Either "---" or n where n is a number (sign is part of the number)
+    total: string | number | "---"; // Either "---" or "+n" where n is a number (+ sign) or n where n is a number (sign is part of the number)
+    portions: string; // "n portions" where n is a number
+}
+
 /**
  * Stolen from https://catchts.com/dates
  */

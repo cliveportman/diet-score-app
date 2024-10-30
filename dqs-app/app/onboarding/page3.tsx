@@ -4,8 +4,8 @@ import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/app/(app)/scores/components/Score";
 import {FoodCat} from "@/core/enums";
-import {maxScores} from "@/app/(app)/scores/constants";
-import {useEffect, useState} from "react";
+import {maxScores} from "@/core/constants";
+import {useState} from "react";
 import database from "@/core/database";
 import {useDatabase} from "@/core/hooks";
 

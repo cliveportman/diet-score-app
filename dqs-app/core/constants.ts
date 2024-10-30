@@ -1,5 +1,4 @@
 import {PossibleSingleServingScores, Servings} from "@/core/types";
-
 // Maximum possible scores for each food category, if a user eats the max number of servings (6).
 export const maxScores = {
     veg: [2, 2, 2, 1, 0, 0] as PossibleSingleServingScores,

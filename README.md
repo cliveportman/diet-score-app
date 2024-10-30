@@ -1,7 +1,7 @@
 # Diet Score App
 
 ## What is it?
-A React Native app that allows users to track their Diet Quality Score (DQS) as they eat throughout the day.
+A React Native app that allows endurance athletes to track their Diet Quality Score (DQS) as they eat throughout the day.
 
 The DQS comes from a book called "Racing Weight" by Matt Fitzgerald. The book is written for serious endurance athletes wanting to manage their weight for better performance. There is already an official app in the Play Store and App Store, but I wanted to make my own version, because:
 
@@ -10,9 +10,11 @@ The DQS comes from a book called "Racing Weight" by Matt Fitzgerald. The book is
 - Some of the food groups vary slightly from the book in a way I do not like, e.g. I don't think you should be rewarded two points just for drinking two cups of unsweetened tea, nor do I think your first alcoholic drink of the day should avoid a penalty.
 
 ## What's the tech?
+![react](https://img.shields.io/badge/React-brown)
 ![react native](https://img.shields.io/badge/React_Native-brown)
 ![expo](https://img.shields.io/badge/Expo-brown)
 ![tailwind](https://img.shields.io/badge/Tailwind/Nativewind-brown)
+![javascript](https://img.shields.io/badge/Javascript-blue)
 ![typescript](https://img.shields.io/badge/Typescript-blue)
 ![jsx](https://img.shields.io/badge/JSX-blue)
 

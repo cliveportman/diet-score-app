@@ -5,13 +5,13 @@ import {SQLiteDatabase} from "expo-sqlite";
 import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/app/(app)/scores/components/Score";
-import {defaultServings, maxScores} from "@/app/(app)/scores/constants";
+import {defaultServings, maxScores} from "@/core/constants";
 import { useEffect, useMemo, useState} from "react";
 import database from "@/core/database";
 import {format} from "date-fns";
 import {View} from "react-native";
 import {foodCatToText, shortToast} from "@/core/helpers";
-import { getTotalScores } from "@/app/(app)/scores/helpers";
+import { getTotalScores } from "@/core/helpers";
 
 type DayProps = {
     db: SQLiteDatabase;
@@ -32,6 +32,7 @@ export function Day({db, date, width}: DayProps) {
             if (results) setServings(results);
             else {
                 const id = await database.insertServings(db, {...defaultServings, date: dateStr});
+                if (!id) return; // Could be null if the insert failed, e.g. it'sa duplicate.
                 const newServings = {...defaultServings, date: dateStr, id: id};
                 setServings(newServings);
             }
