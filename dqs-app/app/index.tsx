@@ -14,10 +14,6 @@ export default function Homepage() {
     const [onboardedDate, setOnboardedDate] = useState<string | null>(null);
     useEffect(() => {
         if (db) {
-            // Remove any empty days from the database.
-            // We've taken steps to prevent it but a user could still end up with an empty day in the database,
-            // if they add data to a day and then remove that data again.
-            database.deleteEmptyDays(db);
             database.getMetaField(db, "onboardedDate").then((onboardedDate) => {
                 if (onboardedDate) setOnboardedDate(onboardedDate);
             })
