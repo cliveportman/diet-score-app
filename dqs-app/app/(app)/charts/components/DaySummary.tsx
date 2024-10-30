@@ -1,5 +1,5 @@
 import { Servings} from "@/core/types";
-
+import React from 'react';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
 import {getTotalScores} from "@/core/helpers";

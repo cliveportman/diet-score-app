@@ -2,7 +2,7 @@ import { TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import database from "@/core/database";
 import {useDatabase} from "@/core/hooks";
 

@@ -1,4 +1,4 @@
-import {  useState} from "react";
+import React, { useState} from "react";
 
 import {TwContainer} from "@/core/components/TwContainer";
 import { Day } from "@/app/(app)/scores/components/Day";

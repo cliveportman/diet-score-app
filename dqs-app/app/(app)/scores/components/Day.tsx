@@ -6,7 +6,7 @@ import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/app/(app)/scores/components/Score";
 import {defaultServings, maxScores} from "@/core/constants";
-import { useEffect, useMemo, useState} from "react";
+import React, { useEffect, useMemo, useState} from "react";
 import database from "@/core/database";
 import {format} from "date-fns";
 import {View} from "react-native";

@@ -1,3 +1,4 @@
+import React from 'react';
 import {FlatList} from 'react-native';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
@@ -5,7 +6,6 @@ import {useDatabase} from "@/core/hooks";
 import {useEffect, useState} from "react";
 import type {Servings} from "@/core/types";
 import database from "@/core/database";
-import {getTotalScores} from "@/core/helpers";
 import {DaySummary} from "@/app/(app)/charts/components/DaySummary";
 
 export default function ProgressPage() 
