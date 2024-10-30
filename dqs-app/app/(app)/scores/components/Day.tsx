@@ -6,7 +6,7 @@ import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/app/(app)/scores/components/Score";
 import {defaultServings, maxScores} from "@/app/(app)/scores/constants";
-import {useCallback, useEffect, useMemo, useState} from "react";
+import { useEffect, useMemo, useState} from "react";
 import database from "@/core/database";
 import {format} from "date-fns";
 import {View} from "react-native";
@@ -42,25 +42,25 @@ export function Day({db, date, width}: DayProps) {
      * Press handler - increments the number of servings for a food category.
      * @param cat
      */
-    const handlePress = useCallback(async (cat: FoodCat) => {
+    async function handlePress(cat: FoodCat) {
         if (db && servings.id && servings[cat] < 6) {
             const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] + 1);
             setServings(result);
             shortToast(`+1 serving of ${foodCatToText(cat).toLowerCase()}`);
         }
-    }, [db, servings]);
+    };
 
     /**
      * Long press handler - decrements the number of servings for a food category.
      * @param cat
      */
-    const handleLongPress = useCallback(async (cat: FoodCat) => {
+    async function handleLongPress (cat: FoodCat){
         if (db && servings.id && servings[cat] > 0) {
             const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] - 1);
             setServings(result);
             shortToast(`-1 serving of ${foodCatToText(cat).toLowerCase()}`);
         }
-    }, [db, servings]);
+    };
 
     const totals = useMemo(() => getTotalScores(servings), [servings]);
     
