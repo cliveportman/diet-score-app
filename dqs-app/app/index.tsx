@@ -13,9 +13,15 @@ export default function Homepage() {
     // If the user has onboarded, they should be taken to the scores page, so find out here.
     const [onboardedDate, setOnboardedDate] = useState<string | null>(null);
     useEffect(() => {
-        if (db) database.getMetaField(db, "onboardedDate").then((onboardedDate) => {
-            if (onboardedDate) setOnboardedDate(onboardedDate);
-        });
+        if (db) {
+            // Remove any empty days from the database.
+            // We've taken steps to prevent it but a user could still end up with an empty day in the database,
+            // if they add data to a day and then remove that data again.
+            database.deleteEmptyDays(db);
+            database.getMetaField(db, "onboardedDate").then((onboardedDate) => {
+                if (onboardedDate) setOnboardedDate(onboardedDate);
+            })
+        };
         // Use this for restting the onboardedDate field in the database during development.
         // if (db) database.updateMetaField(db, "onboardedDate", null);
         // Use this for deleting duplicate days in the database during development.
@@ -27,7 +33,7 @@ export default function Homepage() {
             <TwContainer twc="flex-1 flex-col justify-between px-6">
                 <TwContainer twc={"flex-1 flex-col justify-end"}>
                     <TwText variant="title" twc={"text-4xl text-center mb-1.5"}>Diet Score</TwText>
-                    <TwText variant="subtitle" twc={"text-yellow-200 text-center mb-6 opacity-75"}>for endurance athletes</TwText>
+                    <TwText variant="subtitle" twc={"text-slate-100 text-center mb-6 opacity-75"}>for endurance athletes</TwText>
                     <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 text-center"}>Based on the book</TwText>
                     <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 text-center italic"}>Racing Weight</TwText>
                     <TwText variant="subtitle" twc={"text-slate-500 text-center"}>by Matt Fitzgerald</TwText>

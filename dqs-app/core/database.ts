@@ -17,6 +17,7 @@ export default {
     updateServings,
     updateServingsCategory,
     deleteDuplicateDays,
+    deleteEmptyDays,
     
 }
 
@@ -43,6 +44,7 @@ function openDatabase() {
 async function getAllDays(db: SQLiteDatabase): Promise<Servings[]> {
     const results: Servings[] = await db.getAllAsync(`select * from servings order by date desc;`)
     console.log(`${results.length} Servings records (days) found`);
+    console.log(results);
     return results;
 }
 
@@ -61,6 +63,25 @@ async function deleteDuplicateDays(db: SQLiteDatabase) {
         );
     `);
     console.log(`Duplicate rows deleted`);
+}
+
+async function deleteEmptyDays(db: SQLiteDatabase) {
+    await db.runAsync(`
+        DELETE FROM servings
+        WHERE veg = 0
+          AND fruit = 0
+          AND nuts = 0
+          AND wholegrains = 0
+          AND dairy = 0
+          AND leanproteins = 0
+          AND beverages = 0
+          AND refinedgrains = 0
+          AND sweets = 0
+          AND fattyproteins = 0
+          AND friedfoods = 0
+          AND alcohol = 0;
+    `);
+    console.log(`Empty servings rows deleted`);
 }
 
 async function getMetaField(db: SQLiteDatabase, field: string): Promise<string | null> {
@@ -98,7 +119,7 @@ async function getServingsByDate(db: SQLiteDatabase, date: string): Promise<Serv
 }    
 
 async function insertServings(db: SQLiteDatabase, servings: Servings) {
-    // Avoid inserting duplciate days
+    // Avoid inserting duplicate days
     const existingDay = await getServingsByDate(db, servings.date);
     if (existingDay) {
         console.log(`Servings for date ${servings.date} already exist. Skipping insertion.`);

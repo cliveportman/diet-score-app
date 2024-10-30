@@ -21,21 +21,15 @@ type DayProps = {
 
 export function Day({db, date, width}: DayProps) {
     
-    /**
-     * Fetch servings for the current date from the database.
-     * And if there are no servings for the current date, insert them.
-     */
-    const [servings, setServings] = useState<Servings>(defaultServings);
+    // Fetch servings for the current date from the database.
+     const [servings, setServings] = useState<Servings>(defaultServings);
     useEffect(() => {
         const dateStr = date.toISOString().split('T')[0] as DateString;
         database.getServingsByDate(db, dateStr).then(async (results) => {
             if (results) setServings(results);
-            else {
-                const id = await database.insertServings(db, {...defaultServings, date: dateStr});
-                if (!id) return; // Could be null if the insert failed, e.g. it'sa duplicate.
-                const newServings = {...defaultServings, date: dateStr, id: id};
-                setServings(newServings);
-            }
+            // If there are no servings for the current date, add a new day to local state only.
+            // This will be saved to the database when the user increments a category only, so we have no empty days in the database.
+            else setServings({...defaultServings, date: dateStr});
         });
     }, [db, date]);
 
@@ -44,9 +38,18 @@ export function Day({db, date, width}: DayProps) {
      * @param cat
      */
     async function handlePress(cat: FoodCat) {
-        if (db && servings.id && servings[cat] < 6) {
-            const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] + 1);
-            setServings(result);
+        if (db && servings[cat] < 6) {
+            let result: Servings | null = null;
+            // If there is an existing record for this date (i.e. we have an ID), update it
+            if (servings.id) result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] + 1);
+            // Otherwise, insert a new record for this date
+            else {
+                const duplicate = servings; // Create a copy of the current servings object
+                duplicate[cat] = 1; // Update the category we're incrementing
+                const id = await database.insertServings(db, duplicate); // Insert the new record
+                if (id) result = {...duplicate, id: id};
+            }
+            if (result) setServings(result);
             shortToast(`+1 serving of ${foodCatToText(cat).toLowerCase()}`);
         }
     };
