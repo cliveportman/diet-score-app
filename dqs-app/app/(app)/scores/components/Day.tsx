@@ -5,13 +5,13 @@ import {SQLiteDatabase} from "expo-sqlite";
 import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/app/(app)/scores/components/Score";
-import {defaultServings, maxScores} from "@/app/(app)/scores/constants";
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {defaultServings, maxScores} from "@/core/constants";
+import { useEffect, useMemo, useState} from "react";
 import database from "@/core/database";
 import {format} from "date-fns";
 import {View} from "react-native";
 import {foodCatToText, shortToast} from "@/core/helpers";
-import { getTotalScores } from "@/app/(app)/scores/helpers";
+import { getTotalScores } from "@/core/helpers";
 
 type DayProps = {
     db: SQLiteDatabase;
@@ -32,6 +32,7 @@ export function Day({db, date, width}: DayProps) {
             if (results) setServings(results);
             else {
                 const id = await database.insertServings(db, {...defaultServings, date: dateStr});
+                if (!id) return; // Could be null if the insert failed, e.g. it'sa duplicate.
                 const newServings = {...defaultServings, date: dateStr, id: id};
                 setServings(newServings);
             }
@@ -42,30 +43,30 @@ export function Day({db, date, width}: DayProps) {
      * Press handler - increments the number of servings for a food category.
      * @param cat
      */
-    const handlePress = useCallback(async (cat: FoodCat) => {
+    async function handlePress(cat: FoodCat) {
         if (db && servings.id && servings[cat] < 6) {
             const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] + 1);
             setServings(result);
             shortToast(`+1 serving of ${foodCatToText(cat).toLowerCase()}`);
         }
-    }, [db, servings]);
+    };
 
     /**
      * Long press handler - decrements the number of servings for a food category.
      * @param cat
      */
-    const handleLongPress = useCallback(async (cat: FoodCat) => {
+    async function handleLongPress (cat: FoodCat){
         if (db && servings.id && servings[cat] > 0) {
             const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] - 1);
             setServings(result);
             shortToast(`-1 serving of ${foodCatToText(cat).toLowerCase()}`);
         }
-    }, [db, servings]);
+    };
 
     const totals = useMemo(() => getTotalScores(servings), [servings]);
     
     return (
-        <View tw={`flex-col justify-center px-3`} style={{ width: width, minHeight: 200}}>
+        <View tw={`flex-col justify-center px-3`} style={{ width: width }}>
 
             <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>{format(date, 'EEE dd MMM')}</TwText></TwContainer>
 
@@ -83,11 +84,11 @@ export function Day({db, date, width}: DayProps) {
             <Score servings={servings.alcohol} maxScores={maxScores.alcohol} text={foodCatToText(FoodCat.alcohol)} cat={FoodCat.alcohol} onPress={handlePress} onLongPress={handleLongPress} />
             {/*<Score servings={servings.other} maxScores={maxScores.other} text={foodCatToText(FoodCat.other)} cat={FoodCat.other} onPress={handlePress} onLongPress={handleLongPress} />*/}
 
-            <TwContainer twc={"flex-row justify-between"}>
+            <TwContainer twc={"flex-row justify-between px-1.5"}>
                 <TwContainer twc={"w-1/4"}/>
                 <TwContainer twc={"w-1/2 pt-3"}>
                     <TwText variant="title" twc={"text-center text-5xl mb-0"}>{totals.total}</TwText>
-                    <TwText variant="copy" twc={"text-center"}>{totals.portions}</TwText>
+                    <TwText variant="copy" twc={"text-center"}>{`${totals.portions} portion${totals.portions !== 1 ? 's' : ''}`}</TwText>
                 </TwContainer>
                 <TwContainer twc={"w-1/4"}>
                     <TwText variant="subheading" twc={"text-right text-green-400 mb-0"}>{totals.healthy}</TwText>

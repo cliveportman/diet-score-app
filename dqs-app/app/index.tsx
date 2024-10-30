@@ -3,24 +3,23 @@ import { router } from 'expo-router';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
 import {useEffect, useState} from "react";
-import {SQLiteDatabase} from "expo-sqlite";
 import database from "@/core/database";
+import {useDatabase} from "@/core/hooks";
 
 export default function Homepage() {
 
-    // Set up the database
-    const [db, setDb] = useState<SQLiteDatabase | null>(null);
-    useEffect(() => {
-        setDb(database.openDatabase());
-    }, []);
+    const db = useDatabase();
 
     // If the user has onboarded, they should be taken to the scores page, so find out here.
     const [onboardedDate, setOnboardedDate] = useState<string | null>(null);
     useEffect(() => {
         if (db) database.getMetaField(db, "onboardedDate").then((onboardedDate) => {
             if (onboardedDate) setOnboardedDate(onboardedDate);
-            console.log(`onboardedDate: ${onboardedDate}`);
         });
+        // Use this for restting the onboardedDate field in the database during development.
+        // if (db) database.updateMetaField(db, "onboardedDate", null);
+        // Use this for deleting duplicate days in the database during development.
+        // if (db) database.deleteDuplicateDays(db);
     }, [db]);
     
     return (

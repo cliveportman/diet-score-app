@@ -29,6 +29,6 @@ export function ScoreServing({serving, maxScore, twc = ''}: ScoreServingProps) {
     }
     
     return (
-        <TwContainer twc={`h-10 w-10 flex-col justify-center align-center ml-1 rounded-xs ${bg} shadow-sm ${twc} ${!serving ? 'opacity-60' : ''}`}>{serving > 0 && (<TwText twc={`font-bold text-center text-xl text-slate-900 mb-0`}>{serving * maxScore > 0 ? '+' : ''}{serving * maxScore}</TwText>)}</TwContainer>
+        <TwContainer twc={`h-10 w-9 flex-col justify-center align-center ml-1 rounded-xs ${bg} shadow-sm ${twc} ${!serving ? 'opacity-60' : ''}`}>{serving > 0 && (<TwText twc={`font-bold text-center text-lg text-slate-900 mb-0`}>{serving * maxScore > 0 ? '+' : ''}{serving * maxScore}</TwText>)}</TwContainer>
     );
 }

@@ -1,23 +1,38 @@
-import { TouchableOpacity } from 'react-native';
-import { router } from 'expo-router';
+import {FlatList} from 'react-native';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
+import {useDatabase} from "@/core/hooks";
+import {useEffect, useState} from "react";
+import type {Servings} from "@/core/types";
+import database from "@/core/database";
+import {getTotalScores} from "@/core/helpers";
+import {DaySummary} from "@/app/(app)/charts/components/DaySummary";
 
-export default function Homepage() {
+export default function ProgressPage() 
+{
+    const db = useDatabase();
+
+    const [days, setDays] = useState<Servings[]>([]);
+    useEffect(() => {
+        if (db) {
+            database.getAllDays(db).then((results) => {
+                setDays(results);
+            console.log(results);
+            });
+        }
+    }, [db]);
+    
+    
     return (
-        <TwContainer twc="flex-1 bg-slate-950">
-            <TwContainer twc="flex-1 flex-col justify-between px-6">
-                <TwContainer twc={"flex-1 flex-col justify-end items-start"}>
-                    <TwText variant="title" twc={""}>Diet Monitor</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5"}>based on the book</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 italic"}>Racing Weight</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5"}>by Matt Fitzgerald</TwText>
-                </TwContainer>
-                <TwContainer twc={"flex-1 flex-col items-center justify-end"}>
-                    <TouchableOpacity tw={"flex-col justify-center items-center text-center text-white border border-slate-800 bg-slate-900 w-32 h-32 rounded-full mb-16"} onPress={() => router.push('/scores')}>
-                        <TwText twc={"mb-0"}>Continue</TwText>
-                    </TouchableOpacity>
-                </TwContainer>
+        <TwContainer twc="flex-1 bg-slate-950 px-3 pt-6">
+            <TwContainer twc={"flex-col justify-end items-start"}>
+                <TwText variant="title" twc={""}>Progress</TwText>
+                <TwText variant="subtitle" twc={""}>View your scores over time</TwText>
+            </TwContainer>
+            <TwContainer twc="flex-1 flex-col">
+                    {days.length > 0 && <FlatList data={days} renderItem={({item}) => <DaySummary data={item} />} 
+                        keyExtractor={(item) => item.date}
+                    />}
             </TwContainer>
         </TwContainer>
     );
