@@ -15,9 +15,15 @@ export default function ProgressPage()
     const [days, setDays] = useState<Servings[]>([]);
     useEffect(() => {
         if (db) {
-            database.getAllDays(db).then((results) => {
-                setDays(results);
-            });
+            // Remove any empty days from the database.
+            // We've taken steps to prevent it but a user could still end up with an empty day in the database,
+            // if they add data to a day and then remove that data again.
+            database.deleteEmptyDays(db).then(() =>
+                // Then get all the days
+                database.getAllDays(db).then((results) => {
+                    setDays(results);
+                })
+            );                
         }
     }, [db]);
     
