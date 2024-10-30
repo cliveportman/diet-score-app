@@ -6,9 +6,12 @@ import {Score} from "@/app/(app)/scores/components/Score";
 import {FoodCat} from "@/core/enums";
 import {maxScores} from "@/app/(app)/scores/constants";
 import {useEffect, useState} from "react";
-import {SQLiteDatabase} from "expo-sqlite";
 import database from "@/core/database";
+import {useDatabase} from "@/core/hooks";
+
 export default function OnboardingPage3() {
+
+    const db = useDatabase();
     
     const [fruit, setFruit] = useState(3);
     const [grains, setGrains] = useState(2);
@@ -16,11 +19,7 @@ export default function OnboardingPage3() {
     const addGrains = () => setGrains(grains + 1);
     const removeFruit = () => setFruit(fruit - 1);
     const removeGrains = () => setGrains(grains - 1);
-
-    const [db, setDb] = useState<SQLiteDatabase | null>(null);
-    useEffect(() => {
-        setDb(database.openDatabase());
-    }, []);
+    
     function handleContinue() {
         if (!db) return;
         const date = new Date();

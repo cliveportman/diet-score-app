@@ -1,20 +1,16 @@
-import database from "@/core/database";
-import { useEffect, useState} from "react";
-import {SQLiteDatabase} from "expo-sqlite";
+import {  useState} from "react";
 
 import {TwContainer} from "@/core/components/TwContainer";
 import { Day } from "@/app/(app)/scores/components/Day";
 import { Dimensions, FlatList, View} from "react-native";
+import {useDatabase} from "@/core/hooks";
 
 export default function Scores() {
 
+    const db = useDatabase();
+
     const { width } = Dimensions.get('window');
     const [height, setHeight] = useState(0);
-    
-    const [db, setDb] = useState<SQLiteDatabase | null>(null);
-    useEffect(() => {
-        setDb(database.openDatabase());
-    }, []);
 
     const [days, setDays] = useState([
         {date: new Date()},

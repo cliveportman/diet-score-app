@@ -3,16 +3,12 @@ import { router } from 'expo-router';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
 import {useEffect, useState} from "react";
-import {SQLiteDatabase} from "expo-sqlite";
 import database from "@/core/database";
+import {useDatabase} from "@/core/hooks";
 
 export default function Homepage() {
 
-    // Set up the database
-    const [db, setDb] = useState<SQLiteDatabase | null>(null);
-    useEffect(() => {
-        setDb(database.openDatabase());
-    }, []);
+    const db = useDatabase();
 
     // If the user has onboarded, they should be taken to the scores page, so find out here.
     const [onboardedDate, setOnboardedDate] = useState<string | null>(null);
@@ -21,7 +17,7 @@ export default function Homepage() {
             if (onboardedDate) setOnboardedDate(onboardedDate);
         });
         // Use this for restting the onboardedDate field in the database during development.
-        if (db) database.updateMetaField(db, "onboardedDate", null);
+        // if (db) database.updateMetaField(db, "onboardedDate", null);
     }, [db]);
     
     return (
