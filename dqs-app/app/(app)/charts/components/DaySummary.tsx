@@ -26,15 +26,25 @@ export function DaySummary({data}: DaySummaryProps) {
     return (
         <TwContainer twc={"flex-col mb-3"}>
             <TwText variant={"subheading"} twc={""}>{format(data.date, 'EEE dd MMM')}</TwText>
-            <TwContainer twc={"flex-row justify-start"}>
-                    <TwText variant={"subheading"} twc={`text-2xl ${colour} mr-3`}>{totals.total}</TwText>
-                    <TwText variant={"small"} twc={`text-base text-lime-400 mr-1.5`}>{totals.healthy}</TwText>
-                <TwContainer>
-                    <TwText variant={"small"} twc={`text-base text-red-400 mr-3`}>{totals.unhealthy}</TwText>
+            <TwContainer twc={"flex-row justify-between items-start"}>
+                <TwContainer twc={"flex-row justify-start items-start"}>
+                    <TwContainer twc={"flex-col mr-3"}>
+                        <TwText variant={"small"} twc={``}>Score</TwText>
+                        <TwText variant={"subheading"} twc={`text-2xl ${colour} mr-3`}>{totals.total}</TwText>
+                    </TwContainer>
+                    <TwContainer twc={"flex-col items-end mr-3"}>
+                        <TwText variant={"small"} twc={``}>High-quality</TwText>
+                        <TwText variant={"small"} twc={`text-base text-lime-400`}>{totals.healthy}</TwText>
+                    </TwContainer>
+                    <TwContainer twc={"flex-col items-end"}>
+                        <TwText variant={"small"} twc={``}>Low-quality</TwText>
+                        <TwText variant={"small"} twc={`text-base text-red-400`}>{totals.unhealthy}</TwText>
+                    </TwContainer>
                 </TwContainer>
-                <TwContainer>
-                    <TwText variant={"small"} twc={`text-base text-slate-100}`}>({totals.portions})</TwText>
-                </TwContainer>
+                <TwContainer twc={"flex-col items-end mr-3"}>
+                    <TwText variant={"small"} twc={``}>Portions</TwText>
+                    <TwText variant={"small"} twc={`text-base text-slate-100}`}>{totals.portions}</TwText>
+                </TwContainer>  
             </TwContainer>
         </TwContainer>    
     );

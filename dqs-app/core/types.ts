@@ -23,7 +23,7 @@ export type DayTotals = {
     healthy: string | "---"; // Either "---" or "+n" where n is a number (+ sign)
     unhealthy: number | "---"; // Either "---" or n where n is a number (sign is part of the number)
     total: string | number | "---"; // Either "---" or "+n" where n is a number (+ sign) or n where n is a number (sign is part of the number)
-    portions: string; // "n portions" where n is a number
+    portions: number;
 }
 
 /**

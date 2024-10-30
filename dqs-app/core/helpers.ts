@@ -57,13 +57,13 @@ export function getTotalScores(servings: Servings): DayTotals {
         healthy: "---",
         unhealthy: "---",
         total: "---",
-        portions: "0 portions"
+        portions: 0,
     };
     else return {
         healthy: '+' + healthyScore,
         unhealthy: unhealthyScore,
         total: (healthyScore + unhealthyScore > 0) ? '+' + (healthyScore + unhealthyScore) : healthyScore + unhealthyScore,
-        portions: `${portions} portion${portions !== 1 ? 's' : ''}`
+        portions: portions
     };
 }
 

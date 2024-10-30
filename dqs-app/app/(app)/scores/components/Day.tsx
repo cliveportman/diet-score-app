@@ -88,7 +88,7 @@ export function Day({db, date, width}: DayProps) {
                 <TwContainer twc={"w-1/4"}/>
                 <TwContainer twc={"w-1/2 pt-3"}>
                     <TwText variant="title" twc={"text-center text-5xl mb-0"}>{totals.total}</TwText>
-                    <TwText variant="copy" twc={"text-center"}>{totals.portions}</TwText>
+                    <TwText variant="copy" twc={"text-center"}>{`${totals.portions} portion${totals.portions !== 1 ? 's' : ''}`}</TwText>
                 </TwContainer>
                 <TwContainer twc={"w-1/4"}>
                     <TwText variant="subheading" twc={"text-right text-green-400 mb-0"}>{totals.healthy}</TwText>

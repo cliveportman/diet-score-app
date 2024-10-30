@@ -24,7 +24,7 @@ export default function ProgressPage()
     
     
     return (
-        <TwContainer twc="flex-1 bg-slate-950 px-3 pt-12">
+        <TwContainer twc="flex-1 bg-slate-950 px-3 pt-6">
             <TwContainer twc={"flex-col justify-end items-start"}>
                 <TwText variant="title" twc={""}>Progress</TwText>
                 <TwText variant="subtitle" twc={""}>View your scores over time</TwText>
