@@ -130,6 +130,9 @@ export default function UserGuidePage()
 
                     <TwText variant={"subheading"}>There is already an offical app</TwText>
                     <TwText twc="mb-12">There is, and I've paid for it and used it for several weeks. But there's lot about it that I don't like and development seems to have stagnated, so I built my own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
+
+                    <TwText variant={"subheading"}>How do I contact you</TwText>
+                    <TwText twc="mb-12">dietscoreapp@theportman.co</TwText>
                     
                 </ScrollView>
             </TwContainer>
