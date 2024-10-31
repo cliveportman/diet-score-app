@@ -3,14 +3,14 @@ const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 
 const getUniqueIdentifier = () => {
   if (IS_DEV) {
-    return 'com.theportman.dietscore.dev';
+    return 'co.theportman.dietscore.dev';
   }
 
   if (IS_PREVIEW) {
-    return 'com.theportman.dietscore.preview';
+    return 'co.theportman.dietscore.preview';
   }
 
-  return 'com.theportman.dietscore';
+  return 'co.theportman.dietscore';
 };
 
 const getAppName = () => {
@@ -27,6 +27,7 @@ const getAppName = () => {
 
 export default {
   name: getAppName(),
+  owner: "cliveportman",
   version: '1.0.0',
   slug: 'diet-scpre',
   ios: {
@@ -53,6 +54,11 @@ export default {
   experiments: {
       typedRoutes: true,
   },
+  extra: {
+    eas: {
+      projectId: '32ff1f5e-93e3-46f9-8758-b957ef39d7f5',
+    }
+  }
 };
 
 
