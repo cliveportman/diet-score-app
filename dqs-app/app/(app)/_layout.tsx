@@ -22,7 +22,7 @@ export default function TabLayout() {
                 headerShown: false,
             }}>
             <Tabs.Screen
-                name="charts/index"
+                name="progress/index"
                 options={{
                     title: 'Progress',
                     tabBarIcon: ({ color }) => <MaterialIcons name={"show-chart"} size={28} color={color} />,
@@ -46,12 +46,6 @@ export default function TabLayout() {
                     tabBarIcon: ({ color }) => <MaterialIcons name={"menu-book"} size={28} color={color} />,
                     tabBarIconStyle: { marginTop: 6, },
                     tabBarLabelStyle: { fontSize: 14, paddingBottom: 6 },
-                }}
-            />
-            <Tabs.Screen
-                name="user-guide/buy-the-book/index"
-                options={{
-                    href: null,
                 }}
             />
         </Tabs>

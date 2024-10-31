@@ -6,7 +6,7 @@ import {useDatabase} from "@/core/hooks";
 import {useEffect, useState} from "react";
 import type {Servings} from "@/core/types";
 import database from "@/core/database";
-import {DaySummary} from "@/app/(app)/charts/components/DaySummary";
+import {DaySummary} from "@/features/progress/components/DaySummary";
 
 export default function ProgressPage() 
 {

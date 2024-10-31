@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, ScrollView} from 'react-native';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
-import {Score} from "@/app/(app)/scores/components/Score";
+import {Score} from "@/features/scores/components/Score";
 import {FoodCat} from "@/core/enums";
 import {maxScores} from "@/core/constants";
 import {TwLine} from "@/core/components/TwLine";

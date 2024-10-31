@@ -4,7 +4,7 @@ import {DateString, Servings} from "@/core/types";
 import {SQLiteDatabase} from "expo-sqlite";
 import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
-import {Score} from "@/app/(app)/scores/components/Score";
+import {Score} from "@/features/scores/components/Score";
 import {defaultServings, maxScores} from "@/core/constants";
 import React, { useEffect, useMemo, useState, memo} from "react";
 import database from "@/core/database";
