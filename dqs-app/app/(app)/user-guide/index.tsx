@@ -29,9 +29,9 @@ export default function UserGuidePage()
                             <Score text={"Fruit"} cat={FoodCat.fruit} servings={2} maxScores={maxScores.fruit} onPress={() => {}} onLongPress={() => {}} />
                             <Score text={"Refined grains"} cat={FoodCat.refinedgrains} servings={3} maxScores={maxScores.refinedgrains} onPress={() => {}} onLongPress={() => {}} />
                         </TwContainer>
-                        <TwText variant="large" twc={"text-slate-300 mb-6"}>To add a serving <Text style={{ fontWeight: 600 }}>tap the food category.</Text></TwText>
-                        <TwText variant="large" twc={"text-slate-300 mb-6"}>To remove a serving <Text style={{ fontWeight: 600 }}>press and hold the food category</Text>.</TwText>
-                        <TwText variant="large" twc={"text-slate-300 mb-0"}>To view a different day <Text style={{ fontWeight: 600 }}>swipe</Text>.</TwText>
+                        <TwText>To add a serving <Text style={{ fontWeight: 600 }}>tap the food category.</Text></TwText>
+                        <TwText>To remove a serving <Text style={{ fontWeight: 600 }}>press and hold the food category</Text>.</TwText>
+                        <TwText twc={"mb-0"}>To view a different day <Text style={{ fontWeight: 600 }}>swipe</Text>.</TwText>
                     </TwContainer>
 
                     <TwLine />
@@ -116,6 +116,10 @@ export default function UserGuidePage()
                     <TwLine />
 
                     <TwText variant={"heading"}>Other stuff</TwText>
+                    
+                    <TwText variant={"subheading"}>You're a vegetarian</TwText>
+                    <TwText twc="mb-6">While you could just wing it with the existing food groups, a vegetarian option that uses different categories is something I'd like to add if there is the interest. Let me know using the details at the bottom of the page. </TwText>
+                    
                     <TwText variant={"subheading"}>Eating on the run</TwText>
                     <TwText twc="text-white mb-6">Anything you eat while exercising doesn't count. So go run an ultramarathon and stuff your face while doing so! Haribo... um nom nom.</TwText>
                     
@@ -129,10 +133,10 @@ export default function UserGuidePage()
                     <TwText twc="mb-6">This system is meant for serious endurance athletes so a degree of dedication and discipline shouldn't be too much to ask...</TwText>
 
                     <TwText variant={"subheading"}>There is already an offical app</TwText>
-                    <TwText twc="mb-12">There is, and I've paid for it and used it for several weeks. But there's lot about it that I don't like and development seems to have stagnated, so I built my own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
+                    <TwText twc="mb-6">There is, and I've paid for it and used it for several weeks. But there's lot about it that I don't like and development seems to have stagnated, so I built my own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
 
-                    <TwText variant={"subheading"}>How do I contact you</TwText>
-                    <TwText twc="mb-12">dietscoreapp@theportman.co</TwText>
+                    <TwText variant={"subheading"}>Suggestions for improvement</TwText>
+                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using dietscoreapp@theportman.co but please be patient!</TwText>
                     
                 </ScrollView>
             </TwContainer>

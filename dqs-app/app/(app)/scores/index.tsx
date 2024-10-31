@@ -10,8 +10,6 @@ export default function Scores() {
     const db = useDatabase();
 
     const { width } = Dimensions.get('window');
-    const [height, setHeight] = useState(0);
-
     const [days, setDays] = useState([
         {date: new Date()},
         {date: new Date(new Date().setDate(new Date().getDate() - 1))}
@@ -25,11 +23,7 @@ export default function Scores() {
         
     return (
         <TwContainer twc="flex-1 flex-col justify-center bg-slate-950">            
-            <View tw="flex-1"
-              onLayout={(event) => {
-                  const { height } = event.nativeEvent.layout;
-                  setHeight(height);
-              }}>
+            <View tw="flex-1">
                 {(db && days.length) && (
                 <FlatList
                     data={days}
