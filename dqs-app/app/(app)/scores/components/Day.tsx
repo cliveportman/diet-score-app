@@ -107,3 +107,5 @@ export const Day = memo(
         return prevProps.date === nextProps.date;
     },
 );
+
+Day.displayName = 'Day';

@@ -17,15 +17,15 @@ export default function databaseMigrations(db: SQLiteDatabase, currentVersion: n
         if (currentVersion < 2) {
             // Create a new table with the desired schema
             db.runSync(
-                `create table if not exists scores_new (id integer primary key not null, date TEXT, veg int, fruit int, nuts int, wholegrains int, dairy int, leanproteins int, beverages int, refinedgrains int, sweets int, fattyproteins int, friedfoods int, other int);`
+                `create table if not exists servings_new (id integer primary key not null, date TEXT, veg int, fruit int, nuts int, wholegrains int, dairy int, leanproteins int, beverages int, refinedgrains int, sweets int, fattyproteins int, friedfoods int, other int);`
             );
             // Copy data from the old table to the new table
             db.runSync(
-                `insert into scores_new (id, date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, other) select id, date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, other from scores;`
+                `insert into servings_new (id, date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, other) select id, date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, other from servings;`
             );
             // Drop the old table then rename the new one back to the old name
-            db.runSync(`drop table scores;`);
-            db.runSync(`alter table scores_new rename to scores;`);
+            db.runSync(`drop table servings;`);
+            db.runSync(`alter table servings_new rename to servings;`);
         }
         /**
          * Version 3 renamed the "scores" table to "servings".

@@ -30,6 +30,7 @@ export default {
   owner: "cliveportman",
   version: '1.0.0',
   slug: 'diet-scpre',
+  scheme: "dietscoreapp",
   ios: {
     bundleIdentifier: getUniqueIdentifier(),
     "supportsTablet": false
@@ -38,15 +39,15 @@ export default {
     package: getUniqueIdentifier(),
     "adaptiveIcon": {
       "foregroundImage": "./assets/images/adaptive-icon.png",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#020617"
     }
   },
   orientation: 'portrait',
-  icon: './assets/icon.png',
+  icon: './assets/images/icon.png',
   splash: {
-    image: './assets/splash.png',
+    image: './assets/images/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#020617',
   },
   plugins: [
     'expo-router',
