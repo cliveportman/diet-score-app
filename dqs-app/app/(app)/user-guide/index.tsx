@@ -66,7 +66,7 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Dairy"} cat={FoodCat.dairy} servings={6} maxScores={maxScores.dairy} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">Unsweetened milk from cows, sheep and goats, unsweetened yoghurt, cheese, cream. Small amounts of butter spread on bread to not count. Processed milks like soya milk also count. A portion would be a glass of milk, two slices of cheese, 2-3 tablespoons of yoghurt.</TwText>
+                    <TwText twc="mb-6">Unsweetened milk from cows, sheep and goats, unsweetened yoghurt, cheese, cream. Small amounts of butter spread on bread do not count. Processed milks like soya milk also count. A portion would be a glass of milk, two slices of cheese, 2-3 tablespoons of yoghurt.</TwText>
 
                     <TwText variant={"subheading"}>Lean meats + eggs</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
@@ -90,7 +90,7 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Fatty meats"} cat={FoodCat.fattyproteins} servings={6} maxScores={maxScores.fattyproteins} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">Meats that have been processed beyond cutting, grinding and seasoning: sausages, ham, bacon, corned beef, jerky, most fast foods. Otherwise lean meats such as fish fillets that have been battered or breaded should also be included.</TwText>
+                    <TwText twc="mb-6">Meats that have been processed beyond cutting, grinding and seasoning: sausages, ham, bacon, corned beef, jerky, most fast foods. Otherwise lean meats such as fish fillets that have been battered or breaded.</TwText>
 
                     <TwText variant={"subheading"}>Fried foods</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
@@ -121,7 +121,7 @@ export default function UserGuidePage()
                     <TwText twc="mb-6">While you could just wing it with the existing food groups, a vegetarian option that uses different categories is something I'd like to add if there is the interest. Let me know using the details at the bottom of the page. </TwText>
                     
                     <TwText variant={"subheading"}>Eating on the run</TwText>
-                    <TwText twc="text-white mb-6">Anything you eat while exercising doesn't count. So go run an ultramarathon and stuff your face while doing so! Haribo... um nom nom.</TwText>
+                    <TwText twc="text-white mb-6">Anything you eat while exercising doesn't count. So go run an ultramarathon and stuff your face while doing so!</TwText>
                     
                     <TwText variant={"subheading"}>Processed vs unprocessed</TwText>
                     <TwText twc="text-white mb-6">Matt is quite keen on unprocessed food, and the science is only getting stronger. It's not all bad, but you'll find most of it is low quality. So if you can steer clear of it, you probably should.</TwText>
@@ -131,12 +131,23 @@ export default function UserGuidePage()
 
                     <TwText variant={"subheading"}>It's too easy to cheat</TwText>
                     <TwText twc="mb-6">This system is meant for serious endurance athletes so a degree of dedication and discipline shouldn't be too much to ask...</TwText>
-
+                    
                     <TwText variant={"subheading"}>There is already an offical app</TwText>
                     <TwText twc="mb-6">There is, and I've paid for it and used it for several weeks. But there's lot about it that I don't like and development seems to have stagnated, so I built my own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
 
+                    <TwText variant={"heading"}>Technical questions</TwText>
+
+                    <TwText variant={"subheading"}>What happens to your data?</TwText>
+                    <TwText twc="mb-12">It stays on your device, which means that once it's gone, it really is gone.</TwText>
+
+                    <TwText variant={"subheading"}>What happens to my data if I uninstall the app?</TwText>
+                    <TwText twc="mb-12">It's gone for good. Reinstalling will not bring it back (the tiny database is destroyed).</TwText>
+
+                    <TwText variant={"subheading"}>Have you any plans for storing data in the cloud?</TwText>
+                    <TwText twc="mb-12">Maybe. I don't know. A cloud backup feature might be nice. As would being able to share data across mulitple devices. If I go down that route, I'd probably make it an opt-in feature. Let me know if that interests you.</TwText>
+
                     <TwText variant={"subheading"}>Suggestions for improvement</TwText>
-                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using dietscoreapp@theportman.co but please be patient!</TwText>
+                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>dietscoreapp@theportman.co</Text> - yes, that is just a .co at the end.</TwText>                    
                     
                 </ScrollView>
             </TwContainer>
