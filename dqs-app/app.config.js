@@ -15,11 +15,11 @@ const getUniqueIdentifier = () => {
 
 const getAppName = () => {
   if (IS_DEV) {
-    return 'Diet Score (Dev)';
+    return 'DS [dev]';
   }
 
   if (IS_PREVIEW) {
-    return 'Diet Score (Preview)';
+    return 'DS [pre]';
   }
 
   return 'Diet Score';
