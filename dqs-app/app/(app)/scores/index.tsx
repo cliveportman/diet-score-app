@@ -43,7 +43,7 @@ export default function Scores() {
                     onEndReachedThreshold={0.5}
                     extraData={days}
                     getItemLayout={(_, index) => (
-                        { length: height, offset: height * index, index}
+                        { length: width, offset: width * index, index}
                     )}
                 />
                 )}
