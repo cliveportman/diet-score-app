@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 
 import {TwContainer} from "@/core/components/TwContainer";
-import { Day } from "@/app/(app)/scores/components/Day";
+import { Day } from "@/features/scores/components/Day";
 import { Dimensions, FlatList, View} from "react-native";
 import {useDatabase} from "@/core/hooks";
 
