@@ -42,9 +42,7 @@ function openDatabase() {
 }
 
 async function getAllDays(db: SQLiteDatabase): Promise<Servings[]> {
-    const results: Servings[] = await db.getAllAsync(`select * from servings order by date desc;`)
-    console.log(`${results.length} Servings records (days) found`);
-    console.log(results);
+    const results: Servings[] = await db.getAllAsync(`select * from servings order by date desc;`);
     return results;
 }
 
