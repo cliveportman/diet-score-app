@@ -60,7 +60,7 @@ async function deleteDuplicateDays(db: SQLiteDatabase) {
             GROUP BY date
         );
     `);
-    console.log(`Duplicate rows deleted`);
+    //console.log(`Duplicate rows deleted`);
 }
 
 async function deleteEmptyDays(db: SQLiteDatabase) {
@@ -79,7 +79,7 @@ async function deleteEmptyDays(db: SQLiteDatabase) {
           AND friedfoods = 0
           AND alcohol = 0;
     `);
-    console.log(`Empty servings rows deleted`);
+    //console.log(`Empty servings rows deleted`);
 }
 
 async function getMetaField(db: SQLiteDatabase, field: string): Promise<string | null> {
@@ -100,7 +100,7 @@ async function updateMetaField(db: SQLiteDatabase, field: string, value: string 
          where id = 1`,
         [value]
     );
-    console.log(`Meta field updated`);
+    //console.log(`Meta field updated`);
 }
 
 /**
@@ -127,7 +127,7 @@ async function insertServings(db: SQLiteDatabase, servings: Servings) {
         `insert into servings (date, veg, fruit, nuts, wholegrains, dairy, leanproteins, beverages, refinedgrains, sweets, fattyproteins, friedfoods, alcohol, other) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.alcohol, servings.other]
     );
-    console.log(`Servings added with the row ID:`, result.lastInsertRowId);
+    //console.log(`Servings added with the row ID:`, result.lastInsertRowId);
     return result.lastInsertRowId;
 }
 
@@ -152,6 +152,6 @@ async function updateServings(db: SQLiteDatabase, id: number, servings: Servings
         `update servings set date=?, veg=?, fruit=?, nuts=?, wholegrains=?, dairy=?, leanproteins=?, beverages=?, refinedgrains=?, sweets=?, fattyproteins=?, friedfoods=?, alcohol=?, other=? where id=${id}`,
         [servings.date, servings.veg, servings.fruit, servings.nuts, servings.wholegrains, servings.dairy, servings.leanproteins, servings.beverages, servings.refinedgrains, servings.sweets, servings.fattyproteins, servings.friedfoods, servings.alcohol, servings.other]
     );
-    console.log(`Servings updated`);
+    //console.log(`Servings updated`);
 }
 

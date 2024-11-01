@@ -28,13 +28,13 @@ export default function Homepage() {
     return (
         <TwContainer twc="flex-1 bg-slate-950">
             <TwContainer twc="flex-1 flex-col justify-between px-6">
-                <TwContainer twc={"flex-1 flex-col justify-end"}>
-                    <GoatMoonSvg tw={"w-64 h-64 mb-6"} />
+                <TwContainer twc={"flex-1 flex-col justify-end items-center"}>
+                    <GoatMoonSvg tw={"block w-64 h-64 mb-6"} />
                     <TwText variant="title" twc={"text-4xl text-center mb-3"}>Way of the Goat</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-100 text-center mb-6 opacity-75"}>diet scoring for endurance athletes</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 text-center"}>Based on the book</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 text-center italic"}>Racing Weight</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-500 text-center"}>by Matt Fitzgerald</TwText>
+                    <TwText variant="subtitle" twc={"text-slate-400 text-center mb-6"}>Diet scoring for endurance athletes</TwText>
+                    <TwText twc={"text-slate-200 mb-0.5"}>Based on the book</TwText>
+                    <TwText twc={"text-slate-200 mb-0.5 italic"}>Racing Weight</TwText>
+                    <TwText twc={"text-slate-200 mb-0"}>by Matt Fitzgerald</TwText>
                 </TwContainer>
                 <TwContainer twc={"flex-1 flex-col items-center justify-end"}>
                     <TouchableOpacity tw={"flex-col justify-center items-center text-center text-white border border-slate-800 bg-slate-900 w-32 h-32 rounded-full mb-16"} onPress={() => router.push(onboardedDate ? '/(app)/scores' : '/onboarding')}>

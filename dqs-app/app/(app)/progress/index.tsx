@@ -29,16 +29,19 @@ export default function ProgressPage()
     
     
     return (
-        <TwContainer twc="flex-1 bg-slate-950 px-3 pt-6">
+        <TwContainer twc="flex-1 bg-slate-950 px-3 pt-12">
             <TwContainer twc={"flex-col justify-end items-start mb-6"}>
                 <TwText variant="title">Progress</TwText>
                 <TwText variant="subtitle">View your scores over time</TwText>
             </TwContainer>
-            <TwContainer twc="flex-1 flex-col">
-                    {days.length > 0 && <FlatList data={days} renderItem={({item}) => <DaySummary data={item} />} 
+            {days.length > 0 && <TwContainer twc="flex-1 flex-col">
+                    <FlatList data={days} renderItem={({item}) => <DaySummary data={item} />} 
                         keyExtractor={(item) => item.date}
-                    />}
-            </TwContainer>
+                    />
+            </TwContainer>}
+            {days.length === 0 && <TwContainer twc="flex-1 flex-col justify-center items-center">
+                <TwText>No data!</TwText>
+            </TwContainer>}
         </TwContainer>
     );
 }
