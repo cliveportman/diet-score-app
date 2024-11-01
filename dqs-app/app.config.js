@@ -3,34 +3,35 @@ const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 
 const getUniqueIdentifier = () => {
   if (IS_DEV) {
-    return 'co.theportman.dietscore.dev';
+    return 'co.theportman.wotg.dev';
   }
 
   if (IS_PREVIEW) {
-    return 'co.theportman.dietscore.preview';
+    return 'co.theportman.wotg.preview';
   }
 
-  return 'co.theportman.dietscore';
+  return 'co.theportman.wotg';
 };
 
 const getAppName = () => {
-  if (IS_DEV) {
-    return 'DS [dev]';
-  }
-
-  if (IS_PREVIEW) {
-    return 'DS [pre]';
-  }
-
-  return 'Diet Score';
+  if (IS_DEV) return 'WotG';
+  if (IS_PREVIEW) return 'WotG';
+  return 'WotG';
 };
+
+const getAdaptiveIcon = () => {
+  if (IS_DEV) return './assets/images/adaptive-icon-orange.png';
+  if (IS_PREVIEW)  return './assets/images/adaptive-icon-green.png';
+  return './assets/images/adaptive-icon.png';
+};
+
 
 export default {
   name: getAppName(),
   owner: "cliveportman",
   version: '1.0.0',
-  slug: 'diet-scpre',
-  scheme: "dietscoreapp",
+  slug: 'way-of-the-goat',
+  scheme: "way-of-the-goat",
   ios: {
     bundleIdentifier: getUniqueIdentifier(),
     "supportsTablet": false
@@ -38,7 +39,7 @@ export default {
   android: {
     package: getUniqueIdentifier(),
     "adaptiveIcon": {
-      "foregroundImage": "./assets/images/adaptive-icon.png",
+      "foregroundImage": getAdaptiveIcon(),
       "backgroundColor": "#020617"
     }
   },
@@ -57,7 +58,7 @@ export default {
   },
   extra: {
     eas: {
-      projectId: '32ff1f5e-93e3-46f9-8758-b957ef39d7f5',
+      projectId: 'c024779c-b09f-417d-804a-50eae831b6ba',
     }
   }
 };

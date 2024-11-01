@@ -5,6 +5,7 @@ import { TwText } from "@/core/components/TwText"
 import React, {useEffect, useState} from "react";
 import database from "@/core/database";
 import {useDatabase} from "@/core/hooks";
+import {GoatMoonSvg} from "@/core/svgs/GoatMoonSvg";
 
 export default function Homepage() {
 
@@ -28,8 +29,9 @@ export default function Homepage() {
         <TwContainer twc="flex-1 bg-slate-950">
             <TwContainer twc="flex-1 flex-col justify-between px-6">
                 <TwContainer twc={"flex-1 flex-col justify-end"}>
-                    <TwText variant="title" twc={"text-4xl text-center mb-1.5"}>Diet Score</TwText>
-                    <TwText variant="subtitle" twc={"text-slate-100 text-center mb-6 opacity-75"}>for endurance athletes</TwText>
+                    <GoatMoonSvg tw={"w-64 h-64 mb-6"} />
+                    <TwText variant="title" twc={"text-4xl text-center mb-3"}>Way of the Goat</TwText>
+                    <TwText variant="subtitle" twc={"text-slate-100 text-center mb-6 opacity-75"}>diet scoring for endurance athletes</TwText>
                     <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 text-center"}>Based on the book</TwText>
                     <TwText variant="subtitle" twc={"text-slate-500 mb-0.5 text-center italic"}>Racing Weight</TwText>
                     <TwText variant="subtitle" twc={"text-slate-500 text-center"}>by Matt Fitzgerald</TwText>
