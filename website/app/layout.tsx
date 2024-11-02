@@ -32,7 +32,7 @@ export default function RootLayout({
     <body className="antialiased bg-slate-950 text-slate-100">
     <header className="flex-col items-center max-w-[800px] mx-auto my-12">
         <Image
-            className="dark:invert block w-28 h-28 sm:w-60 sm:h-60 mx-auto mb-6"
+            className="block w-28 h-28 sm:w-60 sm:h-60 mx-auto mb-6"
             src="/images/goat-moon.svg"
             alt="Way of the Goat logo"
             width={100}
