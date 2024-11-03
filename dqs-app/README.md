@@ -1,50 +1,67 @@
-# Welcome to your Expo app 👋
+# Diet Score app "Way of the Goat"
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![react](https://img.shields.io/badge/React-brown)
+![react native](https://img.shields.io/badge/React_Native-brown)
+![expo](https://img.shields.io/badge/Expo-brown)
+![tailwind](https://img.shields.io/badge/Tailwind/Nativewind-brown)
+![javascript](https://img.shields.io/badge/Javascript-blue)
+![typescript](https://img.shields.io/badge/Typescript-blue)
+![jsx](https://img.shields.io/badge/JSX-blue)
 
-## Get started
+This is a React Native app built with Expo.
 
-1. Install dependencies
+Use `yarn` for handling dependencies and scripts.
 
-   ```bash
-   npm install
-   ```
+To work locally, download the latest development build from Expo, then
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+yarn install
+yarn start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Open up the app on your phone and enter the local address shown in the terminal.
 
-## Learn more
+## Creating builds
 
-To learn more about developing your project with Expo, look at the following resources:
+For a **development** build, run
+```
+eas build --platform android --profile development 
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+For a **preview** build, run
+```
+eas build --platform android --profile preview 
+```
 
-## Join the community
+For a **production** build, run
+```
+eas build --platform android 
+```
 
-Join our community of developers creating universal apps.
+## Pushing JS-only updates to via EAS
+If the app only contains JS changes, you can push updates to the app store without going through the review process. To do this, run
+```
+eas update --channel [channel-name] --message "[message]"
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+For **development** builds, use the channel `development`.
+```
+eas update --channel development --message "Added new feature"
+```
+\* I''m not sure why you'd do this with a development build.
+
+For **preview** builds, use the channel `preview`. 
+```
+eas update --channel preview --message "Added new feature"
+```
+
+Anyone with the preview build installed will receive the update. When they open the app, it'll check for any updates and download them if they're available. The next time they hard-close the app and open it again, the new version will be loaded.
+
+For **production** builds, use the channel `production`.
+```
+eas update --channel production --message "Added new feature"
+```
+
+Users running the production build will receive the update. When they open the app, it'll check for any updates and download them if they're available. The next time they hard-close the app and open it again, the new version will be loaded.
+
+Except, users on an internal testing track. I'm finding they will need to follow the link you gave them for installation and follow the update process from there.
