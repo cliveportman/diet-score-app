@@ -60,7 +60,14 @@ export default {
     eas: {
       projectId: 'c024779c-b09f-417d-804a-50eae831b6ba',
     }
+  },
+  updates: {
+    "url": "https://u.expo.dev/c024779c-b09f-417d-804a-50eae831b6ba"
+  },
+  runtimeVersion: {
+    "policy": "appVersion"
   }
+
 };
 
 
