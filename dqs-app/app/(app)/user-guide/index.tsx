@@ -19,7 +19,7 @@ export default function UserGuidePage()
                 <ScrollView>
                     
                     <TwText>This user guide is not intended to replace the inspiration behind it: a book called <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> by Matt Fitzgerald. If you haven't already, you really should buy the book.</TwText>
-                    <TwText twc={"mb-0"}>That said, you're likely to have some questions, so I'll try and preempt them here. Generally, just use your common sense.</TwText>
+                    <TwText twc={"mb-0"}>That said, you're likely to have some questions, so I'll try and preempt them here.</TwText>
                     
                     <TwLine />
                     
@@ -66,7 +66,7 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Dairy"} cat={FoodCat.dairy} servings={6} maxScores={maxScores.dairy} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">Unsweetened milk from cows, sheep and goats, unsweetened yoghurt, cheese, cream. Small amounts of butter spread on bread do not count. Processed milks like soya milk also count. A portion would be a glass of milk, two slices of cheese, 2-3 tablespoons of yoghurt.</TwText>
+                    <TwText twc="mb-6">Unsweetened milk from cows, sheep and goats, unsweetened yoghurt, cheese, cream. And rocessed milks like soya milk. Small amounts of butter spread on bread do not count. A portion would be a glass of milk, two slices of cheese, a decent portion of yoghurt.</TwText>
 
                     <TwText variant={"subheading"}>Lean meats + eggs</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
@@ -78,7 +78,7 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Refined grains"} cat={FoodCat.refinedgrains} servings={6} maxScores={maxScores.refinedgrains} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">White rice, white flour, most pastas, cereals, breads and other baked goods. A portion would be a standard serving of any of them.</TwText>
+                    <TwText twc="mb-6">White rice, white flour, most pastas, cereals, breads and other baked goods. A portion would be two slices of bread, a bowl of rice or pasta, etc..</TwText>
 
                     <TwText variant={"subheading"}>Sweets</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
@@ -90,13 +90,13 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Fatty meats"} cat={FoodCat.fattyproteins} servings={6} maxScores={maxScores.fattyproteins} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">Meats that have been processed beyond cutting, grinding and seasoning: sausages, ham, bacon, corned beef, jerky, most fast foods. Otherwise lean meats such as fish fillets that have been battered or breaded.</TwText>
+                    <TwText twc="mb-6">Meats that have been processed beyond cutting, grinding and seasoning: sausages, ham, bacon, corned beef, jerky, most fast foods.</TwText>
 
                     <TwText variant={"subheading"}>Fried foods</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Fried foods"} cat={FoodCat.friedfoods} servings={6} maxScores={maxScores.friedfoods} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">Chips (fries), crisps, fried chicken, donuts. Use your common sense with serving sizes.</TwText>
+                    <TwText twc="mb-6">Chips (fries), crisps, fried chicken or fish, donuts. Use your common sense with serving sizes.</TwText>
 
                     <TwText variant={"subheading"}>Alcohol</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
@@ -124,7 +124,7 @@ export default function UserGuidePage()
                     <TwText twc="text-white mb-6">Anything you eat while exercising doesn't count. So go run an ultramarathon and stuff your face while doing so!</TwText>
                     
                     <TwText variant={"subheading"}>Processed vs unprocessed</TwText>
-                    <TwText twc="text-white mb-6">Matt is quite keen on unprocessed food, and the science is only getting stronger. It's not all bad, but you'll find most of it is low quality. So if you can steer clear of it, you probably should.</TwText>
+                    <TwText twc="text-white mb-6">Matt is quite keen on unprocessed food, and the science is only getting stronger. It's not that all processed food is bad, but you'll find most of it is low quality. So if you can steer clear of it, you probably should.</TwText>
                     
                     <TwText variant={"subheading"}>Protein shakes</TwText>
                     <TwText twc="text-white mb-6">Unsweetened whey protein fits the nutrition profile of lean meats, so I'd count it as that. The sweetened powders and shakes can contain surprising amounts of sugar or artificial sweetener though, so you'll need to use your judgement there - I'd probably make a large shake and treat is as 1 portion of lean meat and 1 portion of sweets.</TwText>
@@ -147,7 +147,7 @@ export default function UserGuidePage()
                     <TwText twc="mb-12">Maybe. I don't know. A cloud backup feature might be nice. As would being able to share data across mulitple devices. If I go down that route, I'd probably make it an opt-in feature. Let me know if that interests you.</TwText>
 
                     <TwText variant={"subheading"}>Suggestions for improvement</TwText>
-                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>dietscoreapp@theportman.co</Text> - yes, that is just a .co at the end.</TwText>                    
+                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>wayofthegoat@theportman.co</Text> - yes, that is just a .co at the end.</TwText>                    
                     
                 </ScrollView>
             </TwContainer>
