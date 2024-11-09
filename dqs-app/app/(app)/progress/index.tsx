@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, RefreshControl} from 'react-native';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
 import {useDatabase} from "@/core/hooks";
@@ -7,26 +7,33 @@ import {useEffect, useState} from "react";
 import type {Servings} from "@/core/types";
 import database from "@/core/database";
 import {DaySummary} from "@/features/progress/components/DaySummary";
+import {SQLiteDatabase} from "expo-sqlite";
 
 export default function ProgressPage() 
 {
     const db = useDatabase();
 
     const [days, setDays] = useState<Servings[]>([]);
+    const [refreshing, setRefreshing] = useState(false);
+    
     useEffect(() => {
-        if (db) {
-            // Remove any empty days from the database.
-            // We've taken steps to prevent it but a user could still end up with an empty day in the database,
-            // if they add data to a day and then remove that data again.
-            database.deleteEmptyDays(db).then(() =>
-                // Then get all the days
-                database.getAllDays(db).then((results) => {
-                    setDays(results);
-                })
-            );                
-        }
+        fetchData(db);
     }, [db]);
     
+    function fetchData(db: SQLiteDatabase | null) {
+        if (!db) return;
+        database.deleteEmptyDays(db).then(() => {
+            database.getAllDays(db).then((results) => {
+                setDays(results);
+            })
+        });  
+    }
+    
+    function handleRefresh() {
+        setRefreshing(true);
+        fetchData(db);
+        setRefreshing(false);
+    }
     
     return (
         <TwContainer twc="flex-1 bg-slate-950 px-3 pt-12">
@@ -37,6 +44,9 @@ export default function ProgressPage()
             {days.length > 0 && <TwContainer twc="flex-1 flex-col">
                     <FlatList data={days} renderItem={({item}) => <DaySummary data={item} />} 
                         keyExtractor={(item) => item.date}
+                          refreshControl={
+                              <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+                          }
                     />
             </TwContainer>}
             {days.length === 0 && <TwContainer twc="flex-1 flex-col justify-center items-center">
