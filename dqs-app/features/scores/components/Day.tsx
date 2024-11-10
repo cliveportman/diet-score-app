@@ -53,9 +53,7 @@ export const Day = memo(
                     if (id) result = {...duplicate, id: id};
                 }
                 if (result) setServings(result);
-                await Haptics.notificationAsync(
-                    Haptics.NotificationFeedbackType.Success
-                );
+                await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                 shortToast(`+1 serving of ${foodCatToText(cat).toLowerCase()}`);
             }
         };
@@ -68,9 +66,7 @@ export const Day = memo(
             if (db && servings.id && servings[cat] > 0) {
                 const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] - 1);
                 setServings(result);
-                await Haptics.notificationAsync(
-                    Haptics.NotificationFeedbackType.Success
-                );
+                await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                 shortToast(`-1 serving of ${foodCatToText(cat).toLowerCase()}`);
             }
         };
