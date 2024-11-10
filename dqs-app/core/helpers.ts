@@ -1,7 +1,7 @@
 import {FoodCat} from "@/core/enums";
 import TailwindColors from "tailwindcss/colors";
 import Toast from 'react-native-root-toast';
-import {DayTotals, Servings} from "@/core/types";
+import {DayTotalsForDisplay, DayTotalsForMaths, Servings} from "@/core/types";
 import {maxScores} from "@/core/constants";
 
 export function foodCatToText(cat: FoodCat) {
@@ -48,8 +48,11 @@ export function shortToast(message: string, status: "success" | "info" | "error"
 }
 
 
-
-export function getTotalScores(servings: Servings): DayTotals {
+/**
+ * Get the total scores for a day, for display in the UI.
+ * @param servings
+ */
+export function getTotalScoresForDisplay(servings: Servings): DayTotalsForDisplay {
     const healthyScore = getHealthyServingsScore(servings);
     const unhealthyScore = getUnhealthyServingsScore(servings);
     const portions = getNumberOfServings(servings);
@@ -64,6 +67,19 @@ export function getTotalScores(servings: Servings): DayTotals {
         unhealthy: unhealthyScore,
         total: (healthyScore + unhealthyScore > 0) ? '+' + (healthyScore + unhealthyScore) : healthyScore + unhealthyScore,
         portions: portions
+    };
+}
+
+/**
+ * Get the total scores for a day, for use in maths, charts, etc. Returns numbers only.
+ * @param servings
+ */
+export function getTotalScoresForMaths(servings: Servings): DayTotalsForMaths {    
+    return {
+        healthy: getHealthyServingsScore(servings),
+        unhealthy: getUnhealthyServingsScore(servings),
+        total: getHealthyServingsScore(servings) + getUnhealthyServingsScore(servings),
+        portions: getNumberOfServings(servings)
     };
 }
 

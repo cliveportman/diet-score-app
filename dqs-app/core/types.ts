@@ -19,10 +19,18 @@ export type Servings = {
 export type SingleServingScore = -2 | -1 | 0 | 1 | 2;
 export type PossibleSingleServingScores = [SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore, SingleServingScore];
 
-export type DayTotals = {
+/** Used for displaying in the UI, output type can vary */
+export type DayTotalsForDisplay = {
     healthy: string | "---"; // Either "---" or "+n" where n is a number (+ sign)
     unhealthy: number | "---"; // Either "---" or n where n is a number (sign is part of the number)
     total: string | number | "---"; // Either "---" or "+n" where n is a number (+ sign) or n where n is a number (sign is part of the number)
+    portions: number;
+}
+/** Used for maths, output type is always a number */
+export type DayTotalsForMaths = {
+    healthy: number;
+    unhealthy: number;
+    total: number;
     portions: number;
 }
 

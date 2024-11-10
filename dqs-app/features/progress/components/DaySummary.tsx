@@ -2,7 +2,7 @@ import { Servings} from "@/core/types";
 import React from 'react';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
-import {getTotalScores} from "@/core/helpers";
+import { getTotalScoresForDisplay } from "@/core/helpers";
 import {format} from "date-fns";
 
 type DaySummaryProps = {
@@ -11,7 +11,7 @@ type DaySummaryProps = {
 
 export function DaySummary({data}: DaySummaryProps) {
     
-    const totals = getTotalScores(data);
+    const totals = getTotalScoresForDisplay(data);
     
     // If the total begins with a +, make it green.
     // If the total is "---", make it blue.

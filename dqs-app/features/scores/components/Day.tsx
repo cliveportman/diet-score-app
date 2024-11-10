@@ -13,7 +13,7 @@ import database from "@/core/database";
 import {format} from "date-fns";
 import {View} from "react-native";
 import {foodCatToText, shortToast} from "@/core/helpers";
-import { getTotalScores } from "@/core/helpers";
+import { getTotalScoresForDisplay } from "@/core/helpers";
 
 type DayProps = {
     db: SQLiteDatabase;
@@ -71,7 +71,7 @@ export const Day = memo(
             }
         };
 
-        const totals = useMemo(() => getTotalScores(servings), [servings]);
+        const totals = useMemo(() => getTotalScoresForDisplay(servings), [servings]);
 
         return (
             <View tw={`flex-col justify-center px-3`} style={{ width: width }}>
