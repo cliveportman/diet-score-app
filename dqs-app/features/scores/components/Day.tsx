@@ -2,6 +2,8 @@ import { FoodCat } from "@/core/enums";
 import {DateString, Servings} from "@/core/types";
 
 import {SQLiteDatabase} from "expo-sqlite";
+import * as Haptics from 'expo-haptics';
+
 import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/features/scores/components/Score";
@@ -51,6 +53,9 @@ export const Day = memo(
                     if (id) result = {...duplicate, id: id};
                 }
                 if (result) setServings(result);
+                await Haptics.notificationAsync(
+                    Haptics.NotificationFeedbackType.Success
+                );
                 shortToast(`+1 serving of ${foodCatToText(cat).toLowerCase()}`);
             }
         };
@@ -63,6 +68,9 @@ export const Day = memo(
             if (db && servings.id && servings[cat] > 0) {
                 const result = await database.updateServingsCategory(db, servings.id, cat, servings[cat] - 1);
                 setServings(result);
+                await Haptics.notificationAsync(
+                    Haptics.NotificationFeedbackType.Success
+                );
                 shortToast(`-1 serving of ${foodCatToText(cat).toLowerCase()}`);
             }
         };
