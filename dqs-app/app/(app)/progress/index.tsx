@@ -8,6 +8,7 @@ import type {Servings} from "@/core/types";
 import database from "@/core/database";
 import {DaySummary} from "@/features/progress/components/DaySummary";
 import {SQLiteDatabase} from "expo-sqlite";
+import {Chart} from "@/features/progress/components/Chart";
 
 export default function ProgressPage() 
 {
@@ -41,6 +42,9 @@ export default function ProgressPage()
                 <TwText variant="title">Progress</TwText>
                 <TwText variant="subtitle">View your scores over time</TwText>
             </TwContainer>
+            {days.length > 0 && <TwContainer twc="flex-col mb-6">
+                <Chart data={days} />
+            </TwContainer>}
             {days.length > 0 && <TwContainer twc="flex-1 flex-col">
                     <FlatList data={days} renderItem={({item}) => <DaySummary data={item} />} 
                         keyExtractor={(item) => item.date}
