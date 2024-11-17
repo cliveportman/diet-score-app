@@ -43,7 +43,7 @@ export default function ProgressPage()
                 <TwText variant="subtitle">View your scores over time</TwText>
             </TwContainer>
             {days.length > 0 && <TwContainer twc="flex-col mb-6">
-                <Chart data={days} />
+                <Chart data={days} index={0} period={"week"} />
             </TwContainer>}
             {days.length > 0 && <TwContainer twc="flex-1 flex-col">
                     <FlatList data={days} renderItem={({item}) => <DaySummary data={item} />} 
