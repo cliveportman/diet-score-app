@@ -39,6 +39,8 @@ function getDates(period: 'week' | 'month', index: number): DateString[] {
     return [];
 }
 
+export type Metric = Omit<Servings, 'id' | 'date'>
+
 function mapDataToDates(data: Servings[], dates: DateString[]): BarChartData {
     return {
         data: dates.map((date) => {
@@ -52,35 +54,50 @@ function mapDataToDates(data: Servings[], dates: DateString[]): BarChartData {
     }
 }
 
+const gridlines = [-10, 0, 10, 20, 30]
+
 export function Chart({data, index = 0, period = 'week'}: ChartProps) {
 
     const { width } = Dimensions.get('window');
+    const height = 200;
     const [ dates, setDates ] = React.useState<DateString[]>(getDates(period, index));
     const [ chartData, setChartData ] = React.useState<BarData[]>([]);
 
     useEffect(() => {
         if (!data) return;
-        setDates(getDates(period, index));
-        console.log('dates', dates);
-        
-        
-        // const tempDataSet: DataSet[] = [];
-        // const totalScoresData = data.map((item) => ({ value: getTotalScoresForMaths(item).total, label: item.date, } as lineDataItem));
-        // const totalScoresDataSet: DataSet = {
-        //     data: totalScoresData,
-        //     color: '#ff0000',
-        //     dataPointsColor: '#ff0000',
-        //     thickness: 2,
-        //     curved: true,            
-        // };
-        // tempDataSet.push(totalScoresDataSet);
-        // console.log(totalScoresDataSet)
-        // setDataSet(tempDataSet);
-        
-    }, [data, index]);
+        const rawDates = getDates(period, index);
+        setDates(rawDates);
+        setChartData(mapDataToDates(data, rawDates).data);
+        console.log('chartData', mapDataToDates(data, rawDates).data);        
+    }, [data]);
 
     return (
-        <TwContainer twc={"mb-6 bg-white"}>
+        <TwContainer twc={"mb-6"}>
+            <TwContainer twc={"relative"} style={{ height: 200 }}>
+                <TwContainer twc={"absolute left-0 top-0 right-0 bottom-0 bg-slate-950"}>
+                    <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 2/42 * 200, height: 1 }} />
+                    <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 12/42 * 200, height: 1 }} />
+                    <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 22/42 * 200, height: 1 }} />
+                    <TwContainer twc={"absolute w-full bg-slate-700"} style={{ top: 32/42 * 200, height: 1 }} />
+                    <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 42/42 * 200, height: 1 }} />
+                </TwContainer>
+                <TwContainer twc={"flex-row justify-center px-6"}>
+                    {chartData.map((bar, index) => {
+                        return (
+                            <TwContainer key={bar.date} twc={"relative flex-col w-8 mx-1.5"} style={{ height: 200 }}>
+                                <TwContainer key={bar.date} twc={"flex-col w-full bg-slate-800"} style={{ height: 200 }}></TwContainer>
+                                <TwContainer twc={"absolute -top-6 w-full"}><TwText variant={"small"} twc={"text-center"}>+2</TwText></TwContainer>
+                            {/*<TwContainer */}
+                            {/*    key={bar.date} twc={"px-1.5"} style={{height: bar.value * 10, width: `${100 / chartData.length}%`, backgroundColor: 'red'}}>*/}
+                            {/*</TwContainer>*/}
+                        </TwContainer>
+                        )
+                    })}
+                    
+                </TwContainer>
+                
+            </TwContainer>
+            
             {/*{dataSet.length > 0 && <LineChart */}
             {/*    dataSet={dataSet} */}
             {/*    width={width - 64}*/}
