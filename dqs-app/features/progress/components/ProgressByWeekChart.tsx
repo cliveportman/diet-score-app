@@ -6,32 +6,17 @@ import { format, startOfWeek, endOfWeek, addDays, subWeeks } from 'date-fns';
 import { getTotalScoresForMaths } from "@/core/helpers";
 import { Bar, type BarData } from "@/features/progress/components/Bar";
 import {Dimensions} from "react-native";
+import {SQLiteDatabase} from "expo-sqlite";
+import database from "@/core/database";
+import {useDatabase} from "@/core/hooks";
+import {TwText} from "@/core/components/TwText";
 
-type ChartProps = {
-    data: Servings[];
-    index: number; // used for pagination
-    period: 'week' | 'month';
+type ProgressByWeekChartProps = {
+    week: DateString[];
 }
 type BarChartData = {
     data: BarData[];
     title: string;
-}
-
-function getDates(period: 'week' | 'month', index: number): DateString[] {
-    if (period === 'month') return [];
-    // If period is week, return the dates for the week
-    if (period === 'week') {
-        // index is the number of weeks ago
-        const date = subWeeks(new Date(), index);
-        const start = startOfWeek(date, { weekStartsOn: 1 });
-        const end = endOfWeek(date, { weekStartsOn: 1 });
-        const dates: DateString[] = [];        
-        for (let d = start; d <= end; d = addDays(d, 1)) {
-            dates.push(format(d, 'yyyy-MM-dd') as DateString);
-        }
-        return dates;
-    }
-    return [];
 }
 
 function mapDataToDates(data: Servings[], dates: DateString[]): BarChartData {
@@ -47,22 +32,32 @@ function mapDataToDates(data: Servings[], dates: DateString[]): BarChartData {
     }
 }
 
-export function BarChart({data, index = 0, period = 'week'}: ChartProps) {
+export function ProgressByWeekChart({ week }: ProgressByWeekChartProps) {
 
-    const { width } = Dimensions.get('window');
-    const [ dates, setDates ] = React.useState<DateString[]>(getDates(period, index));
+    const db = useDatabase();
     const [ chartData, setChartData ] = React.useState<BarData[]>([]);
 
     useEffect(() => {
-        if (!data) return;
-        const rawDates = getDates(period, index);
-        setDates(rawDates);
-        setChartData(mapDataToDates(data, rawDates).data);
-        console.log('chartData', mapDataToDates(data, rawDates).data);        
-    }, [data]);
+        fetchData(db);
+    }, [db]);
+
+    async function fetchData(db: SQLiteDatabase | null) {
+        if (!db) return;
+        const data = await database.getServingsBetweenDates(db, week[0], week[6]);
+        setChartData(week.map((date) => {
+            const day = data.find((item) => item.date === date);
+            return {
+                value: day ? getTotalScoresForMaths(day).total : 0,
+                label: format(date, 'EEE'),
+            };
+        }));        
+    }
+
+    const { width } = Dimensions.get('window');
 
     return (
         <TwContainer twc={"mb-6"} style={{ width: width }}>
+            <TwText variant={"subheading"} twc={"text-center mb-3"}>{format(week[0], 'dd MMM')} - {format(week[6], 'dd MMM')}</TwText>
             <TwContainer twc={"relative"} style={{ height: 220 }}>
                 <TwContainer twc={"absolute left-0 top-0 right-0 bottom-0 mt-6 bg-slate-950"}>
                     <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 2/42 * 200, height: 1 }} />
@@ -70,7 +65,7 @@ export function BarChart({data, index = 0, period = 'week'}: ChartProps) {
                     <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 22/42 * 200, height: 1 }} />
                     <TwContainer twc={"absolute w-full bg-slate-700"} style={{ top: 32/42 * 200, height: 1 }} />
                 </TwContainer>
-                <TwContainer twc={"flex-row justify-center pt-6 bg-lime-700"}>
+                <TwContainer twc={"flex-row justify-center pt-6 bg-lime-700"} style={{ width: 32 * 7}}>
                     {chartData.map((data) => {
                         return (
                             <Bar key={data.label} data={data} width={32} maxHeight={200} />
