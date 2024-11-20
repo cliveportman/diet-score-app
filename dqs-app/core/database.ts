@@ -13,6 +13,8 @@ export default {
     
     getAllDays,
     getServingsByDate,
+    getServingsBetweenDates,
+    
     insertServings,
     updateServings,
     updateServingsCategory,
@@ -109,12 +111,22 @@ async function updateMetaField(db: SQLiteDatabase, field: string, value: string 
  * @param date YYYY-MM-DD
  */
 async function getServingsByDate(db: SQLiteDatabase, date: string): Promise<Servings | null> {
-    const results: Servings[] = await db.getAllAsync(`select * from servings where date=?;`, [date]);
+    const results: Servings[] = await db.getAllAsync(`select *
+                                                      from servings
+                                                      where date =?;`, [date]);
     if (results.length === 0) {
         return null;
     }
     return results[0];
-}    
+}
+
+async function getServingsBetweenDates(db: SQLiteDatabase, startDate: string, endDate: string): Promise<Servings[]> {
+    const results: Servings[] = await db.getAllAsync(`select *
+                                                      from servings
+                                                      where date >= ?
+                                                      and date <= ?;`, [startDate, endDate]);
+    return results;
+}
 
 async function insertServings(db: SQLiteDatabase, servings: Servings) {
     // Avoid inserting duplicate days

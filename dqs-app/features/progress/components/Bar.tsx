@@ -48,7 +48,7 @@ function getBar(data: BarData, maxHeight: number) {
 
 export function Bar({data, width = 16, maxHeight}: BarProps) {
     return (
-        <TwContainer twc={"relative flex-col mx-1.5 bg-red-500"} style={{ height: maxHeight, width: width }}>            
+        <TwContainer twc={"relative flex-col bg-red-500"} style={{ height: maxHeight, width: width }}>            
             {getBar(data, maxHeight)}
         </TwContainer>
     );

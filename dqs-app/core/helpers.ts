@@ -1,8 +1,9 @@
 import {FoodCat} from "@/core/enums";
 import TailwindColors from "tailwindcss/colors";
 import Toast from 'react-native-root-toast';
-import {DayTotalsForDisplay, DayTotalsForMaths, Servings} from "@/core/types";
+import {DateString, DayTotalsForDisplay, DayTotalsForMaths, Servings} from "@/core/types";
 import {maxScores} from "@/core/constants";
+import {addDays, endOfWeek, format, startOfWeek, subWeeks} from "date-fns";
 
 export function foodCatToText(cat: FoodCat) {
     switch (cat) {
@@ -118,4 +119,15 @@ function getNumberOfServings(servings: Servings) {
         total += servings[cat as FoodCat];
     }
     return total;
+}
+
+export function getWeek(index: number) {
+    const date = subWeeks(new Date(), index);
+    const start = startOfWeek(date, { weekStartsOn: 1 });
+    const end = endOfWeek(date, { weekStartsOn: 1 });
+    const dates: DateString[] = [];
+    for (let d = start; d <= end; d = addDays(d, 1)) {
+        dates.push(format(d, 'yyyy-MM-dd') as DateString);
+    }
+    return dates;
 }
