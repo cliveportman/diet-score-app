@@ -18,13 +18,15 @@ function zeroValueBar(data: BarData, maxHeight: number) {
             <TwContainer twc={"absolute flex-col w-8 bg-green-300"} style={{ top: 32/42 * maxHeight, height: 1 }} />
             <TwContainer twc={"absolute w-full"} style={{ top: maxHeight }}><TwText variant={"small"} twc={"text-center text-slate-100"}>{data.label}</TwText></TwContainer>
         </TwContainer>
-    )
+    );
 }
 
 function negativeValueBar(data: BarData, maxHeight: number) {
+    const adjustedBarHeight = data.value < -5 ? -5 : data.value;
     return (
         <TwContainer twc={"relative flex-col"} style={{ height: maxHeight }}>
-            <TwContainer twc={"absolute flex-col w-8 bg-red-400"} style={{ top: 32/42 * maxHeight,  height: -data.value/42 * maxHeight }} />
+            <TwContainer twc={"absolute flex-col w-8 bg-red-400"} style={{ top: 32/42 * maxHeight,  height: -adjustedBarHeight/42 * maxHeight }} />
+            <TwContainer twc={"absolute w-full"} style={{ top: (32/42 * maxHeight) + (-adjustedBarHeight/42 * maxHeight) }}><TwText variant={"small"} twc={"text-center text-red-400"}>{data.value}</TwText></TwContainer>
             <TwContainer twc={"absolute w-full"} style={{ top: maxHeight }}><TwText variant={"small"} twc={"text-center text-slate-100"}>{data.label}</TwText></TwContainer>
         </TwContainer>
     )
@@ -48,7 +50,7 @@ function getBar(data: BarData, maxHeight: number) {
 
 export function Bar({data, width = 16, maxHeight}: BarProps) {
     return (
-        <TwContainer twc={"relative flex-col bg-red-500"} style={{ height: maxHeight, width: width }}>            
+        <TwContainer twc={"relative flex-col mx-1.5"} style={{ height: maxHeight, width: width }}>            
             {getBar(data, maxHeight)}
         </TwContainer>
     );

@@ -1,7 +1,7 @@
 import {DateString, Servings} from "@/core/types";
 import React, {useEffect} from 'react';
 import { TwContainer } from "@/core/components/TwContainer";
-import { format, startOfWeek, endOfWeek, addDays, subWeeks } from 'date-fns';
+import { format } from 'date-fns';
 
 import { getTotalScoresForMaths } from "@/core/helpers";
 import { Bar, type BarData } from "@/features/progress/components/Bar";
@@ -36,6 +36,7 @@ export function ProgressByWeekChart({ week }: ProgressByWeekChartProps) {
 
     const db = useDatabase();
     const [ chartData, setChartData ] = React.useState<BarData[]>([]);
+    const { width } = Dimensions.get('window');
 
     useEffect(() => {
         fetchData(db);
@@ -53,19 +54,17 @@ export function ProgressByWeekChart({ week }: ProgressByWeekChartProps) {
         }));        
     }
 
-    const { width } = Dimensions.get('window');
-
     return (
-        <TwContainer twc={"mb-6"} style={{ width: width }}>
-            <TwText variant={"subheading"} twc={"text-center mb-3"}>{format(week[0], 'dd MMM')} - {format(week[6], 'dd MMM')}</TwText>
-            <TwContainer twc={"relative"} style={{ height: 220 }}>
+        <TwContainer twc={"mb-6"} style={{ width: width - 24 }}>
+            <TwText variant={"subtitle"} twc={"text-left mb-3"}>{format(week[0], 'dd MMM')} - {format(week[6], 'dd MMM')}</TwText>
+            <TwContainer twc={"relative mb-6"} style={{ height: 220 }}>
                 <TwContainer twc={"absolute left-0 top-0 right-0 bottom-0 mt-6 bg-slate-950"}>
                     <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 2/42 * 200, height: 1 }} />
                     <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 12/42 * 200, height: 1 }} />
                     <TwContainer twc={"absolute w-full bg-slate-900"} style={{ top: 22/42 * 200, height: 1 }} />
                     <TwContainer twc={"absolute w-full bg-slate-700"} style={{ top: 32/42 * 200, height: 1 }} />
                 </TwContainer>
-                <TwContainer twc={"flex-row justify-center pt-6 bg-lime-700"} style={{ width: 32 * 7}}>
+                <TwContainer twc={"flex-row justify-center pt-6"} style={{ width: width - 24}}>
                     {chartData.map((data) => {
                         return (
                             <Bar key={data.label} data={data} width={32} maxHeight={200} />
