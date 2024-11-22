@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, ScrollView} from 'react-native';
+import * as Application from 'expo-application';
 import { TwContainer } from "@/core/components/TwContainer"
 import { TwText } from "@/core/components/TwText"
 import {Score} from "@/features/scores/components/Score";
@@ -147,8 +148,10 @@ export default function UserGuidePage()
                     <TwText twc="mb-12">Maybe. I don't know. A cloud backup feature might be nice. As would being able to share data across mulitple devices. If I go down that route, I'd probably make it an opt-in feature. Let me know if that interests you.</TwText>
 
                     <TwText variant={"subheading"}>Suggestions for improvement</TwText>
-                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>wayofthegoat@theportman.co</Text> - yes, that is just a .co at the end.</TwText>                    
-                    
+                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>wayofthegoat@theportman.co</Text> - yes, that is just a .co at the end.</TwText>
+
+                    <TwText variant={"small"}>{Application.applicationName}</TwText>
+                    <TwText variant={"small"} twc={"mb-12"}>{Application.nativeApplicationVersion}</TwText>
                 </ScrollView>
             </TwContainer>
         </TwContainer>

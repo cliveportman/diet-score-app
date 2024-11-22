@@ -14,9 +14,9 @@ const getUniqueIdentifier = () => {
 };
 
 const getAppName = () => {
-  if (IS_DEV) return 'WotG';
-  if (IS_PREVIEW) return 'WotG';
-  return 'WotG';
+  if (IS_DEV) return 'Way of the Goat [dev]';
+  if (IS_PREVIEW) return 'Way of the Goat [preview]';
+  return 'Way of the Goat';
 };
 
 const getAdaptiveIcon = () => {
@@ -29,7 +29,7 @@ const getAdaptiveIcon = () => {
 export default {
   name: getAppName(),
   owner: "cliveportman",
-  version: '1.1.0.',
+  version: '1.2.1',
   slug: 'way-of-the-goat',
   scheme: "way-of-the-goat",
   ios: {

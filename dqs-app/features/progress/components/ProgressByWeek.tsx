@@ -1,13 +1,7 @@
-import {DateString, Servings} from "@/core/types";
-import React, {useEffect, useState} from 'react';
-import { TwContainer } from "@/core/components/TwContainer";
+import React, { useState} from 'react';
 import { ProgressByWeekChart } from "@/features/progress/components/ProgressByWeekChart";
 import {Dimensions, FlatList} from "react-native";
 import {getWeek} from "@/core/helpers";
-import {addDays, endOfWeek, format, startOfWeek, subWeeks} from "date-fns";
-import {ProgressByWeekList} from "@/features/progress/components/ProgressByWeekList";
-
-
 
 export function ProgressByWeek() {
 
@@ -22,21 +16,19 @@ export function ProgressByWeek() {
     }
 
     return (
-        <TwContainer twc={"mb-6"}>
-            <FlatList
-                data={weeks}
-                renderItem={({item}) => <ProgressByWeekChart week={item} />}
-                horizontal
-                inverted
-                snapToInterval={width - 24}
-                decelerationRate="fast"
-                onEndReached={handleEndReached}
-                onEndReachedThreshold={0.5}
-                extraData={weeks}
-                getItemLayout={(_, index) => (
-                    { length: width - 24, offset: (width - 24) * index, index}
-                )}
-            />
-        </TwContainer>
+        <FlatList
+            data={weeks}
+            renderItem={({item}) => <ProgressByWeekChart week={item} />}
+            horizontal
+            inverted
+            snapToInterval={width - 24}
+            decelerationRate="fast"
+            onEndReached={handleEndReached}
+            onEndReachedThreshold={0.5}
+            extraData={weeks}
+            getItemLayout={(_, index) => (
+                { length: width - 24, offset: (width - 24) * index, index}
+            )}
+        />
     );
 }
