@@ -17,7 +17,7 @@ export type BarData = {
 function zeroValueBar(data: BarData, maxHeight: number, maxValue: number, minValue: number) {
     return (
         <TwContainer twc={"relative flex-col"} style={{ height: maxHeight }}>
-            <TwContainer twc={"absolute flex-col w-8 bg-green-300"} style={{ top: maxValue/(maxValue - minValue) * maxHeight, height: 1 }} />
+            <TwContainer twc={"absolute flex-col w-8 bg-slate-200"} style={{ top: maxValue/(maxValue - minValue) * maxHeight, height: 1 }} />
             <TwContainer twc={"absolute w-full"} style={{ top: maxHeight }}><TwText variant={"small"} twc={"text-center text-slate-100"}>{data.label}</TwText></TwContainer>
         </TwContainer>
     );
@@ -28,8 +28,8 @@ function negativeValueBar(data: BarData, maxHeight: number, maxValue: number, mi
     const adjustedBarHeight = data.value < -5 ? -5 : data.value;
     return (
         <TwContainer twc={"relative flex-col"} style={{ height: maxHeight }}>
-            <TwContainer twc={"absolute flex-col w-8 bg-red-400"} style={{ top: maxValue/(maxValue - minValue) * maxHeight,  height: -adjustedBarHeight/(maxValue - minValue) * maxHeight }} />
-            <TwContainer twc={"absolute w-full"} style={{ top: (maxValue/(maxValue - minValue) * maxHeight) + (-adjustedBarHeight/(maxValue - minValue) * maxHeight) }}><TwText variant={"small"} twc={"text-center text-red-400"}>{data.value}</TwText></TwContainer>
+            <TwContainer twc={"absolute flex-col w-8 bg-slate-200"} style={{ top: maxValue/(maxValue - minValue) * maxHeight,  height: -adjustedBarHeight/(maxValue - minValue) * maxHeight }} />
+            <TwContainer twc={"absolute w-full"} style={{ top: (maxValue/(maxValue - minValue) * maxHeight) + (-adjustedBarHeight/(maxValue - minValue) * maxHeight) }}><TwText variant={"small"} twc={"text-center text-slate-100"}>{data.value}</TwText></TwContainer>
             <TwContainer twc={"absolute w-full"} style={{ top: maxHeight }}><TwText variant={"small"} twc={"text-center text-slate-100"}>{data.label}</TwText></TwContainer>
         </TwContainer>
     )
@@ -38,8 +38,8 @@ function negativeValueBar(data: BarData, maxHeight: number, maxValue: number, mi
 function positiveValueBar(data: BarData, maxHeight: number, maxValue: number, minValue: number) {
     return (
         <TwContainer twc={"relative flex-col"} style={{ height: maxHeight }}>
-            <TwContainer twc={"absolute flex-col w-8 bg-lime-400"} style={{ top: (maxValue - data.value)/(maxValue - minValue) * maxHeight,  height: data.value/(maxValue - minValue) * maxHeight }} />
-            <TwContainer twc={"absolute w-full"} style={{ top: ((maxValue - data.value)/(maxValue - minValue) * maxHeight) -24 }}><TwText variant={"small"} twc={"text-center text-lime-400"}>+{data.value}</TwText></TwContainer>
+            <TwContainer twc={"absolute flex-col w-8 bg-slate-200"} style={{ top: (maxValue - data.value)/(maxValue - minValue) * maxHeight,  height: data.value/(maxValue - minValue) * maxHeight }} />
+            <TwContainer twc={"absolute w-full"} style={{ top: ((maxValue - data.value)/(maxValue - minValue) * maxHeight) -24 }}><TwText variant={"small"} twc={"text-center text-slate-100"}>+{data.value}</TwText></TwContainer>
             <TwContainer twc={"absolute w-full"} style={{ top: maxHeight }}><TwText variant={"small"} twc={"text-center text-slate-100"}>{data.label}</TwText></TwContainer>
         </TwContainer>
     )
