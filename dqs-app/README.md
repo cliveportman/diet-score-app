@@ -68,4 +68,6 @@ Except, users on an internal testing track. I'm finding they will need to follow
 
 ## Understanding chart colours
 ### Totals
-Daily total were originally green for positive scores and red for negative. But it's a lot more nuanced than that. I was thinking of making 0-10 also red, to reflect the likely high amount of poor quality servings, 11-20 as neutral because that's normally a decent day, and anything above 20 as green. But looking at my history, there are some scores below 10 where I just didn't eat a lot, but otherwise had nutritious food. And in the teens, I have days where I've had a lot of nutritious food but also 5-6 servings of poor quality food. For now, I've neutralised the colours so they're all the same, no matter the score.
+Daily total were originally green for positive scores and red for negative. But it's a lot more nuanced than that. I was thinking of making 0-10 also red, to reflect the likely high amount of poor quality servings, 11-20 as neutral because that's normally a decent day, and anything above 20 as green. But looking at my history, there are some scores below 10 where I just didn't eat a lot, but otherwise had nutritious food. And in the teens, I have days where I've had a lot of nutritious food but also 5-6 servings of poor quality food. 
+
+For now, I've neutralised things a little so anything over 20 is green and the rest is white. But I think it might be prudent to make this a changable 'target' setting on the progress page.
