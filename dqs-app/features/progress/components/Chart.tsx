@@ -1,15 +1,7 @@
-import {DateString } from "@/core/types";
-import React, {useEffect} from 'react';
+import React from 'react';
 import { TwContainer } from "@/core/components/TwContainer";
-import { format } from 'date-fns';
-
-import { getTotalScoresForMaths } from "@/core/helpers";
 import { Bar, type BarData } from "@/features/progress/components/Bar";
 import {Dimensions} from "react-native";
-import {SQLiteDatabase} from "expo-sqlite";
-import database from "@/core/database";
-import {useDatabase} from "@/core/hooks";
-import {TwText} from "@/core/components/TwText";
 
 type ChartProps = {
     data: BarData[];
