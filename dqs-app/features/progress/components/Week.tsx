@@ -35,7 +35,7 @@ export function Week({ dates }: ProgressByWeekChartProps) {
             const day = data.find((item) => item.date === date);
             return {
                 value: day ? getTotalScoresForMaths(day).total : 0,
-                label: format(date, 'EEE'),
+                label: format(date, 'EEE').charAt(0),
             };
         }));
         setListData(data);
@@ -44,7 +44,7 @@ export function Week({ dates }: ProgressByWeekChartProps) {
     return (
         <TwContainer style={{ width: width - 24 }}>
             <TwText variant={"subtitle"} twc={"text-left mb-3"}>{format(dates[0], 'dd MMM')} - {format(dates[6], 'dd MMM')}</TwText>
-            <Chart data={chartData} height={200} labelHeights={20} maxValue={32} minValue={-10} horizontalLines={[30, 20, 10, 0]} />
+            <Chart data={chartData} height={200} labelHeights={20} maxValue={32} minValue={0} horizontalLines={[30, 20, 10, 0]} />
             <List data={listData} />
         </TwContainer>
     );

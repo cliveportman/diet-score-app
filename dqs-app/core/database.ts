@@ -124,7 +124,8 @@ async function getServingsBetweenDates(db: SQLiteDatabase, startDate: string, en
     const results: Servings[] = await db.getAllAsync(`select *
                                                       from servings
                                                       where date >= ?
-                                                      and date <= ?;`, [startDate, endDate]);
+                                                      and date <= ?
+                                                      order by date asc;`, [startDate, endDate]);
     return results;
 }
 

@@ -28,7 +28,7 @@ export function DaySummary({data}: DaySummaryProps) {
             <TwText twc={"w-28 leading-none h-5 text-slate-300"}>{format(data.date, 'EEE dd MMM')}</TwText>
             <TwText twc={`w-16 leading-none h-5 text-slate-300 text-center`}>{totals.portions}</TwText>
             <TwText twc={`w-10 leading-none h-5 text-slate-300 text-right`}>{totals.healthy}</TwText>
-            <TwText twc={`w-10 leading-none h-5 text-slate-300 text-right`}>{totals.unhealthy}</TwText>
+            <TwText twc={`w-16 leading-none h-5 text-slate-300 text-right`}>{totals.unhealthy}</TwText>
             <TwText twc={`w-10 leading-none h-5 ${colour} text-right`}>{totals.total}</TwText>
         </TwContainer>
     );

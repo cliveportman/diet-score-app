@@ -24,9 +24,9 @@ export function Chart({ data, maxValue, minValue, height = 200, labelHeights = 2
                 ))}
             </TwContainer>
             <TwContainer twc={"flex-row justify-center pt-6"} style={{ width: width - 24}}>
-                {data.map((bar) => {
+                {data.map((bar, index) => {
                     return (
-                        <Bar key={bar.label} data={bar} width={32} maxHeight={height} maxValue={maxValue} minValue={minValue} />
+                        <Bar key={index} data={bar} width={32} maxHeight={height} maxValue={maxValue} minValue={minValue} />
                     )
                 })}                    
             </TwContainer>                
