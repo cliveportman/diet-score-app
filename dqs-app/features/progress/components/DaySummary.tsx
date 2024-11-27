@@ -19,33 +19,17 @@ export function DaySummary({data}: DaySummaryProps) {
     let colour: string;
     if (typeof totals.total === "string") {
         if (totals.total === "---") colour = "text-slate-500";
-        else colour = 'text-lime-400';
+        else colour = 'text-slate-300';
         
-    } else  colour = 'text-red-400';
+    } else  colour = 'text-slate-300';
     
     return (
-        <TwContainer twc={"flex-col mb-6"}>
-            <TwText variant={"subheading"} twc={""}>{format(data.date, 'EEE dd MMM')}</TwText>
-            <TwContainer twc={"flex-row justify-between items-start"}>
-                <TwContainer twc={"flex-row justify-start items-start"}>
-                    <TwContainer twc={"flex-col mr-3"}>
-                        <TwText variant={"small"} twc={``}>Score</TwText>
-                        <TwText variant={"subheading"} twc={`text-2xl ${colour} mr-3`}>{totals.total}</TwText>
-                    </TwContainer>
-                    <TwContainer twc={"flex-col items-end mr-3"}>
-                        <TwText variant={"small"} twc={``}>High-quality</TwText>
-                        <TwText variant={"small"} twc={`text-base text-lime-400`}>{totals.healthy}</TwText>
-                    </TwContainer>
-                    <TwContainer twc={"flex-col items-end"}>
-                        <TwText variant={"small"} twc={``}>Low-quality</TwText>
-                        <TwText variant={"small"} twc={`text-base text-red-400`}>{totals.unhealthy}</TwText>
-                    </TwContainer>
-                </TwContainer>
-                <TwContainer twc={"flex-col items-end mr-3"}>
-                    <TwText variant={"small"} twc={``}>Portions</TwText>
-                    <TwText variant={"small"} twc={`text-base text-slate-100}`}>{totals.portions}</TwText>
-                </TwContainer>  
-            </TwContainer>
-        </TwContainer>    
+        <TwContainer twc={"flex-row justify-between items-start bg-slate-900 px-3 pt-1.5 mb-1.5"}>
+            <TwText twc={"w-28 leading-none h-5 text-slate-300"}>{format(data.date, 'EEE dd MMM')}</TwText>
+            <TwText twc={`w-16 leading-none h-5 text-slate-300 text-center`}>{totals.portions}</TwText>
+            <TwText twc={`w-10 leading-none h-5 text-slate-300 text-right`}>{totals.healthy}</TwText>
+            <TwText twc={`w-16 leading-none h-5 text-slate-300 text-right`}>{totals.unhealthy}</TwText>
+            <TwText twc={`w-10 leading-none h-5 ${colour} text-right`}>{totals.total}</TwText>
+        </TwContainer>
     );
 }
