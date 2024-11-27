@@ -52,6 +52,7 @@ export default {
   },
   plugins: [
     'expo-router',
+    'expo-font'
   ],
   experiments: {
       typedRoutes: true,
