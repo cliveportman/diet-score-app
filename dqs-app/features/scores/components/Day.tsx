@@ -10,7 +10,7 @@ import {Score} from "@/features/scores/components/Score";
 import {defaultServings, maxScores} from "@/core/constants";
 import React, { useEffect, useMemo, useState, memo} from "react";
 import database from "@/core/database";
-import {format} from "date-fns";
+import dayjs from "dayjs";
 import {View} from "react-native";
 import {foodCatToText, shortToast} from "@/core/helpers";
 import { getTotalScoresForDisplay } from "@/core/helpers";
@@ -76,7 +76,7 @@ export const Day = memo(
         return (
             <View tw={`flex-col justify-center px-3`} style={{ width: width }}>
 
-                <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>{format(date, 'EEE dd MMM')}</TwText></TwContainer>
+                <TwContainer twc={"mb-3"}><TwText variant="title" twc={"text-center"}>{dayjs(date).format('ddd DD MMM')}</TwText></TwContainer>
 
                 <Score servings={servings.veg} maxScores={maxScores.veg} text={foodCatToText(FoodCat.veg)} cat={FoodCat.veg} onPress={handlePress} onLongPress={handleLongPress} />
                 <Score servings={servings.fruit} maxScores={maxScores.fruit} text={foodCatToText(FoodCat.fruit)} cat={FoodCat.fruit} onPress={handlePress} onLongPress={handleLongPress} />
