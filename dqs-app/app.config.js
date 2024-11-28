@@ -67,7 +67,9 @@ export default {
   },
   runtimeVersion: {
     "policy": "appVersion"
-  }
+  },
+  
+  newArchEnabled: true
 
 };
 
