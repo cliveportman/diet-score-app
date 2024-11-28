@@ -29,7 +29,7 @@ const getAdaptiveIcon = () => {
 export default {
   name: getAppName(),
   owner: "cliveportman",
-  version: '1.2.1',
+  version: '1.3.0',
   slug: 'way-of-the-goat',
   scheme: "way-of-the-goat",
   ios: {
@@ -55,7 +55,8 @@ export default {
     'expo-font'
   ],
   experiments: {
-      typedRoutes: true,
+    typedRoutes: true,
+    reactCompiler: true
   },
   extra: {
     eas: {
@@ -67,9 +68,7 @@ export default {
   },
   runtimeVersion: {
     "policy": "appVersion"
-  },
-  
+  },  
   newArchEnabled: true
-
 };
 
