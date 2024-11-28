@@ -52,6 +52,7 @@ export default {
   },
   plugins: [
     'expo-router',
+    'expo-font'
   ],
   experiments: {
       typedRoutes: true,
@@ -66,7 +67,9 @@ export default {
   },
   runtimeVersion: {
     "policy": "appVersion"
-  }
+  },
+  
+  newArchEnabled: true
 
 };
 

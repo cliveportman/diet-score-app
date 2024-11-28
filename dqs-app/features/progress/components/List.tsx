@@ -1,7 +1,7 @@
-import { Servings} from "@/core/types";
+import {Servings} from "@/core/types";
 import React from 'react';
-import { TwContainer } from "@/core/components/TwContainer";
-import { FlatList} from 'react-native';
+import {TwContainer} from "@/core/components/TwContainer";
+import {FlatList} from 'react-native';
 import {TwText} from "@/core/components/TwText";
 import {DaySummary} from "@/features/progress/components/DaySummary";
 
@@ -9,7 +9,7 @@ type ListProps = {
     data: Servings[];
 }
 
-export function List({ data }: ListProps) {
+export function List({data}: ListProps) {
 
 
     return (
@@ -21,11 +21,11 @@ export function List({ data }: ListProps) {
                 <TwText variant={"small"} twc={`w-16 text-right text-slate-300`}>Against</TwText>
                 <TwText variant={"small"} twc={`w-10 text-right text-slate-300`}>Score</TwText>
             </TwContainer>
-            <FlatList 
-                data={data} 
-                renderItem={({item}) => <DaySummary data={item} />} 
+            <FlatList
+                data={data}
+                renderItem={({item}) => <DaySummary data={item}/>}
                 keyExtractor={(item) => String(item.id)}
             />
         </TwContainer>
-    );
+    )
 }

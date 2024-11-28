@@ -3,7 +3,18 @@ import TailwindColors from "tailwindcss/colors";
 import Toast from 'react-native-root-toast';
 import {DateString, DayTotalsForDisplay, DayTotalsForMaths, Servings} from "@/core/types";
 import {maxScores} from "@/core/constants";
-import {addDays, endOfWeek, format, startOfWeek, subWeeks} from "date-fns";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import isToday from "dayjs/plugin/isToday";
+import weekday from "dayjs/plugin/weekday";
+import updateLocale from "dayjs/plugin/updateLocale";
+
+dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(isToday);
+dayjs.extend(weekday);
+dayjs.extend(updateLocale);
 
 export function foodCatToText(cat: FoodCat) {
     switch (cat) {
@@ -122,12 +133,12 @@ function getNumberOfServings(servings: Servings) {
 }
 
 export function getWeek(index: number) {
-    const date = subWeeks(new Date(), index);
-    const start = startOfWeek(date, { weekStartsOn: 1 });
-    const end = endOfWeek(date, { weekStartsOn: 1 });
+    const date = dayjs().subtract(index, 'week');
+    const start = date.startOf('week');
+    const end = date.endOf('week');
     const dates: DateString[] = [];
-    for (let d = start; d <= end; d = addDays(d, 1)) {
-        dates.push(format(d, 'yyyy-MM-dd') as DateString);
+    for (let d = start; d <= end; d = d.add(1, 'day')) {
+        dates.push(d.format('YYYY-MM-DD') as DateString);
     }
     return dates;
 }

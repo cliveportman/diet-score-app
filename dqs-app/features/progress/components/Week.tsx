@@ -1,11 +1,11 @@
 import {DateString, Servings} from "@/core/types";
 import React, {useEffect} from 'react';
-import { TwContainer } from "@/core/components/TwContainer";
-import { format } from 'date-fns';
+import {TwContainer} from "@/core/components/TwContainer";
+import dayjs from "dayjs";
 
-import { getTotalScoresForMaths} from "@/core/helpers";
-import { Chart } from "@/features/progress/components/Chart";
-import { type BarData } from "@/features/progress/components/Bar";
+import {getTotalScoresForMaths} from "@/core/helpers";
+import {Chart} from "@/features/progress/components/Chart";
+import {type BarData} from "@/features/progress/components/Bar";
 import {Dimensions} from "react-native";
 import {SQLiteDatabase} from "expo-sqlite";
 import database from "@/core/database";
@@ -17,12 +17,12 @@ type ProgressByWeekChartProps = {
     dates: DateString[];
 }
 
-export function Week({ dates }: ProgressByWeekChartProps) {
+export function Week({dates}: ProgressByWeekChartProps) {
 
     const db = useDatabase();
-    const [ chartData, setChartData ] = React.useState<BarData[]>([]);
-    const [ listData, setListData ] = React.useState<Servings[]>([]);
-    const { width } = Dimensions.get('window');
+    const [chartData, setChartData] = React.useState<BarData[]>([]);
+    const [listData, setListData] = React.useState<Servings[]>([]);
+    const {width} = Dimensions.get('window');
 
     useEffect(() => {
         fetchData(db);
@@ -35,17 +35,27 @@ export function Week({ dates }: ProgressByWeekChartProps) {
             const day = data.find((item) => item.date === date);
             return {
                 value: day ? getTotalScoresForMaths(day).total : 0,
-                label: format(date, 'EEE').charAt(0),
+                label: dayjs(date).format('ddd').charAt(0),
             };
         }));
         setListData(data);
     }
 
     return (
-        <TwContainer style={{ width: width - 24 }}>
-            <TwText variant={"subtitle"} twc={"text-left mb-3"}>{format(dates[0], 'dd MMM')} - {format(dates[6], 'dd MMM')}</TwText>
-            <Chart data={chartData} height={200} labelHeights={20} maxValue={32} minValue={0} horizontalLines={[30, 20, 10, 0]} />
-            <List data={listData} />
+        <TwContainer style={{width: width - 24}}>
+            <TwText variant={"subtitle"}
+                    twc={"text-left mb-3"}>{dayjs(dates[0]).format('DD MMM')} - {dayjs(dates[6]).format('DD MMM YYYY')}</TwText>
+            {listData.length > 0 && (
+                <>
+                    <Chart data={chartData} height={200} labelHeights={20} maxValue={32} minValue={0}
+                           horizontalLines={[30, 20, 10, 0]}/>
+                    <List data={listData}/>
+                </>
+            )}
+            {listData.length === 0 && (
+                <TwContainer twc={"flex-1 flex-col justify-center"}>
+                    <TwText twc={"text-center"}>No data available</TwText>
+                </TwContainer>)}
         </TwContainer>
     );
 }
