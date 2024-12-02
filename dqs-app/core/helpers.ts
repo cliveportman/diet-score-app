@@ -134,8 +134,8 @@ function getNumberOfServings(servings: Servings) {
 
 export function getWeek(index: number) {
     const date = dayjs().subtract(index, 'week');
-    const start = date.startOf('week');
-    const end = date.endOf('week');
+    const start = date.startOf('week').add(1, 'day');
+    const end = date.endOf('week').add(1, 'day');
     const dates: DateString[] = [];
     for (let d = start; d <= end; d = d.add(1, 'day')) {
         dates.push(d.format('YYYY-MM-DD') as DateString);
