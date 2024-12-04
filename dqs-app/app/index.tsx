@@ -20,7 +20,7 @@ export default function Homepage() {
             })
         };
         // Use this for restting the onboardedDate field in the database during development.
-        // if (db) database.updateMetaField(db, "onboardedDate", null);
+        if (db) database.updateMetaField(db, "onboardedDate", null);
         // Use this for deleting duplicate days in the database during development.
         // if (db) database.deleteDuplicateDays(db);
     }, [db]);

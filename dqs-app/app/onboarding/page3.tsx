@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {router} from 'expo-router';
+import * as Haptics from 'expo-haptics';
 import {TwContainer} from "@/core/components/TwContainer";
 import {TwText} from "@/core/components/TwText";
 import {Score} from "@/features/scores/components/Score";
@@ -16,10 +17,22 @@ export default function OnboardingPage3() {
     
     const [fruit, setFruit] = useState(3);
     const [grains, setGrains] = useState(2);
-    const addFruit = () => setFruit(fruit + 1);
-    const addGrains = () => setGrains(grains + 1);
-    const removeFruit = () => setFruit(fruit - 1);
-    const removeGrains = () => setGrains(grains - 1);
+    const addFruit = () => {
+        setFruit(fruit + 1);
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    const addGrains = () => {
+        setGrains(grains + 1);
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    const removeFruit = () => {
+        setFruit(fruit - 1);
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    const removeGrains = () => {
+        setGrains(grains - 1);
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
     
     function handleContinue() {
         if (!db) return;
@@ -35,7 +48,7 @@ export default function OnboardingPage3() {
         <TwContainer twc="flex-1 bg-slate-950">
             <TwContainer twc="flex-1 flex-col justify-between px-3 pt-12">
                 <TwContainer twc={"flex-1 flex-col justify-start"}>
-                    <TwText variant="title" twc={""}>What do you do?</TwText>
+                    <TwText variant="title" twc={""}>How?</TwText>
                     <TwText variant="large" twc={"text-slate-300 mb-6"}>Each day, record your dietary intake using the food categories provided. Nutritious foods will raise your score, unhealthy foods will lower it.</TwText>
                     <TwContainer twc={"flex-col justify-center mb-6"}>
                         <Score text={"Fruit"} cat={FoodCat.fruit} servings={fruit} maxScores={maxScores.fruit} onPress={addFruit} onLongPress={removeFruit} />

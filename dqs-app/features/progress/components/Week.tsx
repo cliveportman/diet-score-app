@@ -42,7 +42,7 @@ export function Week({dates}: ProgressByWeekChartProps) {
     }
 
     return (
-        <TwContainer style={{width: width - 24}}>
+        <TwContainer style={{width: width}} twc={"px-3"}>
             <TwText variant={"subtitle"}
                     twc={"text-left mb-3"}>{dayjs(dates[0]).format('DD MMM')} - {dayjs(dates[6]).format('DD MMM YYYY')}</TwText>
             {listData.length > 0 && (

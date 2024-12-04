@@ -19,8 +19,8 @@ export default function ProgressPage()
     }
     
     return (
-        <TwContainer twc="flex-1 bg-slate-950 px-3 pt-12">
-            <TwContainer twc={"flex-col justify-end items-start mb-6"}>
+        <TwContainer twc="flex-1 bg-slate-950 pt-12">
+            <TwContainer twc={"flex-col justify-end items-start px-3 mb-6"}>
                 <TwText variant="title">Progress</TwText>
             </TwContainer>
             <TwContainer twc="flex-1 flex-col mb-6">
@@ -29,13 +29,13 @@ export default function ProgressPage()
                     renderItem={({item}) => <Week dates={item} />}
                     horizontal
                     inverted
-                    snapToInterval={width - 24}
+                    snapToInterval={width}
                     decelerationRate="fast"
                     onEndReached={handleEndReached}
                     onEndReachedThreshold={0.5}
                     extraData={weeks}
                     getItemLayout={(_, index) => (
-                        { length: width - 24, offset: (width - 24) * index, index}
+                        { length: width, offset: width * index, index}
                     )}
                 />
             </TwContainer>
