@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f74ac76-89d1-4cce-a953-16245f8df6fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dqs-app/app/(app)/progress/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/dqs-app/app/(app)/progress/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dqs-app/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/dqs-app/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dqs-app/app/onboarding/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/dqs-app/app/onboarding/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dqs-app/app/onboarding/page2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/dqs-app/app/onboarding/page2.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dqs-app/app/onboarding/page3.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/dqs-app/app/onboarding/page3.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dqs-app/features/progress/components/Week.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/dqs-app/features/progress/components/Week.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dqs-app/app.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/dqs-app/app.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +30,13 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "use-react-compiler",
     "last_opened_file_path": "/Users/clive/repos/diet-score-app",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/clive/repos/diet-score-app/dqs-app/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/clive/repos/sides/way-of-the-goat/dqs-app/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
