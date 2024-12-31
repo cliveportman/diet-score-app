@@ -29,7 +29,7 @@ const getAdaptiveIcon = () => {
 export default {
   name: getAppName(),
   owner: "cliveportman",
-  version: '1.3.0',
+  version: '1.4.0',
   slug: 'way-of-the-goat',
   scheme: "way-of-the-goat",
   ios: {
