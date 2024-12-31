@@ -1,7 +1,7 @@
 {
   "name": "dqs-app",
   "main": "expo-router/entry",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "scripts": {
     "start": "cross-env APP_VARIANT=development npx expo start",
     "android": "expo start --android",
@@ -9,6 +9,14 @@
     "test": "jest --watchAll",
     "lint": "expo lint",
     "typecheck": "tsc"
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "enabled": false,
+        "listUnknownPackages": true
+      }
+    }
   },
   "jest": {
     "preset": "jest-expo"
