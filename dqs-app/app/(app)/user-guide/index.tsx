@@ -20,7 +20,7 @@ export default function UserGuidePage()
                 <ScrollView>
                     
                     <TwText>This user guide is not intended to replace the inspiration behind it: a book called <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> by Matt Fitzgerald. If you haven't already, you really should buy the book.</TwText>
-                    <TwText twc={"mb-0"}>That said, you're likely to have some questions, so I'll try and preempt them here.</TwText>
+                    <TwText twc={"mb-0"}>That said, you're likely to have some questions, so let's try and preempt them here.</TwText>
                     
                     <TwLine />
                     
@@ -43,7 +43,7 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Vegetables"} cat={FoodCat.veg} servings={6} maxScores={maxScores.veg} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">Raw or cooked vegetables, pulses, tomatoes, chillies, eaten whole, chopped, pureed, whatever. Only count potatoes if you're including the skin. One serving might be a fist-sized portion of veg, a decent side salad or a bowl of soup.</TwText>
+                    <TwText twc="mb-6">Raw or cooked vegetables, pulses, tomatoes, chillies, eaten whole, chopped, pureed, whatever. One serving might be a fist-sized portion of veg, a decent side salad or a bowl of soup.</TwText>
 
                     <TwText variant={"subheading"}>Fruit</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
@@ -79,7 +79,7 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Refined grains"} cat={FoodCat.refinedgrains} servings={6} maxScores={maxScores.refinedgrains} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-6">White rice, white flour, most pastas, cereals, breads and other baked goods. A portion would be two slices of bread, a bowl of rice or pasta, etc..</TwText>
+                    <TwText twc="mb-6">White rice, white flour, most pastas, cereals, breads and other baked goods. A portion would be two slices of bread, a bowl of rice or pasta, etc.</TwText>
 
                     <TwText variant={"subheading"}>Sweets</TwText>
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
@@ -103,15 +103,14 @@ export default function UserGuidePage()
                     <TwContainer twc={"flex-col justify-center mt-1.5 mb-1.5"}>
                         <Score text={"Alcohol"} cat={FoodCat.alcohol} servings={6} maxScores={maxScores.alcohol} onPress={() => {}} onLongPress={() => {}} />
                     </TwContainer>
-                    <TwText twc="mb-0">I disagree with Matt here and think you should be penalised for even one serving of alcohol. The evidence around red wine is questionable and just because it loses you a few points doesn't mean you have to go without.</TwText>
+                    <TwText twc="mb-0">We're disagreeing with Matt here and penalising even one serving of alcohol.</TwText>
 
                     <TwLine />
 
                     <TwContainer twc="flex-col mb-0">
                         <TwText variant={"heading"}>Breaking the rules</TwText>
                         <TwText twc="mb-6">You 100% need to work out what works for you with this. Remember a food can cover more than one category and there are exceptions to every rule. Some examples:</TwText>
-                        <TwText>- I often dilute 250ml of milkshake with another 250ml of milk and call it 2 portions of Dairy and 1 portion of Sweets.</TwText>
-                        <TwText>- While Matt counts processed meats like bacon as low quality foods (i.e. fatty meats), I personally count a couple of fat-free medallions as lean meats.</TwText>
+                        <TwText>- We might dilute 250ml of milkshake with another 250ml of milk and call it 2 portions of Dairy and 1 portion of Sweets.</TwText>
                     </TwContainer>
                     
                     <TwLine />
@@ -119,7 +118,7 @@ export default function UserGuidePage()
                     <TwText variant={"heading"}>Other stuff</TwText>
                     
                     <TwText variant={"subheading"}>You're a vegetarian</TwText>
-                    <TwText twc="mb-6">While you could just wing it with the existing food groups, a vegetarian option that uses different categories is something I'd like to add if there is the interest. Let me know using the details at the bottom of the page. </TwText>
+                    <TwText twc="mb-6">While you could just wing it with the existing food groups, a vegetarian option that uses different categories is something we'd like to add if there is the interest. Let me know using the details at the bottom of the page. </TwText>
                     
                     <TwText variant={"subheading"}>Eating on the run</TwText>
                     <TwText twc="text-white mb-6">Anything you eat while exercising doesn't count. So go run an ultramarathon and stuff your face while doing so!</TwText>
@@ -128,27 +127,27 @@ export default function UserGuidePage()
                     <TwText twc="text-white mb-6">Matt is quite keen on unprocessed food, and the science is only getting stronger. It's not that all processed food is bad, but you'll find most of it is low quality. So if you can steer clear of it, you probably should.</TwText>
                     
                     <TwText variant={"subheading"}>Protein shakes</TwText>
-                    <TwText twc="text-white mb-6">Unsweetened whey protein fits the nutrition profile of lean meats, so I'd count it as that. The sweetened powders and shakes can contain surprising amounts of sugar or artificial sweetener though, so you'll need to use your judgement there - I'd probably make a large shake and treat is as 1 portion of lean meat and 1 portion of sweets.</TwText>
+                    <TwText twc="text-white mb-6">Unsweetened whey protein fits the nutrition profile of lean meats, so count it as that. The sweetened powders and shakes can contain surprising amounts of sugar or artificial sweetener though, so you'll need to use your judgement there - we'd probably make a large shake and treat is as 1 portion of lean meat and 1 portion of sweets.</TwText>
 
                     <TwText variant={"subheading"}>It's too easy to cheat</TwText>
                     <TwText twc="mb-6">This system is meant for serious endurance athletes so a degree of dedication and discipline shouldn't be too much to ask...</TwText>
                     
                     <TwText variant={"subheading"}>There is already an offical app</TwText>
-                    <TwText twc="mb-6">There is, and I've paid for it and used it for several weeks. But there's lot about it that I don't like and development seems to have stagnated, so I built my own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
+                    <TwText twc="mb-6">There is, and we've paid for it and used it for several weeks. But there's lot about it that we don't like and development seems to have stagnated, so we built out own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
 
                     <TwText variant={"heading"}>Technical questions</TwText>
 
                     <TwText variant={"subheading"}>What happens to your data?</TwText>
-                    <TwText twc="mb-12">It stays on your device, which means that once it's gone, it really is gone.</TwText>
+                    <TwText twc="mb-12">It currently stays on your device, which means that once it's gone, it really is gone. We are planning on adding cloud backup at some point.</TwText>
 
                     <TwText variant={"subheading"}>What happens to my data if I uninstall the app?</TwText>
                     <TwText twc="mb-12">It's gone for good. Reinstalling will not bring it back (the tiny database is destroyed).</TwText>
 
-                    <TwText variant={"subheading"}>Have you any plans for storing data in the cloud?</TwText>
-                    <TwText twc="mb-12">Maybe. I don't know. A cloud backup feature might be nice. As would being able to share data across mulitple devices. If I go down that route, I'd probably make it an opt-in feature. Let me know if that interests you.</TwText>
+                    <TwText variant={"subheading"}>Do I need an account?</TwText>
+                    <TwText twc="mb-12">No. We want people to use this app without an account and use it without needing an internet connection. When we add the cloud backup feature, that will require an account but it'll be an opt-in feature only.</TwText>
 
                     <TwText variant={"subheading"}>Suggestions for improvement</TwText>
-                    <TwText twc="mb-12">This app is not my job, but I would like to iterate on it. So if you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>wayofthegoat@theportman.co</Text> - yes, that is just a .co at the end.</TwText>
+                    <TwText twc="mb-12">If you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>wayofthegoat@theportman.co</Text> - yes, that is just a .co at the end.</TwText>
 
                     <TwText variant={"small"}>{Application.applicationName}</TwText>
                     <TwText variant={"small"} twc={"mb-12"}>{Application.nativeApplicationVersion}</TwText>

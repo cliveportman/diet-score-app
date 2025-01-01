@@ -1,7 +1,7 @@
 {
   "name": "dqs-app",
   "main": "expo-router/entry",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "start": "cross-env APP_VARIANT=development npx expo start",
     "android": "expo start --android",

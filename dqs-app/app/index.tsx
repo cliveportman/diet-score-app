@@ -15,12 +15,12 @@ export default function Homepage() {
     const [onboardedDate, setOnboardedDate] = useState<string | null>(null);
     useEffect(() => {
         if (db) {
-            database.getMetaField(db, "onboardedDate").then((onboardedDate) => {
-                if (onboardedDate) setOnboardedDate(onboardedDate);
+            database.getMetaField(db, "onboardedDate").then((date) => {
+                if (date) setOnboardedDate(date);
             })
         };
-        // Use this for restting the onboardedDate field in the database during development.
-        if (db) database.updateMetaField(db, "onboardedDate", null);
+        // Use this for resetting the onboardedDate field in the database during development.
+        // if (db) database.updateMetaField(db, "onboardedDate", null);
         // Use this for deleting duplicate days in the database during development.
         // if (db) database.deleteDuplicateDays(db);
     }, [db]);
@@ -40,6 +40,7 @@ export default function Homepage() {
                     <TouchableOpacity tw={"flex-col justify-center items-center text-center text-white border border-slate-800 bg-slate-900 w-32 h-32 rounded-full mb-16"} onPress={() => router.push(onboardedDate ? '/(app)/scores' : '/onboarding')}>
                         <TwText twc={"mb-0"}>Continue</TwText>
                     </TouchableOpacity>
+                    <TwText twc={"text-slate-700 text-xs mb-3"}>Onboarded {onboardedDate}</TwText>
                 </TwContainer>
             </TwContainer>
         </TwContainer>
