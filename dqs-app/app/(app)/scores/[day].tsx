@@ -1,16 +1,16 @@
-import React, { useState} from "react";
+import React, { useState, useRef } from "react";
 import { useLocalSearchParams } from "expo-router";
 
 import {TwContainer} from "@/core/components/TwContainer";
 import { Day } from "@/features/scores/components/Day";
 import { Dimensions, FlatList, View} from "react-native";
 import {useDatabase} from "@/core/hooks";
-import {TwText} from "@/core/components/TwText";
 
 export default function Scores() {
 
     const db = useDatabase();
     const { day } = useLocalSearchParams<{ day: string }>();
+    const flatListRef = useRef<FlatList | null>(null);
 
     const { width } = Dimensions.get('window');
     const [days, setDays] = useState([
@@ -23,13 +23,24 @@ export default function Scores() {
         const firstDate = days[0].date;
         const newDate = new Date(new Date().setDate(firstDate.getDate() + 1));
         setDays([{date: newDate}, ...days]);
+        if (flatListRef.current) flatListRef.current.scrollToIndex({ index: 1, animated: false });
 
     }
     
     function handleEndReached() {
         const lastDate = new Date(days[days.length - 1].date);
         const newDate = new Date(lastDate.setDate(lastDate.getDate() - 1));
-        setDays([...days, {date: newDate}]);
+        //setDays([...days, {date: newDate}]);
+
+        setDays(prevDays => {
+            const newDays = [{ date: newDate }, ...prevDays];
+            setTimeout(() => {
+                if (flatListRef.current) {
+                    flatListRef.current.scrollToIndex({ index: 1, animated: false }); // Now type-safe
+                }
+            }, 0);
+            return newDays;
+        });
     }
 
 
@@ -55,6 +66,7 @@ export default function Scores() {
                     getItemLayout={(_, index) => (
                         { length: width, offset: width * index, index}
                     )}
+                    ref={flatListRef}
                 />
                 )}
             </View>
