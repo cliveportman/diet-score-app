@@ -40,6 +40,12 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
+                name="scores/[day]"
+                options={{
+                    href: null,
+                }}
+            />
+            <Tabs.Screen
                 name="user-guide/index"
                 options={{
                     title: 'User guide',
