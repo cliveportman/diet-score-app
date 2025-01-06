@@ -29,7 +29,10 @@ export function DaySummary({data}: DaySummaryProps) {
     
     return (
         <TwContainer twc={"flex-row justify-between items-start bg-slate-900 px-3 pt-1.5 mb-1.5"}>
-            <Pressable onPress={() => router.push(`(app)/scores/${dayjs(data.date).format('YYYY-MM-DD')}`)}><TwText twc={"w-28 leading-none h-5 text-slate-300"}>{dayjs(data.date).format('ddd DD MMM')}</TwText></Pressable>
+            <Pressable onPress={() => router.push({
+                pathname: "/(app)/scores/[day]",
+                params: { day: dayjs(data.date).format("YYYY-MM-DD") },
+            })}><TwText twc={"w-28 leading-none h-5 text-slate-300"}>{dayjs(data.date).format('ddd DD MMM')}</TwText></Pressable>
             <TwText twc={`w-16 leading-none h-5 text-slate-300 text-center`}>{totals.portions}</TwText>
             <TwText twc={`w-10 leading-none h-5 text-slate-300 text-right`}>{totals.healthy}</TwText>
             <TwText twc={`w-16 leading-none h-5 text-slate-300 text-right`}>{totals.unhealthy}</TwText>
