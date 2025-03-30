@@ -110,7 +110,7 @@ export default function UserGuidePage()
                     <TwContainer twc="flex-col mb-0">
                         <TwText variant={"heading"}>Breaking the rules</TwText>
                         <TwText twc="mb-6">You 100% need to work out what works for you with this. Remember a food can cover more than one category and there are exceptions to every rule. Some examples:</TwText>
-                        <TwText>- We might dilute 250ml of milkshake with another 250ml of milk and call it 2 portions of Dairy and 1 portion of Sweets.</TwText>
+                        <TwText>- I might dilute 250ml of milkshake with another 250ml of milk and call it 2 portions of Dairy and 1 portion of Sweets.</TwText>
                     </TwContainer>
                     
                     <TwLine />
@@ -118,22 +118,19 @@ export default function UserGuidePage()
                     <TwText variant={"heading"}>Other stuff</TwText>
                     
                     <TwText variant={"subheading"}>You're a vegetarian</TwText>
-                    <TwText twc="mb-6">While you could just wing it with the existing food groups, a vegetarian option that uses different categories is something we'd like to add if there is the interest. Let me know using the details at the bottom of the page. </TwText>
+                    <TwText twc="mb-6">While you could just wing it with the existing food groups, a vegetarian option that uses different categories is something I'd like to add if there is the interest. Let me know using the details at the bottom of the page. </TwText>
                     
                     <TwText variant={"subheading"}>Eating on the run</TwText>
                     <TwText twc="text-white mb-6">Anything you eat while exercising doesn't count. So go run an ultramarathon and stuff your face while doing so!</TwText>
                     
                     <TwText variant={"subheading"}>Processed vs unprocessed</TwText>
-                    <TwText twc="text-white mb-6">Matt is quite keen on unprocessed food, and the science is only getting stronger. It's not that all processed food is bad, but you'll find most of it is low quality. So if you can steer clear of it, you probably should.</TwText>
+                    <TwText twc="text-white mb-6">Matt (author of <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text>) is quite keen on unprocessed food, and the science is only getting stronger. It's not that all processed food is bad, but you'll find most of it is low quality. So if you can steer clear of it, you probably should.</TwText>
                     
                     <TwText variant={"subheading"}>Protein shakes</TwText>
                     <TwText twc="text-white mb-6">Unsweetened whey protein fits the nutrition profile of lean meats, so count it as that. The sweetened powders and shakes can contain surprising amounts of sugar or artificial sweetener though, so you'll need to use your judgement there - we'd probably make a large shake and treat is as 1 portion of lean meat and 1 portion of sweets.</TwText>
-
-                    <TwText variant={"subheading"}>It's too easy to cheat</TwText>
-                    <TwText twc="mb-6">This system is meant for serious endurance athletes so a degree of dedication and discipline shouldn't be too much to ask...</TwText>
                     
                     <TwText variant={"subheading"}>There is already an offical app</TwText>
-                    <TwText twc="mb-6">There is, and we've paid for it and used it for several weeks. But there's lot about it that we don't like and development seems to have stagnated, so we built out own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
+                    <TwText twc="mb-6">There is, and I've paid for it and used it for several weeks. But there's lot about it that I don't like and development seems to have stagnated, so I built my own. If you feel bad for Matt, buy his book <Text style={{ fontStyle: 'italic' }}>Racing Weight</Text> (or any of his other books). Actually, please just do that anyway!</TwText>
 
                     <TwText variant={"heading"}>Technical questions</TwText>
 
@@ -144,7 +141,7 @@ export default function UserGuidePage()
                     <TwText twc="mb-12">It's gone for good. Reinstalling will not bring it back (the tiny database is destroyed).</TwText>
 
                     <TwText variant={"subheading"}>Do I need an account?</TwText>
-                    <TwText twc="mb-12">No. We want people to use this app without an account and use it without needing an internet connection. When we add the cloud backup feature, that will require an account but it'll be an opt-in feature only.</TwText>
+                    <TwText twc="mb-12">No. I want people to use this app without an account and use it without needing an internet connection. If I add a cloud backup feature, that will require an account but it'll be an opt-in feature only.</TwText>
 
                     <TwText variant={"subheading"}>Suggestions for improvement</TwText>
                     <TwText twc="mb-12">If you have any suggestions, get in touch using <Text style={{ fontStyle: 'italic' }}>wayofthegoat@theportman.co</Text> - yes, that is just a .co at the end.</TwText>
