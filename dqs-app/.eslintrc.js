@@ -1,8 +1,9 @@
 // https://docs.expo.dev/guides/using-eslint/
 module.exports = {
-  extends: 'expo',
-  plugins: ['eslint-plugin-react-compiler'],
+  extends: ["expo", "prettier"],
+  plugins: ["eslint-plugin-react-compiler", "prettier"],
   rules: {
-    'react-compiler/react-compiler': 'error',
+    "react-compiler/react-compiler": "error",
+    "prettier/prettier": "error",
   },
 };

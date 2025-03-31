@@ -9,14 +9,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'light': ['Inter-Light'],
-        'regular': ['Inter-Regular'],
-        'medium': ['Inter-Medium'],
-        'semibold': ['Inter-SemiBold'],
-        'bold': ['Inter-Bold'],
+        light: ["Inter-Light"],
+        regular: ["Inter-Regular"],
+        medium: ["Inter-Medium"],
+        semibold: ["Inter-SemiBold"],
+        bold: ["Inter-Bold"],
       },
     },
   },
   plugins: [],
-}
-
+};

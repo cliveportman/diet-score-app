@@ -1,13 +1,19 @@
 import React from "react";
-import {View, ViewProps} from "react-native";
+import { View, ViewProps } from "react-native";
 
 type TwContainerProps = ViewProps & {
-    children?: React.ReactNode;
-    twc?: string;
-}
+  children?: React.ReactNode;
+  twc?: string;
+};
 
-export function TwContainer({children, twc = '', ...props}: TwContainerProps) {    
-    return (
-        <View tw={twc} {...props}>{children}</View>
-    );
+export function TwContainer({
+  children,
+  twc = "",
+  ...props
+}: TwContainerProps) {
+  return (
+    <View tw={twc} {...props}>
+      {children}
+    </View>
+  );
 }
