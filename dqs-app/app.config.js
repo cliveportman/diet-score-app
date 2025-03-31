@@ -49,7 +49,7 @@ export default {
     resizeMode: "contain",
     backgroundColor: "#020617",
   },
-  plugins: ["expo-router", "expo-font"],
+  plugins: ["expo-router", "expo-font", "expo-sqlite"],
   experiments: {
     typedRoutes: true,
     reactCompiler: true,
