@@ -38,31 +38,29 @@ export default function Scores() {
   }
 
   return (
-    <TwContainer twc="flex-1 flex-col justify-center bg-slate-950">
-      <View tw="flex-1">
-        {db && days.length && (
-          <FlatList
-            data={days}
-            renderItem={({ item }) => (
-              <Day db={db} date={item.date} width={width} />
-            )}
-            keyExtractor={(item) => item.date.toISOString()}
-            horizontal
-            inverted
-            snapToInterval={width}
-            decelerationRate="fast"
-            initialScrollIndex={days.length - 1}
-            onEndReached={handleEndReached}
-            onEndReachedThreshold={0.5}
-            extraData={days}
-            getItemLayout={(_, index) => ({
-              length: width,
-              offset: width * index,
-              index,
-            })}
-          />
-        )}
-      </View>
+    <TwContainer twc="flex-1 flex-col justify-center">
+      {db && days.length && (
+        <FlatList
+          data={days}
+          renderItem={({ item }) => (
+            <Day db={db} date={item.date} width={width} />
+          )}
+          keyExtractor={(item) => item.date.toISOString()}
+          horizontal
+          inverted
+          snapToInterval={width}
+          decelerationRate="fast"
+          initialScrollIndex={days.length - 1}
+          onEndReached={handleEndReached}
+          onEndReachedThreshold={0.5}
+          extraData={days}
+          getItemLayout={(_, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
+        />
+      )}
     </TwContainer>
   );
 }

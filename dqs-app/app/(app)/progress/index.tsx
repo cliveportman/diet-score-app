@@ -15,7 +15,7 @@ export default function ProgressPage() {
 
   return (
     <TwContainer twc="flex-1 bg-slate-950 pt-12">
-      <TwContainer twc={"flex-col justify-end items-start px-3 mb-6"}>
+      <TwContainer twc={"flex-col justify-end items-start px-3"}>
         <TwText variant="title">Progress</TwText>
       </TwContainer>
       <TwContainer twc="flex-1 flex-col mb-6">
