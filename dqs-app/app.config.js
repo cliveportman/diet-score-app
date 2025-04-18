@@ -3,14 +3,14 @@ const IS_PREVIEW = process.env.APP_VARIANT === "preview";
 
 const getUniqueIdentifier = () => {
   if (IS_DEV) {
-    return "co.theportman.wotg.dev";
+    return "co.cliveportman.wotg.dev";
   }
 
   if (IS_PREVIEW) {
-    return "co.theportman.wotg.preview";
+    return "co.cliveportman.wotg.preview";
   }
 
-  return "co.theportman.wotg";
+  return "co.cliveportman.wotg";
 };
 
 const getAppName = () => {
@@ -20,8 +20,8 @@ const getAppName = () => {
 };
 
 const getAdaptiveIcon = () => {
-  if (IS_DEV) return "./assets/images/adaptive-icon-orange.png";
-  if (IS_PREVIEW) return "./assets/images/adaptive-icon-green.png";
+  if (IS_DEV) return "./assets/images/adaptive-icon-dev.png";
+  if (IS_PREVIEW) return "./assets/images/adaptive-icon-preview.png";
   return "./assets/images/adaptive-icon.png";
 };
 
