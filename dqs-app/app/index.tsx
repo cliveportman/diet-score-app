@@ -25,7 +25,7 @@ export default function Homepage() {
   }, [db]);
 
   return (
-    <TwContainer twc="flex-1 bg-slate-950">
+    <TwContainer twc="flex-1 bg-yellow-50 dark:bg-slate-950">
       <TwContainer twc="flex-1 flex-col justify-between px-6">
         <TwContainer twc={"flex-1 flex-col justify-end items-center"}>
           <GoatMoonSvg tw={"block w-64 h-64 mb-6"} />

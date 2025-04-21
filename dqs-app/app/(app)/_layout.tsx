@@ -2,11 +2,8 @@ import React from "react";
 import { Tabs } from "expo-router";
 import TailwindColors from "tailwindcss/colors";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useColorScheme } from "nativewind";
 
 export default function TabLayout() {
-  const { colorScheme } = useColorScheme();
-  console.log("colorScheme in (app) layout", colorScheme);
   return (
     <Tabs
       initialRouteName={"scores/index"}

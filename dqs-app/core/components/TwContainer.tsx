@@ -12,7 +12,7 @@ export function TwContainer({
   ...props
 }: TwContainerProps) {
   return (
-    <View tw={twc} {...props}>
+    <View className={twc} {...props}>
       {children}
     </View>
   );

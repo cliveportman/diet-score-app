@@ -22,7 +22,7 @@ export default function RootLayout() {
   });
   const { setColorScheme, colorScheme } = useColorScheme();
   setColorScheme("system");
-  console.log("colorScheme in root layout", colorScheme);
+  console.log("colorScheme in root layout:", colorScheme);
 
   useEffect(() => {
     if (loaded) {
@@ -35,7 +35,7 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaView tw="flex-1 dark:bg-slate-950 bg-yellow-50">
+    <SafeAreaView className="flex-1 dark:bg-slate-950 bg-yellow-50">
       <RootSiblingParent>
         <StatusBar barStyle="light-content" backgroundColor="#020617" />
         <Stack

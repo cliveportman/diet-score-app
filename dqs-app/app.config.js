@@ -44,6 +44,7 @@ export default {
     },
     userInterfaceStyle: "automatic",
   },
+  userInterfaceStyle: "automatic",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   splash: {
