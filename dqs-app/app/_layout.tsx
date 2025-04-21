@@ -7,6 +7,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
 
+import { useColorScheme } from "nativewind";
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -18,6 +20,8 @@ export default function RootLayout() {
     "Inter-SemiBold": require("../assets/fonts/Inter-SemiBold.ttf"),
     "Inter-Bold": require("../assets/fonts/Inter-Bold.ttf"),
   });
+  const { setColorScheme } = useColorScheme();
+  setColorScheme("system");
 
   useEffect(() => {
     if (loaded) {

@@ -27,6 +27,7 @@ For a **development** build, run
 
 ```
 eas build --platform android --profile development
+eas build --platform ios --profile development
 ```
 
 For a **preview** build, run
