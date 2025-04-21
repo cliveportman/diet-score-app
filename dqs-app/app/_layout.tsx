@@ -20,8 +20,9 @@ export default function RootLayout() {
     "Inter-SemiBold": require("../assets/fonts/Inter-SemiBold.ttf"),
     "Inter-Bold": require("../assets/fonts/Inter-Bold.ttf"),
   });
-  const { setColorScheme } = useColorScheme();
+  const { setColorScheme, colorScheme } = useColorScheme();
   setColorScheme("system");
+  console.log("colorScheme in root layout", colorScheme);
 
   useEffect(() => {
     if (loaded) {
@@ -34,7 +35,7 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaView tw="flex-1 bg-slate-950">
+    <SafeAreaView tw="flex-1 dark:bg-slate-950 bg-yellow-50">
       <RootSiblingParent>
         <StatusBar barStyle="light-content" backgroundColor="#020617" />
         <Stack

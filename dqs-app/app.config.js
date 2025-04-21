@@ -34,6 +34,7 @@ export default {
   ios: {
     bundleIdentifier: getUniqueIdentifier(),
     supportsTablet: false,
+    userInterfaceStyle: "automatic",
   },
   android: {
     package: getUniqueIdentifier(),
@@ -41,6 +42,7 @@ export default {
       foregroundImage: getAdaptiveIcon(),
       backgroundColor: "#020617",
     },
+    userInterfaceStyle: "automatic",
   },
   orientation: "portrait",
   icon: "./assets/images/icon.png",
