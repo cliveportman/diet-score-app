@@ -25,34 +25,47 @@ export default function Homepage() {
   }, [db]);
 
   return (
-    <TwContainer twc="flex-1 bg-yellow-50 dark:bg-slate-950">
+    <TwContainer twc="flex-1 bg-slate-100 dark:bg-slate-950">
       <TwContainer twc="flex-1 flex-col justify-between px-6">
         <TwContainer twc={"flex-1 flex-col justify-end items-center"}>
           <GoatMoonSvg tw={"block w-64 h-64 mb-6"} />
           <TwText variant="title" twc={"text-4xl text-center mb-3"}>
             Way of the Goat
           </TwText>
-          <TwText variant="subtitle" twc={"text-slate-400 text-center mb-6"}>
+          <TwText
+            variant="subtitle"
+            twc={"text-slate-600 dark:text-slate-400 text-center mb-6"}
+          >
             Diet scoring for endurance athletes
           </TwText>
-          <TwText twc={"text-slate-200 mb-0.5"}>Based on the book</TwText>
-          <TwText twc={"text-slate-200 mb-0.5 italic"}>Racing Weight</TwText>
-          <TwText twc={"text-slate-200 mb-0"}>by Matt Fitzgerald</TwText>
+          <TwText twc={"font-medium text-slate-600 dark:text-slate-200 mb-0.5"}>
+            Based on the book
+          </TwText>
+          <TwText
+            twc={"font-medium text-slate-600 dark:text-slate-200 mb-0.5 italic"}
+          >
+            Racing Weight
+          </TwText>
+          <TwText twc={"font-medium text-slate-600 dark:text-slate-200 mb-0"}>
+            by Matt Fitzgerald
+          </TwText>
         </TwContainer>
         <TwContainer twc={"flex-1 flex-col items-center justify-end"}>
           <TouchableOpacity
-            tw={
-              "flex-col justify-center items-center text-center text-white border border-slate-800 bg-slate-900 w-32 h-32 rounded-full mb-16"
+            className={
+              "flex-col justify-center items-center dark:text-white border border-slate-200 bg-slate-300 dark:border-slate-800 dark:bg-slate-900 w-32 h-32 rounded-full mb-16"
             }
             onPress={() =>
               router.push(onboardedDate ? "/(app)/scores" : "/onboarding")
             }
           >
-            <TwText twc={"mb-0"}>Continue</TwText>
+            <TwText twc={"mb-0 font-medium text-slate-600 dark:text-white"}>
+              Continue
+            </TwText>
           </TouchableOpacity>
-          <TwText twc={"text-slate-700 text-xs mb-3"}>
+          {/* <TwText twc={"text-slate-400 dark:text-slate-700 text-xs mb-3"}>
             Onboarded {onboardedDate}
-          </TwText>
+          </TwText> */}
         </TwContainer>
       </TwContainer>
     </TwContainer>

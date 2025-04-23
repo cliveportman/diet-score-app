@@ -20,9 +20,8 @@ export default function RootLayout() {
     "Inter-SemiBold": require("../assets/fonts/Inter-SemiBold.ttf"),
     "Inter-Bold": require("../assets/fonts/Inter-Bold.ttf"),
   });
-  const { setColorScheme, colorScheme } = useColorScheme();
+  const { setColorScheme } = useColorScheme();
   setColorScheme("system");
-  console.log("colorScheme in root layout:", colorScheme);
 
   useEffect(() => {
     if (loaded) {

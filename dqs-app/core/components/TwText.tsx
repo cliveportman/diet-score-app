@@ -21,7 +21,7 @@ export function TwText({ children, variant = "copy", twc = "" }: TwTextProps) {
   switch (variant) {
     case "title":
       txt =
-        "mb-3 text-3xl font-bold tracking-tight text-slate-100 leading-none";
+        "mb-3 text-3xl font-bold tracking-tight text-slate-700 dark:text-slate-100 leading-none";
       break;
     case "subtitle":
       txt =
@@ -49,5 +49,5 @@ export function TwText({ children, variant = "copy", twc = "" }: TwTextProps) {
       txt = copy;
   }
 
-  return <Text tw={`text-left ${txt} ${twc}`}>{children}</Text>;
+  return <Text className={`text-left ${txt} ${twc}`}>{children}</Text>;
 }
