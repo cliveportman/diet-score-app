@@ -1,7 +1,7 @@
 {
   "name": "way-of-the-goat",
   "main": "expo-router/entry",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "scripts": {
     "start": "cross-env APP_VARIANT=development npx expo start",
     "android": "expo start --android",

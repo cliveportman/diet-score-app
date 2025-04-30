@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { TwContainer } from "@/core/components/TwContainer";
 import { Day } from "@/features/scores/components/Day";
-import { Dimensions, FlatList, View } from "react-native";
+import { Dimensions, FlatList } from "react-native";
 import { useDatabase } from "@/core/hooks";
 
 export default function Scores() {

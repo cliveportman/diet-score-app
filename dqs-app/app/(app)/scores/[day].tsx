@@ -3,7 +3,7 @@ import { useLocalSearchParams } from "expo-router";
 
 import { TwContainer } from "@/core/components/TwContainer";
 import { Day } from "@/features/scores/components/Day";
-import { Dimensions, FlatList, View } from "react-native";
+import { Dimensions, FlatList } from "react-native";
 import { useDatabase } from "@/core/hooks";
 import dayjs from "dayjs";
 
