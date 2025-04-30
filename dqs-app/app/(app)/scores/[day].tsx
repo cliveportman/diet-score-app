@@ -53,6 +53,7 @@ export default function Scores() {
           initialScrollIndex={days.length - 1}
           onEndReached={handleEndReached}
           onEndReachedThreshold={0.5}
+          showsHorizontalScrollIndicator={false}
           extraData={days}
           getItemLayout={(_, index) => ({
             length: width,

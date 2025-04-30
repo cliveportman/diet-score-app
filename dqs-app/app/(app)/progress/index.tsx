@@ -28,6 +28,7 @@ export default function ProgressPage() {
           decelerationRate="fast"
           onEndReached={handleEndReached}
           onEndReachedThreshold={0.5}
+          showsHorizontalScrollIndicator={false}
           extraData={weeks}
           getItemLayout={(_, index) => ({
             length: width,

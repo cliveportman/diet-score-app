@@ -35,6 +35,7 @@ export default function Scores() {
           decelerationRate="fast"
           onEndReached={handleEndReached}
           onEndReachedThreshold={0.5}
+          showsHorizontalScrollIndicator={false}
           extraData={days}
           getItemLayout={(_, index) => ({
             length: width,

@@ -2,20 +2,35 @@ import React from "react";
 import { Tabs } from "expo-router";
 import TailwindColors from "tailwindcss/colors";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useColorScheme } from "nativewind";
 
 export default function TabLayout() {
+  const { colorScheme } = useColorScheme();
+
   return (
     <Tabs
       initialRouteName={"scores/index"}
       backBehavior={"history"}
       screenOptions={{
-        tabBarActiveTintColor: TailwindColors.slate[100],
-        tabBarActiveBackgroundColor: TailwindColors.slate[800],
-        tabBarInactiveTintColor: TailwindColors.slate[500],
+        tabBarActiveTintColor:
+          colorScheme === "light"
+            ? TailwindColors.slate[800]
+            : TailwindColors.slate[800],
+        tabBarActiveBackgroundColor:
+          colorScheme === "light"
+            ? TailwindColors.yellow[100]
+            : TailwindColors.slate[800],
+        tabBarInactiveTintColor:
+          colorScheme === "light"
+            ? TailwindColors.slate[500]
+            : TailwindColors.slate[500],
         tabBarStyle: {
           height: 64,
           paddingTop: 0,
-          backgroundColor: TailwindColors.slate[900],
+          backgroundColor:
+            colorScheme === "light"
+              ? TailwindColors.yellow[200]
+              : TailwindColors.slate[900],
           borderTopWidth: 0,
         },
         headerShown: false,
