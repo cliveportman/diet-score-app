@@ -17,7 +17,7 @@ type TwTextProps = {
 export function TwText({ children, variant = "copy", twc = "" }: TwTextProps) {
   let txt: string;
   const copy =
-    "mb-3 text-base font-light tracking-tight text-slate-100 leading-snug";
+    "mb-3 text-base font-regular dark:font-light tracking-tight text-slate-700 dark:text-slate-100 leading-snug";
   switch (variant) {
     case "title":
       txt =
@@ -29,21 +29,22 @@ export function TwText({ children, variant = "copy", twc = "" }: TwTextProps) {
       break;
     case "heading":
       txt =
-        "mb-3 text-xl font-bold tracking-tight text-slate-100 leading-none uppercase";
+        "mb-3 text-xl font-bold tracking-tight text-slate-700 dark:text-slate-100 leading-none uppercase";
       break;
     case "subheading":
       txt =
-        "mb-1.5 text-lg font-bold tracking-tight text-slate-100 leading-snug";
+        "mb-1.5 text-lg font-bold tracking-tight text-slate-700 dark:text-slate-100 leading-snug";
       break;
     case "copy":
       txt = copy;
       break;
     case "small":
-      txt = "text-sm font-light tracking-tight text-slate-100 leading-snug";
+      txt =
+        "text-sm font-regular dark:font-light tracking-tight text-slate-700 dark:text-slate-100 leading-snug";
       break;
     case "large":
       txt =
-        "mb-3 text-lg font-light tracking-tight text-slate-100 leading-none";
+        "mb-3 text-lg font-regular dark:font-light tracking-tight text-slate-700 dark:text-slate-100 leading-none";
       break;
     default:
       txt = copy;

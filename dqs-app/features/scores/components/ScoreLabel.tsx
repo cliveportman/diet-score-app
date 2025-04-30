@@ -9,9 +9,13 @@ type ScoreLabelProps = {
 export function ScoreLabel({ text, twc = "" }: ScoreLabelProps) {
   return (
     <View
-      tw={`grow flex flex-col justify-center items-start pl-1.5 h-10 rounded-xs bg-slate-800 shadow-sm ${twc}`}
+      tw={`grow flex flex-col justify-center items-start pl-1.5 h-10 rounded-xs dark:bg-slate-800 ${twc}`}
     >
-      <Text tw={`font-regular text-left text-base text-white`}>{text}</Text>
+      <Text
+        tw={`font-medium dark:font-regular text-left text-base text-slate-800 dark:text-white`}
+      >
+        {text}
+      </Text>
     </View>
   );
 }

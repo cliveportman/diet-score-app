@@ -22,13 +22,13 @@ export function DaySummary({ data }: DaySummaryProps) {
   let colour: string;
   if (typeof totals.total === "string") {
     if (totals.total === "---") colour = "text-slate-500";
-    else colour = "text-slate-300";
-  } else colour = "text-slate-300";
+    else colour = "text-slate-800 dark:text-slate-300";
+  } else colour = "text-slate-800 dark:text-slate-300";
 
   return (
     <TwContainer
       twc={
-        "flex-row justify-between items-start bg-slate-900 px-3 pt-1.5 mb-1.5"
+        "flex-row justify-between items-start bg-yellow-100 dark:bg-slate-900 px-3 pt-1.5 mb-1.5"
       }
     >
       <Pressable
@@ -39,17 +39,25 @@ export function DaySummary({ data }: DaySummaryProps) {
           })
         }
       >
-        <TwText twc={"w-28 leading-none h-5 text-slate-300"}>
+        <TwText
+          twc={"w-28 leading-none h-5 text-slate-800 dark:text-slate-300"}
+        >
           {dayjs(data.date).format("ddd DD MMM")}
         </TwText>
       </Pressable>
-      <TwText twc={`w-16 leading-none h-5 text-slate-300 text-center`}>
+      <TwText
+        twc={`w-16 leading-none h-5 text-slate-800 dark:text-slate-300 text-center`}
+      >
         {totals.portions}
       </TwText>
-      <TwText twc={`w-10 leading-none h-5 text-slate-300 text-right`}>
+      <TwText
+        twc={`w-10 leading-none h-5 text-slate-800 dark:text-slate-300 text-right`}
+      >
         {totals.healthy}
       </TwText>
-      <TwText twc={`w-16 leading-none h-5 text-slate-300 text-right`}>
+      <TwText
+        twc={`w-16 leading-none h-5 text-slate-800 dark:text-slate-300 text-right`}
+      >
         {totals.unhealthy}
       </TwText>
       <TwText twc={`w-10 leading-none h-5 ${colour} text-right`}>

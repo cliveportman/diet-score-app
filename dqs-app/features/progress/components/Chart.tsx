@@ -31,7 +31,7 @@ export function Chart({
         {horizontalLines.map((v) => (
           <TwContainer
             key={v}
-            twc={"absolute w-full bg-slate-900"}
+            twc={"absolute w-full bg-slate-200 dark:bg-slate-900"}
             style={{
               top: ((maxValue - v) / (maxValue - minValue)) * height,
               height: 1,

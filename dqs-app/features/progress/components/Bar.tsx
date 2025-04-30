@@ -23,7 +23,7 @@ function zeroValueBar(
   return (
     <TwContainer twc={"relative flex-col"} style={{ height: maxHeight }}>
       <TwContainer
-        twc={"absolute flex-col w-8 bg-slate-200"}
+        twc={"absolute flex-col w-8 bg-slate-800 dark:bg-slate-200"}
         style={{
           top: (maxValue / (maxValue - minValue)) * maxHeight,
           height: 1,
@@ -32,7 +32,7 @@ function zeroValueBar(
       <TwContainer twc={"absolute w-full"} style={{ top: maxHeight + 7 }}>
         <TwText
           variant={"small"}
-          twc={"text-center text-slate-400 font-semibold"}
+          twc={"text-center text-slate-800 dark:text-slate-400 font-semibold"}
         >
           {data.label}
         </TwText>
@@ -72,7 +72,7 @@ function negativeValueBar(
       <TwContainer twc={"absolute w-full"} style={{ top: maxHeight + 7 }}>
         <TwText
           variant={"small"}
-          twc={"text-center text-slate-400 font-semibold"}
+          twc={"text-center text-slate-800 dark:text-slate-400 font-semibold"}
         >
           {data.label}
         </TwText>
@@ -90,7 +90,7 @@ function positiveValueBar(
   return (
     <TwContainer twc={"relative flex-col"} style={{ height: maxHeight }}>
       <TwContainer
-        twc={`absolute flex-col w-8 ${data.value < 20 ? "bg-slate-200" : "bg-lime-400"}`}
+        twc={`absolute flex-col w-8 ${data.value < 20 ? "bg-slate-800 dark:bg-slate-200" : "bg-lime-400"}`}
         style={{
           top: ((maxValue - data.value) / (maxValue - minValue)) * maxHeight,
           height: (data.value / (maxValue - minValue)) * maxHeight,
@@ -105,7 +105,7 @@ function positiveValueBar(
       >
         <TwText
           variant={"small"}
-          twc={`text-center ${data.value < 20 ? "text-slate-100" : "text-lime-400"}`}
+          twc={`text-center ${data.value < 20 ? "text-slate-800 dark:text-slate-100" : "text-lime-400"}`}
         >
           +{data.value}
         </TwText>
@@ -113,7 +113,7 @@ function positiveValueBar(
       <TwContainer twc={"absolute w-full"} style={{ top: maxHeight + 7 }}>
         <TwText
           variant={"small"}
-          twc={"text-center text-slate-400 font-semibold"}
+          twc={"text-center text-slate-800 dark:text-slate-400 font-semibold"}
         >
           {data.label}
         </TwText>

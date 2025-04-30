@@ -12,10 +12,8 @@ export default function UserGuidePage() {
   return (
     <TwContainer twc="flex-1 bg-yellow-50 dark:bg-slate-950 px-3 pt-12">
       <TwContainer twc={"flex-col justify-end items-start mb-6"}>
-        <TwText variant="title" twc={""}>
-          User guide
-        </TwText>
-        <TwText variant="subtitle" twc={""}>
+        <TwText variant="title">User guide</TwText>
+        <TwText variant="subtitle" twc={"mb-0"}>
           How to get the most out of this app
         </TwText>
       </TwContainer>
@@ -291,13 +289,13 @@ export default function UserGuidePage() {
           </TwText>
 
           <TwText variant={"subheading"}>Eating on the run</TwText>
-          <TwText twc="text-white mb-6">
+          <TwText twc="mb-6">
             Anything you eat while exercising doesn't count. So go run an
             ultramarathon and stuff your face while doing so!
           </TwText>
 
           <TwText variant={"subheading"}>Processed vs unprocessed</TwText>
-          <TwText twc="text-white mb-6">
+          <TwText twc="mb-6">
             Matt (author of{" "}
             <Text style={{ fontStyle: "italic" }}>Racing Weight</Text>) is quite
             keen on unprocessed food, and the science is only getting stronger.
@@ -307,7 +305,7 @@ export default function UserGuidePage() {
           </TwText>
 
           <TwText variant={"subheading"}>Protein shakes</TwText>
-          <TwText twc="text-white mb-6">
+          <TwText twc="mb-6">
             Unsweetened whey protein fits the nutrition profile of lean meats,
             so count it as that. The sweetened powders and shakes can contain
             surprising amounts of sugar or artificial sweetener though, so

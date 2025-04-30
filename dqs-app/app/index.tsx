@@ -25,7 +25,7 @@ export default function Homepage() {
   }, [db]);
 
   return (
-    <TwContainer twc="flex-1 bg-slate-100 dark:bg-slate-950">
+    <TwContainer twc="flex-1 bg-yellow-50 dark:bg-slate-950">
       <TwContainer twc="flex-1 flex-col justify-between px-6">
         <TwContainer twc={"flex-1 flex-col justify-end items-center"}>
           <GoatMoonSvg tw={"block w-64 h-64 mb-6"} />
@@ -53,15 +53,13 @@ export default function Homepage() {
         <TwContainer twc={"flex-1 flex-col items-center justify-end"}>
           <TouchableOpacity
             className={
-              "flex-col justify-center items-center dark:text-white border border-slate-200 bg-slate-300 dark:border-slate-800 dark:bg-slate-900 w-32 h-32 rounded-full mb-16"
+              "flex-col justify-center items-center  border border-slate-900 bg-slate-600 dark:bg-slate-800  w-32 h-32 rounded-full mb-16"
             }
             onPress={() =>
               router.push(onboardedDate ? "/(app)/scores" : "/onboarding")
             }
           >
-            <TwText twc={"mb-0 font-medium text-slate-600 dark:text-white"}>
-              Continue
-            </TwText>
+            <TwText twc={"mb-0 font-medium text-white"}>Continue</TwText>
           </TouchableOpacity>
           {/* <TwText twc={"text-slate-400 dark:text-slate-700 text-xs mb-3"}>
             Onboarded {onboardedDate}
