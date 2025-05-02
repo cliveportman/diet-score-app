@@ -8,7 +8,7 @@ import { FoodCat } from "@/core/enums";
 import { maxScores } from "@/core/constants";
 import { TwLine } from "@/core/components/TwLine";
 
-export default function UserGuidePage() {
+export default function SettingsPage() {
   return (
     <TwContainer twc="flex-1 bg-slate-50 dark:bg-slate-950 px-3 pt-12">
       <TwContainer twc={"flex-col justify-end items-start mb-6"}>

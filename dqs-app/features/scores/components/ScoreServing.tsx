@@ -16,25 +16,25 @@ export function ScoreServing({
   let bg: string;
   switch (maxScore) {
     case -2:
-      bg = "bg-orange-400";
+      bg = "bg-orange-200 dark:bg-orange-400";
       break;
     case -1:
-      bg = "bg-orange-300";
+      bg = "bg-amber-200 dark:bg-orange-300";
       break;
     case 0:
-      bg = "bg-green-300";
+      bg = "bg-teal-200 dark:bg-green-300";
       break;
     case 1:
-      bg = "bg-lime-300";
+      bg = "bg-lime-200 dark:bg-lime-300";
       break;
     case 2:
-      bg = "bg-lime-400";
+      bg = "bg-lime-300 dark:bg-lime-400";
       break;
   }
 
   return (
     <TwContainer
-      twc={`h-10 w-9 flex-col justify-center align-center ml-1 rounded-xs ${bg} shadow-sm ${twc} ${!serving ? "opacity-60" : ""}`}
+      twc={`h-10 w-9 flex-col justify-center align-center ml-1 rounded-xs ${bg} shadow-sm ${twc} ${!serving ? "opacity-50 dark:opacity-60" : ""}`}
     >
       {serving > 0 && (
         <TwText twc={`font-bold text-center text-lg text-slate-900 mb-0`}>

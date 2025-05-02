@@ -28,7 +28,7 @@ export function DaySummary({ data }: DaySummaryProps) {
   return (
     <TwContainer
       twc={
-        "flex-row justify-between items-start bg-yellow-100 dark:bg-slate-900 px-3 pt-1.5 mb-1.5"
+        "flex-row justify-between items-start bg-slate-100 dark:bg-slate-900 px-3 pt-1.5 mb-1.5"
       }
     >
       <Pressable

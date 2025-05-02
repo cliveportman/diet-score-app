@@ -89,7 +89,7 @@ export const Day = memo(
 
     return (
       <View
-        tw={`flex-1 flex-col justify-between px-3 pt-12 bg-yellow-50 dark:bg-slate-950`}
+        tw={`flex-1 flex-col justify-between px-3 pt-12 bg-slate-50 dark:bg-slate-950`}
         style={{ width: width }}
       >
         <TwContainer twc={"mb-3"}>

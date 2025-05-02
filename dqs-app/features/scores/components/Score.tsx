@@ -41,7 +41,7 @@ export function Score({
 
   return (
     <Pressable
-      tw={`w-full flex-row mb-1 ${twc}`}
+      tw={`w-full flex-row mb-1 ${twc} bg-slate-100 dark:bg-slate-950`}
       onPress={() => onPress(cat)}
       onLongPress={() => onLongPress(cat)}
     >

@@ -34,7 +34,7 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaView className="flex-1 dark:bg-slate-950 bg-yellow-50">
+    <SafeAreaView className="flex-1 dark:bg-slate-950 bg-slate-50">
       <RootSiblingParent>
         <StatusBar barStyle="light-content" backgroundColor="#020617" />
         <Stack
